@@ -1,0 +1,52 @@
+local ____exports = {}
+--- This enum is for REPENTOGON, an exe-hack which expands the modding API.
+-- 
+-- @see https ://repentogon.com/
+____exports.DwmWindowAttribute = {}
+____exports.DwmWindowAttribute.NC_RENDERING_ENABLED = 1
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.NC_RENDERING_ENABLED] = "NC_RENDERING_ENABLED"
+____exports.DwmWindowAttribute.NC_RENDERING_POLICY = 2
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.NC_RENDERING_POLICY] = "NC_RENDERING_POLICY"
+____exports.DwmWindowAttribute.TRANSITIONS_FORCE_DISABLED = 3
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.TRANSITIONS_FORCE_DISABLED] = "TRANSITIONS_FORCE_DISABLED"
+____exports.DwmWindowAttribute.ALLOW_NC_PAINT = 4
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.ALLOW_NC_PAINT] = "ALLOW_NC_PAINT"
+____exports.DwmWindowAttribute.CAPTION_BUTTON_BOUNDS = 5
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.CAPTION_BUTTON_BOUNDS] = "CAPTION_BUTTON_BOUNDS"
+____exports.DwmWindowAttribute.NON_CLIENT_RTL_LAYOUT = 6
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.NON_CLIENT_RTL_LAYOUT] = "NON_CLIENT_RTL_LAYOUT"
+____exports.DwmWindowAttribute.FORCE_ICONIC_REPRESENTATION = 7
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.FORCE_ICONIC_REPRESENTATION] = "FORCE_ICONIC_REPRESENTATION"
+____exports.DwmWindowAttribute.FLIP_3D_POLICY = 8
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.FLIP_3D_POLICY] = "FLIP_3D_POLICY"
+____exports.DwmWindowAttribute.EXTENDED_FRAME_BOUNDS = 9
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.EXTENDED_FRAME_BOUNDS] = "EXTENDED_FRAME_BOUNDS"
+____exports.DwmWindowAttribute.HAS_ICONIC_BITMAP = 10
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.HAS_ICONIC_BITMAP] = "HAS_ICONIC_BITMAP"
+____exports.DwmWindowAttribute.DISALLOW_PEEK = 11
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.DISALLOW_PEEK] = "DISALLOW_PEEK"
+____exports.DwmWindowAttribute.EXCLUDED_FROM_PEEK = 12
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.EXCLUDED_FROM_PEEK] = "EXCLUDED_FROM_PEEK"
+____exports.DwmWindowAttribute.FREEZE_REPRESENTATION = 15
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.FREEZE_REPRESENTATION] = "FREEZE_REPRESENTATION"
+____exports.DwmWindowAttribute.PASSIVE_UPDATE_MODE = 16
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.PASSIVE_UPDATE_MODE] = "PASSIVE_UPDATE_MODE"
+____exports.DwmWindowAttribute.USE_HOST_BACKDROP_BRUSH = 17
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.USE_HOST_BACKDROP_BRUSH] = "USE_HOST_BACKDROP_BRUSH"
+____exports.DwmWindowAttribute.USE_IMMERSIVE_DARK_MODE = 20
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.USE_IMMERSIVE_DARK_MODE] = "USE_IMMERSIVE_DARK_MODE"
+____exports.DwmWindowAttribute.WINDOW_CORNER_PREFERENCE = 33
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.WINDOW_CORNER_PREFERENCE] = "WINDOW_CORNER_PREFERENCE"
+____exports.DwmWindowAttribute.BORDER_COLOR = 34
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.BORDER_COLOR] = "BORDER_COLOR"
+____exports.DwmWindowAttribute.CAPTION_COLOR = 35
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.CAPTION_COLOR] = "CAPTION_COLOR"
+____exports.DwmWindowAttribute.TEXT_COLOR = 36
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.TEXT_COLOR] = "TEXT_COLOR"
+____exports.DwmWindowAttribute.VISIBLE_FRAME_BORDER_THICKNESS = 37
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.VISIBLE_FRAME_BORDER_THICKNESS] = "VISIBLE_FRAME_BORDER_THICKNESS"
+____exports.DwmWindowAttribute.SYSTEM_BACKDROP_TYPE = 38
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.SYSTEM_BACKDROP_TYPE] = "SYSTEM_BACKDROP_TYPE"
+____exports.DwmWindowAttribute.LAST = 39
+____exports.DwmWindowAttribute[____exports.DwmWindowAttribute.LAST] = "LAST"
+return ____exports

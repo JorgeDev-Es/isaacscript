@@ -1,0 +1,163 @@
+import type {
+  BossID,
+  EntityFlag,
+  EntityType,
+} from "isaac-typescript-definitions";
+import type { EntityTag } from "../../../enums/flags/EntityTag";
+import type { GibFlag } from "../../../enums/flags/GibFlag";
+
+declare global {
+  /**
+   * This class is for REPENTOGON, an exe-hack which expands the modding API.
+   *
+   * @see https://repentogon.com/
+   */
+  interface EntityConfigEntity extends IsaacAPIClass {
+    /** Returns true if the entity can be a champion, as defined in `entities2.xml`. */
+    readonly CanBeChampion: () => boolean;
+
+    /**
+     * Returns true if the entity can be rerolled into another entity, as defined in
+     * `entities2.xml`.
+     */
+    readonly CanBeRerolledInto: () => boolean;
+
+    /**
+     * Returns true if the entity causes the doors in an uncleared room to close while alive, as
+     * defined in `entities2.xml`.
+     */
+    readonly CanShutDoors: () => boolean;
+
+    /** Returns a path to the entity's .anm2 file, as defined in `entities2.xml`. */
+    readonly GetAnm2Path: () => string;
+
+    /** Returns the entity's base HP, as defined in `entities2.xml`. */
+    readonly GetBaseHP: () => number;
+
+    /** Returns the name of the entity's bestiary animation, as defined in `entities2.xml`. */
+    readonly GetBestiaryAnimation: () => string;
+
+    /** Returns a path to the entity's bestiary .anm2 file, as defined in `entities2.xml`. */
+    readonly GetBestiaryAnm2Path: () => string;
+
+    /**
+     * Returns the entity's floor alt to be displayed in the bestiary, as defined in
+     * `entities2.xml`.
+     */
+    readonly GetBestiaryFloorAlt: () => string;
+
+    /**
+     * Returns a read-only `Vector` of the entity's bestiary sprite offset, as defined in
+     * `entities2.xml`.
+     */
+    readonly GetBestiaryOffset: () => Readonly<Vector>;
+
+    /**
+     * Returns the overlay animation name of the entity's bestiary animation, as defined in
+     * `entities2.xml`.
+     */
+    readonly GetBestiaryOverlay: () => string;
+
+    /** Returns the scale of the entity's bestiary sprite, as defined in `entities2.xml`. */
+    readonly GetBestiaryScale: () => number;
+
+    /** Returns the `BossID` associated with the entity, as defined in `entities2.xml`. */
+    readonly GetBossID: () => BossID;
+
+    /**
+     * Returns the base amount of damage the entity does when touching a player, as defined in
+     * `entities2.xml`.
+     */
+    readonly GetCollisionDamage: () => number;
+
+    /** Returns the entity's collision interval, as defined in `entities2.xml`. */
+    readonly GetCollisionInterval: () => int;
+
+    /** Returns the entity's collision radius, as defined in `entities2.xml`. */
+    readonly GetCollisionRadius: () => number;
+
+    /**
+     * Returns a read-only `Vector` of the entity's collision radius multiplier, as defined in
+     * `entities2.xml`.
+     */
+    readonly GetCollisionRadiusMultiplier: () => Readonly<Vector>;
+
+    /**
+     * Returns the `EntityConfigEntity` of what this entity would devolve to when using D10. Returns
+     * undefined there is no valid entity it can devolve into.
+     */
+    readonly GetDevolvedEntity: () => EntityConfigEntity | undefined;
+
+    /**
+     * Returns an array containing all of the tags defined in the entity's `customtags` attribute in
+     * `entities2.xml`. Tags are always provided in all lowercase.
+     */
+    readonly GetCustomTags: () => string[];
+
+    /** Returns a bitmask containing the entity's tags, as defined in `entities2.xml`. */
+    readonly GetEntityTags: () => BitFlags<EntityFlag>;
+
+    /** Returns the entity's friction, as defined in `entities2.xml`. */
+    readonly GetFriction: () => number;
+
+    /** Returns a bitmask of the entity's gib flags, as defined in `entities2.xml`. */
+    readonly GetGibFlags: () => BitFlags<GibFlag>;
+
+    /** Returns the amount of gibs the entity leaves, as defined in `entities2.xml`. */
+    readonly GetGibsAmount: () => int;
+
+    /** Returns the grid collision points the entity has, as defined in `entities2.xml`. */
+    readonly GetGridCollisionPoints: () => int;
+
+    /** Returns the entity's mass, as defined in `entities2.xml`. */
+    readonly GetMass: () => number;
+
+    /** Returns the name of the mod the entity is from. Returns undefined for vanilla entities. */
+    readonly GetModName: () => string | undefined;
+
+    /** Returns the entity's name, as defined in `entities2.xml`. */
+    readonly GetName: () => string;
+
+    /** Returns the entity's portrait ID, as defined in `entities2.xml`. */
+    readonly GetPortraitID: () => int;
+
+    /**
+     * Returns the entity's shadow size. The value is the "shadowSize" attribute in `entities2.xml`
+     * divided by 100.
+     */
+    readonly GetShadowSize: () => number;
+
+    /** Returns the amount of armor the entity has, as defined in `entities2.xml`. */
+    readonly GetShieldStrength: () => number;
+
+    /** Returns the entity's stage HP, as defined in `entities2.xml`. */
+    readonly GetStageHP: () => number;
+
+    /** Returns the entity's SubType, as defined in `entities2.xml`. */
+    readonly GetSubType: () => int;
+
+    /** Returns the entity's `EntityType`. */
+    readonly GetType: () => EntityType;
+
+    /** Returns the entity's variant. */
+    readonly GetVariant: () => int;
+
+    /**
+     * Returns true if the entity has the provided tag in its `customtags` attribute in the
+     * `entities2.xml` file. This is not case sensitive.
+     */
+    readonly HasCustomTag: (tag: string) => boolean;
+
+    /** Returns true if the entity has all of the entity tags in the provided bitset. */
+    readonly HasEntityTags: (tags: BitFlags<EntityTag> | EntityTag) => boolean;
+
+    /** Returns whether the entity has floor alts. */
+    readonly HasFloorAlts: () => boolean;
+
+    /** Returns whether the entity has all of the gib flags in the provided bitset. */
+    readonly HasGibFlags: (flags: GibFlag | BitFlags<GibFlag>) => boolean;
+
+    /** Returns true if the entity is a boss, as defined in `entities2.xml`. */
+    readonly IsBoss: () => boolean;
+  }
+}

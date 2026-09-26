@@ -1,0 +1,74 @@
+local ____exports = {}
+--- The type of autocomplete the command has for the debug console.
+-- 
+-- This enum is for REPENTOGON, an exe-hack which expands the modding API.
+-- 
+-- @see https ://repentogon.com/
+____exports.ImGuiElement = {}
+____exports.ImGuiElement.WINDOW = 0
+____exports.ImGuiElement[____exports.ImGuiElement.WINDOW] = "WINDOW"
+____exports.ImGuiElement.MENU = 1
+____exports.ImGuiElement[____exports.ImGuiElement.MENU] = "MENU"
+____exports.ImGuiElement.MENU_ITEM = 2
+____exports.ImGuiElement[____exports.ImGuiElement.MENU_ITEM] = "MENU_ITEM"
+____exports.ImGuiElement.POPUP = 3
+____exports.ImGuiElement[____exports.ImGuiElement.POPUP] = "POPUP"
+____exports.ImGuiElement.COLLAPSING_HEADER = 4
+____exports.ImGuiElement[____exports.ImGuiElement.COLLAPSING_HEADER] = "COLLAPSING_HEADER"
+____exports.ImGuiElement.TREE_NODE = 5
+____exports.ImGuiElement[____exports.ImGuiElement.TREE_NODE] = "TREE_NODE"
+____exports.ImGuiElement.SEPARATOR = 6
+____exports.ImGuiElement[____exports.ImGuiElement.SEPARATOR] = "SEPARATOR"
+____exports.ImGuiElement.SEPARATOR_TEXT = 7
+____exports.ImGuiElement[____exports.ImGuiElement.SEPARATOR_TEXT] = "SEPARATOR_TEXT"
+____exports.ImGuiElement.TEXT = 8
+____exports.ImGuiElement[____exports.ImGuiElement.TEXT] = "TEXT"
+____exports.ImGuiElement.TEXT_WRAPPED = 9
+____exports.ImGuiElement[____exports.ImGuiElement.TEXT_WRAPPED] = "TEXT_WRAPPED"
+____exports.ImGuiElement.BULLET_TEXT = 10
+____exports.ImGuiElement[____exports.ImGuiElement.BULLET_TEXT] = "BULLET_TEXT"
+____exports.ImGuiElement.SAME_LINE = 11
+____exports.ImGuiElement[____exports.ImGuiElement.SAME_LINE] = "SAME_LINE"
+____exports.ImGuiElement.BUTTON = 12
+____exports.ImGuiElement[____exports.ImGuiElement.BUTTON] = "BUTTON"
+____exports.ImGuiElement.SMALL_BUTTON = 13
+____exports.ImGuiElement[____exports.ImGuiElement.SMALL_BUTTON] = "SMALL_BUTTON"
+____exports.ImGuiElement.INPUT_INT = 14
+____exports.ImGuiElement[____exports.ImGuiElement.INPUT_INT] = "INPUT_INT"
+____exports.ImGuiElement.INPUT_FLOAT = 15
+____exports.ImGuiElement[____exports.ImGuiElement.INPUT_FLOAT] = "INPUT_FLOAT"
+____exports.ImGuiElement.DRAG_INT = 16
+____exports.ImGuiElement[____exports.ImGuiElement.DRAG_INT] = "DRAG_INT"
+____exports.ImGuiElement.DRAG_FLOAT = 17
+____exports.ImGuiElement[____exports.ImGuiElement.DRAG_FLOAT] = "DRAG_FLOAT"
+____exports.ImGuiElement.SLIDER_INT = 18
+____exports.ImGuiElement[____exports.ImGuiElement.SLIDER_INT] = "SLIDER_INT"
+____exports.ImGuiElement.SLIDER_FLOAT = 19
+____exports.ImGuiElement[____exports.ImGuiElement.SLIDER_FLOAT] = "SLIDER_FLOAT"
+____exports.ImGuiElement.COLOR_EDIT = 20
+____exports.ImGuiElement[____exports.ImGuiElement.COLOR_EDIT] = "COLOR_EDIT"
+____exports.ImGuiElement.TAB_BAR = 21
+____exports.ImGuiElement[____exports.ImGuiElement.TAB_BAR] = "TAB_BAR"
+____exports.ImGuiElement.TAB = 22
+____exports.ImGuiElement[____exports.ImGuiElement.TAB] = "TAB"
+____exports.ImGuiElement.CHECKBOX = 23
+____exports.ImGuiElement[____exports.ImGuiElement.CHECKBOX] = "CHECKBOX"
+____exports.ImGuiElement.RADIO_BUTTON = 24
+____exports.ImGuiElement[____exports.ImGuiElement.RADIO_BUTTON] = "RADIO_BUTTON"
+____exports.ImGuiElement.COMBOBOX = 25
+____exports.ImGuiElement[____exports.ImGuiElement.COMBOBOX] = "COMBOBOX"
+____exports.ImGuiElement.INPUT_TEXT = 26
+____exports.ImGuiElement[____exports.ImGuiElement.INPUT_TEXT] = "INPUT_TEXT"
+____exports.ImGuiElement.INPUT_TEXT_WITH_HINT = 27
+____exports.ImGuiElement[____exports.ImGuiElement.INPUT_TEXT_WITH_HINT] = "INPUT_TEXT_WITH_HINT"
+____exports.ImGuiElement.INPUT_TEXT_MULTILINE = 28
+____exports.ImGuiElement[____exports.ImGuiElement.INPUT_TEXT_MULTILINE] = "INPUT_TEXT_MULTILINE"
+____exports.ImGuiElement.INPUT_CONTROLLER = 29
+____exports.ImGuiElement[____exports.ImGuiElement.INPUT_CONTROLLER] = "INPUT_CONTROLLER"
+____exports.ImGuiElement.INPUT_KEYBOARD = 30
+____exports.ImGuiElement[____exports.ImGuiElement.INPUT_KEYBOARD] = "INPUT_KEYBOARD"
+____exports.ImGuiElement.PLOT_LINES = 31
+____exports.ImGuiElement[____exports.ImGuiElement.PLOT_LINES] = "PLOT_LINES"
+____exports.ImGuiElement.PLOT_HISTOGRAM = 32
+____exports.ImGuiElement[____exports.ImGuiElement.PLOT_HISTOGRAM] = "PLOT_HISTOGRAM"
+return ____exports
