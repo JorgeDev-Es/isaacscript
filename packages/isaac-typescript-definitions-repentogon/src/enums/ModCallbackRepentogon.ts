@@ -21,7 +21,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_USE_PILL = 10,
+  MC_USE_PILL = 10,
 
   /**
    * A modified version of `ModCallback.ENTITY_TAKE_DMG`. This callback now allows an interface to
@@ -34,6 +34,13 @@ export enum ModCallbackRepentogon {
    * - `DamageCountdown`: The damage countdown to apply. Only works if the `DamageFlag.COUNTDOWN`
    *   flag is present.
    *
+   * Modified values are passed along to the remaining callbacks. Returning false to cancel the
+   * damage still skips the remaining callbacks.
+   *
+   * `extraSource` is a new `EntityRef` passed in specific situations where the true source of damage
+   * is obscured (such as lasers/melee hitboxes providing the player instead of themselves). It is
+   * undefined if not available.
+   *
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
    * - You can provide an optional third argument that will make the callback only fire if it
    *   matches the `EntityType` provided.
@@ -44,7 +51,8 @@ export enum ModCallbackRepentogon {
    *   damage: number,
    *   damageFlags: BitFlags<DamageFlag>,
    *   source: EntityRef,
-   *   damageCountdown: int
+   *   damageCountdown: int,
+   *   extraSource: EntityRef | undefined
    * ):
    *   | boolean
    *   | {
@@ -55,7 +63,28 @@ export enum ModCallbackRepentogon {
    *   | undefined {}
    * ```
    */
-  PRE_ENTITY_TAKE_DMG = 11,
+  MC_ENTITY_TAKE_DMG = 11,
+
+  /**
+   * Fires before an active item is used. Now allows you to `return { Discharge: false }` to cancel
+   * the activation without discharging the item.
+   *
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `CollectibleType` provided.
+   *
+   * ```ts
+   * function preUseItem(
+   *   collectible: CollectibleType,
+   *   rng: RNG,
+   *   player: EntityPlayer,
+   *   useFlags: BitFlags<UseFlag>,
+   *   activeSlot: ActiveSlot,
+   *   customVarData: int
+   * ): boolean | { Discharge?: boolean } | undefined {}
+   * ```
+   */
+  MC_PRE_USE_ITEM = 23,
 
   /**
    * A modified version of `ModCallback.PRE_FAMILIAR_COLLISION`. This callback now allows an
@@ -79,7 +108,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
    * ```
    */
-  PRE_FAMILIAR_COLLISION = 26,
+  MC_PRE_FAMILIAR_COLLISION = 26,
 
   /**
    * A modified version of `ModCallback.PRE_NPC_COLLISION`. This callback now allows an interface to
@@ -103,7 +132,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
    * ```
    */
-  PRE_NPC_COLLISION = 30,
+  MC_PRE_NPC_COLLISION = 30,
 
   /**
    * A modified version of `ModCallback.PRE_PLAYER_COLLISION`. This callback now allows an interface
@@ -127,7 +156,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
    * ```
    */
-  PRE_PLAYER_COLLISION = 33,
+  MC_PRE_PLAYER_COLLISION = 33,
 
   /**
    * A modified version of `ModCallback.POST_PICKUP_SELECTION`. This callback now provides the
@@ -160,7 +189,7 @@ export enum ModCallbackRepentogon {
    * ): [pickupVariant: PickupVariant, subType: int, continueSelection?: boolean] | undefined {}
    * ```
    */
-  POST_PICKUP_SELECTION = 37,
+  MC_POST_PICKUP_SELECTION = 37,
 
   /**
    * A modified version of `ModCallback.PRE_PICKUP_COLLISION`. This callback now allows an interface
@@ -184,7 +213,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
    * ```
    */
-  PRE_PICKUP_COLLISION = 38,
+  MC_PRE_PICKUP_COLLISION = 38,
 
   /**
    * A modified version of `ModCallback.PRE_TEAR_COLLISION`. This callback now allows an interface
@@ -208,7 +237,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
    * ```
    */
-  PRE_TEAR_COLLISION = 42,
+  MC_PRE_TEAR_COLLISION = 42,
 
   /**
    * A modified version of `ModCallback.PRE_PROJECTILE_COLLISION`. This callback now allows an
@@ -232,7 +261,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
    * ```
    */
-  PRE_PROJECTILE_COLLISION = 46,
+  MC_PRE_PROJECTILE_COLLISION = 46,
 
   /**
    * A modified version of `ModCallback.PRE_KNIFE_COLLISION`. This callback now allows an interface
@@ -256,7 +285,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
    * ```
    */
-  PRE_KNIFE_COLLISION = 53,
+  MC_PRE_KNIFE_COLLISION = 53,
 
   /**
    * A modified version of `ModCallback.PRE_BOMB_COLLISION`. This callback now allows an interface
@@ -280,21 +309,78 @@ export enum ModCallbackRepentogon {
    * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
    * ```
    */
-  PRE_BOMB_COLLISION = 60,
+  MC_PRE_BOMB_COLLISION = 60,
+
+  /**
+   * Fires when the effect of a pill is resolved. Now passes `EntityPlayer` as an argument.
+   *
+   * Return a `PillEffect` to override the pill effect.
+   *
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `PillEffect` provided.
+   *
+   * ```ts
+   * function getPillEffect(
+   *   selectedPillEffect: PillEffect,
+   *   pillColor: PillColor,
+   *   player: EntityPlayer
+   * ): PillEffect | undefined {}
+   * ```
+   */
+  MC_GET_PILL_EFFECT = 65,
 
   /**
    * A modified version of `ModCallback.POST_ENTITY_KILL`. This callback now provides an `EntityRef`
    * of whoever killed the entity.
    *
-   * When registering this callback with the `Mod.AddCallbackRepentogonRepentogon` method:
-   * - You can provide an optional third argument that will make the callback only fire if it
-   *   matches the `EntityType` provided.
+   * You cannot filter this callback.
    *
    * ```ts
    * function postEntityKill(entity: Entity, source: EntityRef): void {}
    * ```
    */
-  POST_ENTITY_KILL = 68,
+  MC_POST_ENTITY_KILL = 68,
+
+  /**
+   * Added boolean argument that identifies if it is running due to game shutdown.
+   * Now runs earlier during shutdown, so code is less likely to crash.
+   *
+   * You cannot filter this callback.
+   *
+   * ```ts
+   * function preModUnload(mod: unknown, shuttingDown: boolean): void {}
+   * ```
+   */
+  MC_PRE_MOD_UNLOAD = 73,
+
+  /**
+   * More reliable callback for after an active item has been used, since `MC_USE_ITEM` is intended
+   * for modded active logic and is often terminated early.
+   *
+   * Note that the game usually hasn't actually discharged the item yet in most cases, but if
+   * `Discharge` is true and this was a "real" active item use, it will be discharged afterwards.
+   *
+   * If `Remove` is true, the game will have already attempted to remove the item.
+   *
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `CollectibleType` provided.
+   *
+   * ```ts
+   * function postUseItem(
+   *   collectible: CollectibleType,
+   *   rng: RNG,
+   *   player: EntityPlayer,
+   *   useFlags: BitFlags<UseFlag>,
+   *   activeSlot: ActiveSlot,
+   *   customVarData: int,
+   *   discharge: boolean,
+   *   remove: boolean
+   * ): void {}
+   * ```
+   */
+  MC_POST_USE_ITEM = 1003,
 
   /**
    * Fires before a collectible is added to the player's inventory.
@@ -335,7 +421,7 @@ export enum ModCallbackRepentogon {
    *   | undefined {}
    *   ```
    */
-  PRE_ADD_COLLECTIBLE = 1004,
+  MC_PRE_ADD_COLLECTIBLE = 1004,
 
   /**
    * Fires after a collectible has been added to the player's inventory.
@@ -358,7 +444,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    *   ```
    */
-  POST_ADD_COLLECTIBLE = 1005,
+  MC_POST_ADD_COLLECTIBLE = 1005,
 
   /**
    * Fires after an entity takes damage.
@@ -376,7 +462,7 @@ export enum ModCallbackRepentogon {
    *   damageCountdown: int
    * ): void {}
    */
-  POST_ENTITY_TAKE_DMG = 1006,
+  MC_POST_ENTITY_TAKE_DMG = 1006,
 
   /**
    * Fires before `ModCallback.ENTITY_TAKE_DMG` regardless if the player is considered invincible or
@@ -399,7 +485,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_PLAYER_TAKE_DMG = 1008,
+  MC_PRE_PLAYER_TAKE_DMG = 1008,
 
   /**
    * Fires before hearts are added to the player. `optionalArg` is reserved for certain
@@ -421,7 +507,7 @@ export enum ModCallbackRepentogon {
    * ): int | undefined {}
    * ```
    */
-  PRE_PLAYER_ADD_HEARTS = 1009,
+  MC_PRE_PLAYER_ADD_HEARTS = 1009,
 
   /**
    * Fires after hearts are added to the player. `optionalArg` is reserved for certain
@@ -441,7 +527,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PLAYER_ADD_HEARTS = 1010,
+  MC_POST_PLAYER_ADD_HEARTS = 1010,
 
   /**
    * Fires after a rock is destroyed. `source` can be undefined if `GridEntity.Destroy` is called
@@ -460,7 +546,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_GRID_ROCK_DESTROY = 1011,
+  MC_POST_GRID_ROCK_DESTROY = 1011,
 
   /**
    * Fires before a `GridEntity` attempts to inflict damage on an entity.
@@ -482,7 +568,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_GRID_HURT_DAMAGE = 1012,
+  MC_GRID_HURT_DAMAGE = 1012,
 
   /**
    * Fires after a `GridEntity` has attempted to inflict damage on an entity. This does not
@@ -503,7 +589,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_GRID_HURT_DAMAGE = 1013,
+  MC_POST_GRID_HURT_DAMAGE = 1013,
 
   /**
    * Fires before a trinket is added to the player.
@@ -523,7 +609,7 @@ export enum ModCallbackRepentogon {
    * ): TrinketType | boolean | undefined {}
    * ```
    */
-  PRE_ADD_TRINKET = 1014,
+  MC_PRE_ADD_TRINKET = 1014,
 
   /**
    * Fires before a pickup is added to the player's Bag of Crafting.
@@ -543,7 +629,7 @@ export enum ModCallbackRepentogon {
    * ): BagOfCraftingPickup[] | boolean | undefined {}
    * ```
    */
-  PRE_ADD_TO_BAG_OF_CRAFTING = 1015,
+  MC_TRY_ADD_TO_BAG_OF_CRAFTING = 1015,
 
   /**
    * Fires after a pickup is added to the player's Bag of Crafting.
@@ -556,7 +642,43 @@ export enum ModCallbackRepentogon {
    * function postAddToBagOfCrafting(player: EntityPlayer, pickup: EntityPickup): void {}
    * ```
    */
-  POST_ADD_TO_BAG_OF_CRAFTING = 1016,
+  MC_POST_ADD_TO_BAG_OF_CRAFTING = 1016,
+
+  /**
+   * Called before a `GridEntityPoop` or `GridEntityTNT` takes damage.
+   *
+   * Return an integer to modify the damage, or false to cancel it.
+   *
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `GridEntityType` provided.
+   *
+   * ```ts
+   * function preGridHurt(
+   *   gridEntity: GridEntity,
+   *   damage: int,
+   *   source: EntityRef
+   * ): int | boolean | undefined {}
+   * ```
+   */
+  MC_PRE_GRID_HURT = 1017,
+
+  /**
+   * Called after a `GridEntityPoop` or `GridEntityTNT` takes damage.
+   *
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `GridEntityType` provided.
+   *
+   * ```ts
+   * function postGridHurt(
+   *   gridEntity: GridEntity,
+   *   damage: int,
+   *   source: EntityRef
+   * ): void {}
+   * ```
+   */
+  MC_POST_GRID_HURT = 1018,
 
   /**
    * You cannot filter this callback.
@@ -565,7 +687,7 @@ export enum ModCallbackRepentogon {
    * function preHUDUpdate(): void {}
    * ```
    */
-  PRE_HUD_UPDATE = 1020,
+  MC_HUD_UPDATE = 1020,
 
   /**
    * You cannot filter this callback.
@@ -574,7 +696,7 @@ export enum ModCallbackRepentogon {
    * function postHUDUpdate(): void {}
    * ```
    */
-  POST_HUD_UPDATE = 1021,
+  MC_POST_HUD_UPDATE = 1021,
 
   /**
    * You cannot filter this callback.
@@ -583,7 +705,7 @@ export enum ModCallbackRepentogon {
    * function preHUDRender(): void {}
    * ```
    */
-  PRE_HUD_RENDER = 1022,
+  MC_HUD_RENDER = 1022,
 
   /**
    * Fires each time the main menu renders on the screen.
@@ -594,7 +716,7 @@ export enum ModCallbackRepentogon {
    * function postMainMenuRender(): void {}
    * ```
    */
-  POST_MAIN_MENU_RENDER = 1023,
+  MC_MAIN_MENU_RENDER = 1023,
 
   /**
    * You cannot filter this callback.
@@ -603,24 +725,58 @@ export enum ModCallbackRepentogon {
    * function postHUDRender(): void {}
    * ```
    */
-  POST_HUD_RENDER = 1024,
+  MC_POST_HUD_RENDER = 1024,
 
   /**
-   * Fires when a split tear is fired.
+   * Called before the game's main update cycle begins.
    *
-   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
-   * - You can provide an optional third argument that will make the callback only fire if it
-   *   matches the `SplitTearType` or string provided.
+   * Return `true` to cancel the update, effectively pausing the game.
+   *
+   * You cannot filter this callback.
    *
    * ```ts
-   * function postFireSplitTear(
-   *   tear: EntityTear,
-   *   source: Entity,
-   *   splitType: SplitTearType | string
-   * ): void {}
+   * function preUpdate(): boolean | undefined {}
    * ```
    */
-  POST_FIRE_SPLIT_TEAR = 1025,
+  MC_PRE_UPDATE = 1026,
+
+  /**
+   * Return false to cancel rendering.
+   *
+   * Return an object to specify the `CollectibleType` or `TrinketType` of items to skip rendering
+   * their sprites, leaving empty space instead. You can then use the `HistoryHUD` class to help you
+   * render in that space (preferably in `MC_POST_HISTORYHUD_RENDER`).
+   *
+   * You cannot filter this callback.
+   *
+   * ```ts
+   * function preHistoryHUDRender(
+   *   historyHUD: HistoryHUD,
+   *   renderPos: Vector
+   * ): boolean | { HideCollectibles?: CollectibleType[]; HideTrinkets?: TrinketType[] } | undefined {}
+   * ```
+   */
+  MC_PRE_HISTORYHUD_RENDER = 1027,
+
+  /**
+   * You cannot filter this callback.
+   *
+   * ```ts
+   * function postHistoryHUDRender(historyHUD: HistoryHUD, renderPos: Vector): void {}
+   * ```
+   */
+  MC_POST_HISTORYHUD_RENDER = 1028,
+
+  /**
+   * Runs when the contents of the `HistoryHUD` are refreshed (typically when some item is added or removed).
+   *
+   * You cannot filter this callback.
+   *
+   * ```ts
+   * function postHistoryHUDRecompute(historyHUD: HistoryHUD, playerIndex: int): int | undefined {}
+   * ```
+   */
+  MC_POST_HISTORYHUD_RECOMPUTE = 1029,
 
   /**
    * Fires before a sound effect is played.
@@ -661,7 +817,7 @@ export enum ModCallbackRepentogon {
    *   | undefined {}
    * ```
    */
-  PRE_SFX_PLAY = 1030,
+  MC_PRE_SFX_PLAY = 1030,
 
   /**
    * Fires after a sound effect is played.
@@ -681,7 +837,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_SFX_PLAY = 1031,
+  MC_POST_SFX_PLAY = 1031,
 
   /**
    * Fires after a projectile is destroyed.
@@ -694,7 +850,7 @@ export enum ModCallbackRepentogon {
    * function postProjectileDeath(projectile: EntityProjectile): void {}
    * ```
    */
-  POST_PROJECTILE_DEATH = 1032,
+  MC_POST_PROJECTILE_DEATH = 1032,
 
   /**
    * Fires after a tear is destroyed.
@@ -707,7 +863,7 @@ export enum ModCallbackRepentogon {
    * function postTearDeath(tear: EntityTear): void {}
    * ```
    */
-  POST_TEAR_DEATH = 1033,
+  MC_POST_TEAR_DEATH = 1033,
 
   /**
    * Fires before music is played. This callback is fired for both `MusicManager.Play` and
@@ -731,7 +887,7 @@ export enum ModCallbackRepentogon {
    * ): Music | [music?: Music, volumeOrFadeRate?: number] | boolean | undefined {}
    * ```
    */
-  PRE_MUSIC_PLAY = 1034,
+  MC_PRE_MUSIC_PLAY = 1034,
 
   /**
    * Fires before the combat layer of the playing music is toggled. This only fires for
@@ -749,7 +905,29 @@ export enum ModCallbackRepentogon {
    * function preMusicLayerToggle(layerID: int, enabled: boolean): boolean | int | undefined {}
    * ```
    */
-  PRE_MUSIC_LAYER_TOGGLE = 1035,
+  MC_PRE_MUSIC_LAYER_TOGGLE = 1035,
+
+  /**
+   * Runs before the Hemoptysis / Tainted Azazel sneeze attack.
+   *
+   * You cannot filter this callback.
+   *
+   * ```ts
+   * function preBrimstoneSneeze(source: Entity, direction: Vector, damageScale: float): void {}
+   * ```
+   */
+  MC_PRE_BRIMSTONE_SNEEZE = 1036,
+
+  /**
+   * Runs after the Hemoptysis / Tainted Azazel sneeze attack.
+   *
+   * You cannot filter this callback.
+   *
+   * ```ts
+   * function postBrimstoneSneeze(source: Entity, direction: Vector, damageScale: float): void {}
+   * ```
+   */
+  MC_POST_BRIMSTONE_SNEEZE = 1037,
 
   /**
    * Fires before the player's head is rendered.
@@ -768,7 +946,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_RENDER_PLAYER_HEAD = 1038,
+  MC_PRE_RENDER_PLAYER_HEAD = 1038,
 
   /**
    * Fires before the player's body is rendered.
@@ -787,7 +965,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_RENDER_PLAYER_BODY = 1039,
+  MC_PRE_RENDER_PLAYER_BODY = 1039,
 
   /**
    * Fires before an entity is thrown by a player.
@@ -804,7 +982,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | undefined {}
    * ```
    */
-  PRE_ENTITY_THROW = 1040,
+  MC_PRE_ENTITY_THROW = 1040,
 
   /**
    * Fires after an entity is thrown by a player.
@@ -819,7 +997,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_ENTITY_THROW = 1041,
+  MC_POST_ENTITY_THROW = 1041,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -830,7 +1008,7 @@ export enum ModCallbackRepentogon {
    * function postPlayerInitLevelStats(player: EntityPlayer): void {}
    * ```
    */
-  POST_PLAYER_INIT_LEVEL_STATS = 1042,
+  MC_PLAYER_INIT_POST_LEVEL_INIT_STATS = 1042,
 
   /**
    * Fires before the current room is unloaded from being exited. `newLevel` is set to `true` when
@@ -840,7 +1018,7 @@ export enum ModCallbackRepentogon {
    * function preRoomExit(player: EntityPlayer, newLevel: boolean): void {}
    * ```
    */
-  PRE_ROOM_EXIT = 1043,
+  MC_PRE_ROOM_EXIT = 1043,
 
   /**
    * Fires after all entities and grid entities in the room have been rendered, but before effects
@@ -853,7 +1031,7 @@ export enum ModCallbackRepentogon {
    * function postRoomRenderEntities(): void {}
    * ```
    */
-  POST_ROOM_RENDER_ENTITIES = 1044,
+  MC_POST_ROOM_RENDER_ENTITIES = 1044,
 
   /**
    * Fires before the completion mark is set. Return `false` to prevent it from being set.
@@ -869,7 +1047,7 @@ export enum ModCallbackRepentogon {
    *  ): boolean | undefined {}
    * ```
    */
-  PRE_COMPLETION_MARK_SET = 1047,
+  MC_COMPLETION_MARK_GET = 1047,
 
   /**
    * Fires after the completion mark is set.
@@ -882,7 +1060,7 @@ export enum ModCallbackRepentogon {
    * function postCompletionMarkSet(completion: CompletionType, playerType: PlayerType): void {}
    * ```
    */
-  POST_COMPLETION_MARK_SET = 1048,
+  MC_POST_COMPLETION_MARK_GET = 1048,
 
   /**
    * Fires before a completion event is recorded, such as when defeating an end boss or unlocking a
@@ -898,7 +1076,7 @@ export enum ModCallbackRepentogon {
    * function preCompletionEvent(completion: CompletionType): boolean | CompletionType | undefined {}
    * ```
    */
-  PRE_COMPLETION_EVENT = 1049,
+  MC_PRE_COMPLETION_EVENT = 1049,
 
   /**
    * Fires before the game checks for vanilla revive effects like 1UP before determining whether to
@@ -921,7 +1099,7 @@ export enum ModCallbackRepentogon {
    *
    * @see https://repentogon.com/xml/items.html
    */
-  PRE_TRIGGER_PLAYER_DEATH = 1050,
+  MC_PRE_TRIGGER_PLAYER_DEATH = 1050,
 
   /**
    * Fires after the game checks for vanilla revive effects like 1UP before determining whether to
@@ -940,7 +1118,7 @@ export enum ModCallbackRepentogon {
    * function triggerPlayerDeathPostCheckRevives(player: EntityPlayer): boolean | undefined {}
    * ```
    */
-  TRIGGER_PLAYER_DEATH_POST_CHECK_REVIVES = 1051,
+  MC_TRIGGER_PLAYER_DEATH_POST_CHECK_REVIVES = 1051,
 
   /**
    * Fires before a completion event is recorded, such as when defeating an end boss or unlocking a
@@ -952,7 +1130,94 @@ export enum ModCallbackRepentogon {
    * function postCompletionEvent(completion: CompletionType): void {}
    * ```
    */
-  POST_COMPLETION_EVENT = 1052,
+  MC_POST_COMPLETION_EVENT = 1052,
+
+  /**
+   * Compared to `MC_POST_ADD_COLLECTIBLE`, this runs for all of "true" items, wisps, and
+   * REPENTOGON's innate items.
+   *
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `CollectibleType` provided.
+   *
+   * ```ts
+   * function postTriggerCollectibleAdded(
+   *   player: EntityPlayer,
+   *   type: CollectibleType,
+   *   firstTimePickingUp: boolean,
+   *   wispOrInnate: boolean
+   * ): void {}
+   * ```
+   */
+  MC_POST_TRIGGER_COLLECTIBLE_ADDED = 1053,
+
+  /**
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `CollectibleType` or string provided.
+   *
+   * ```ts
+   * function postAddInnateCollectible(
+   *   player: EntityPlayer,
+   *   type: CollectibleType,
+   *   groupKey: string,
+   *   amount: int,
+   *   duration: int
+   * ): void {}
+   * ```
+   */
+  MC_POST_ADD_INNATE_COLLECTIBLE = 1054,
+
+  /**
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `TrinketType` or string provided.
+   *
+   * ```ts
+   * function postAddInnateTrinket(
+   *   player: EntityPlayer,
+   *   type: TrinketType,
+   *   groupKey: string,
+   *   amount: int,
+   *   duration: int
+   * ): void {}
+   * ```
+   */
+  MC_POST_ADD_INNATE_TRINKET = 1055,
+
+  /**
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `CollectibleType` or string provided.
+   *
+   * ```ts
+   * function postRemoveInnateCollectible(
+   *   player: EntityPlayer,
+   *   type: CollectibleType,
+   *   groupKey: string,
+   *   amount: int,
+   *   expiredDuration: boolean
+   * ): void {}
+   * ```
+   */
+  MC_POST_REMOVE_INNATE_COLLECTIBLE = 1056,
+
+  /**
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `TrinketType` or string provided.
+   *
+   * ```ts
+   * function postRemoveInnateTrinket(
+   *   player: EntityPlayer,
+   *   type: TrinketType,
+   *   groupKey: string,
+   *   amount: int,
+   *   expiredDuration: boolean
+   * ): void {}
+   * ```
+   */
+  MC_POST_REMOVE_INNATE_TRINKET = 1057,
 
   /**
    * Fires before a level is initialized.
@@ -963,7 +1228,7 @@ export enum ModCallbackRepentogon {
    * function preLevelInit(): void {}
    * ```
    */
-  PRE_LEVEL_INIT = 1060,
+  MC_PRE_LEVEL_INIT = 1060,
 
   /**
    * Returning a Dimension that does not exist in the current floor will crash the game.
@@ -977,7 +1242,7 @@ export enum ModCallbackRepentogon {
    * ): { TargetRoomIdx?: int, Dimension?: Dimension } | undefined {}
    * ```
    */
-  PRE_CHANGE_ROOM = 1061,
+  MC_PRE_CHANGE_ROOM = 1061,
 
   /**
    * Fires after a player purchased a pickup from a shop. This also fires for Devil Deals taken.
@@ -990,7 +1255,7 @@ export enum ModCallbackRepentogon {
    * postPickupShopPurchase(pickup: EntityPickup, player: EntityPlayer, moneySpent: int): void {}
    * ```
    */
-  POST_PICKUP_SHOP_PURCHASE = 1062,
+  MC_POST_PICKUP_SHOP_PURCHASE = 1062,
 
   /**
    * Fires when `EntityFamiliar.GetFollowerPriority` is called.
@@ -1005,7 +1270,7 @@ export enum ModCallbackRepentogon {
    * function getFollowerPriority(familiar: EntityFamiliar): FollowerPriority | | int | undefined {}
    * ```
    */
-  GET_FOLLOWER_PRIORITY = 1063,
+  MC_GET_FOLLOWER_PRIORITY = 1063,
 
   /**
    * Fires before a card is used.
@@ -1024,7 +1289,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_USE_CARD = 1064,
+  MC_PRE_USE_CARD = 1064,
 
   /**
    * Fires before a pill is used.
@@ -1044,7 +1309,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_USE_PILL = 1065,
+  MC_PRE_USE_PILL = 1065,
 
   /**
    * Fires before the price of a shop item is set.
@@ -1064,7 +1329,7 @@ export enum ModCallbackRepentogon {
    *  ): int | PickupPrice | undefined {}
    * ```
    */
-  GET_SHOP_ITEM_PRICE = 1066,
+  MC_GET_SHOP_ITEM_PRICE = 1066,
 
   /**
    * Fires when `EntityPlayer.GetHealthType` is called.
@@ -1086,7 +1351,7 @@ export enum ModCallbackRepentogon {
    * @see https://repentogon.com/xml/players.html
    * @see https://repentogon.com/xml/items.html
    */
-  GET_PLAYER_HEALTH_TYPE = 1067,
+  MC_PLAYER_GET_HEALTH_TYPE = 1067,
 
   /**
    * Fires before room clear effects are triggered.
@@ -1097,7 +1362,7 @@ export enum ModCallbackRepentogon {
    * function preRoomTriggerClear(playSound: boolean): void {}
    * ```
    */
-  PRE_ROOM_TRIGGER_CLEAR = 1068,
+  MC_PRE_ROOM_TRIGGER_CLEAR = 1068,
 
   /**
    * Fires before room clear effects are triggered for a specific player.
@@ -1112,7 +1377,7 @@ export enum ModCallbackRepentogon {
    * function postPlayerTriggerRoomClear(player: EntityPlayer): boolean | undefined {}
    * ```
    */
-  PRE_PLAYER_TRIGGER_ROOM_CLEAR = 1069,
+  MC_PRE_PLAYER_TRIGGER_ROOM_CLEAR = 1069,
 
   /**
    * Fires before a shop is restocked from effects such as the Restock collectible or restock
@@ -1129,7 +1394,7 @@ export enum ModCallbackRepentogon {
    * function preRestockShop(partial: boolean): boolean | undefined {}
    * ```
    */
-  PRE_RESTOCK_SHOP = 1070,
+  MC_PRE_RESTOCK_SHOP = 1070,
 
   /**
    * Fires after a shop is restocked from effects such as the Restock collectible or restock
@@ -1144,7 +1409,7 @@ export enum ModCallbackRepentogon {
    * function postRestockShop(partial: boolean): void {}
    * ```
    */
-  POST_RESTOCK_SHOP = 1071,
+  MC_POST_RESTOCK_SHOP = 1071,
 
   /**
    * Fires when `EntityPlayer.GetActiveMaxCharge` is called.
@@ -1164,7 +1429,7 @@ export enum ModCallbackRepentogon {
    * ): int | undefined {}
    * ```
    */
-  GET_ACTIVE_MAX_CHARGE = 1072,
+  MC_PLAYER_GET_ACTIVE_MAX_CHARGE = 1072,
 
   /**
    * Fires when `EntityPlayer.GetActiveMinUsableCharge` is called.
@@ -1186,7 +1451,7 @@ export enum ModCallbackRepentogon {
    * ): int | undefined {}
    * ```
    */
-  GET_ACTIVE_MIN_USABLE_CHARGE = 1073,
+  MC_PLAYER_GET_ACTIVE_MIN_USABLE_CHARGE = 1073,
 
   /**
    * Fires when `EntityPlayer.GetHeartLimit` is called.
@@ -1208,7 +1473,7 @@ export enum ModCallbackRepentogon {
    * ): int | undefined {}
    * ```
    */
-  GET_PLAYER_HEART_LIMIT = 1074,
+  MC_PLAYER_GET_HEART_LIMIT = 1074,
 
   /**
    * Fires when the Giantbook animation updates.
@@ -1221,7 +1486,7 @@ export enum ModCallbackRepentogon {
    * function postItemOverlayUpdate(giantbookID: GiantbookType, skipAnimation: boolean): void {}
    * ```
    */
-  POST_ITEM_OVERLAY_UPDATE = 1075,
+  MC_POST_ITEM_OVERLAY_UPDATE = 1075,
 
   /**
    * Fires before the 1076 plays.
@@ -1241,7 +1506,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | GiantbookType | undefined {}
    * ```
    */
-  PRE_ITEM_OVERLAY_SHOW = 1076,
+  MC_PRE_ITEM_OVERLAY_SHOW = 1076,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -1252,7 +1517,7 @@ export enum ModCallbackRepentogon {
    * function postPlayerNewRoomTempEffects(player: EntityPlayer): void {}
    * ```
    */
-  POST_PLAYER_NEW_ROOM_TEMP_EFFECTS = 1077,
+  MC_POST_PLAYER_NEW_ROOM_TEMP_EFFECTS = 1077,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -1267,7 +1532,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PLAYER_NEW_LEVEL = 1078,
+  MC_POST_PLAYER_NEW_LEVEL = 1078,
 
   /**
    * Fires after an active item is rendered on the player's HUD.
@@ -1287,7 +1552,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PLAYER_HUD_RENDER_ACTIVE_ITEM = 1079,
+  MC_POST_PLAYERHUD_RENDER_ACTIVE_ITEM = 1079,
 
   /**
    * Fires before a familiar is rendered.
@@ -1310,7 +1575,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_FAMILIAR_RENDER = 1080,
+  MC_PRE_FAMILIAR_RENDER = 1080,
 
   /**
    * Fires before a NPC is rendered.
@@ -1329,7 +1594,7 @@ export enum ModCallbackRepentogon {
    * function preNPCRender(npc: EntityNPC, offset: Vector): Vector | boolean | undefined {}
    * ```
    */
-  PRE_NPC_RENDER = 1081,
+  MC_PRE_NPC_RENDER = 1081,
 
   /**
    * Fires before a player is rendered.
@@ -1349,7 +1614,7 @@ export enum ModCallbackRepentogon {
    * function prePlayerRender(player: EntityPlayer, offset: Vector): Vector | boolean | undefined {}
    * ```
    */
-  PRE_PLAYER_RENDER = 1082,
+  MC_PRE_PLAYER_RENDER = 1082,
 
   /**
    * Fires before a pickup is rendered.
@@ -1368,7 +1633,7 @@ export enum ModCallbackRepentogon {
    * function prePickupRender(pickup: EntityPickup, offset: Vector): Vector | boolean | undefined {}
    * ```
    */
-  PRE_PICKUP_RENDER = 1083,
+  MC_PRE_PICKUP_RENDER = 1083,
 
   /**
    * Fires before a tear is rendered.
@@ -1387,7 +1652,7 @@ export enum ModCallbackRepentogon {
    * function preTearRender(tear: EntityTear, offset: Vector): Vector | boolean | undefined {}
    * ```
    */
-  PRE_TEAR_RENDER = 1084,
+  MC_PRE_TEAR_RENDER = 1084,
 
   /**
    * Fires before a projectile is rendered.
@@ -1410,7 +1675,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_PROJECTILE_RENDER = 1085,
+  MC_PRE_PROJECTILE_RENDER = 1085,
 
   /**
    * Fires before a knife is rendered.
@@ -1429,7 +1694,7 @@ export enum ModCallbackRepentogon {
    * function preKnifeRender(knife: EntityKnife, offset: Vector): Vector | boolean | undefined {}
    * ```
    */
-  PRE_KNIFE_RENDER = 1086,
+  MC_PRE_KNIFE_RENDER = 1086,
 
   /**
    * Fires before an effect is rendered.
@@ -1448,7 +1713,7 @@ export enum ModCallbackRepentogon {
    * function preEffectRender(effect: EntityEffect, offset: Vector): Vector | boolean | undefined {}
    * ```
    */
-  PRE_EFFECT_RENDER = 1087,
+  MC_PRE_EFFECT_RENDER = 1087,
 
   /**
    * Fires before a bomb is rendered.
@@ -1467,7 +1732,7 @@ export enum ModCallbackRepentogon {
    * function preBombRender(bomb: EntityBomb, offset: Vector): Vector | boolean | undefined {}
    * ```
    */
-  PRE_BOMB_RENDER = 1088,
+  MC_PRE_BOMB_RENDER = 1088,
 
   /**
    * Fires before an `EntitySlot` is rendered.
@@ -1486,7 +1751,7 @@ export enum ModCallbackRepentogon {
    * function preSlotRender(slot: EntitySlot, offset: Vector): Vector | boolean | undefined {}
    * ```
    */
-  PRE_SLOT_RENDER = 1089,
+  MC_PRE_SLOT_RENDER = 1089,
 
   /**
    * Fires after an `EntitySlot` is rendered.
@@ -1499,7 +1764,7 @@ export enum ModCallbackRepentogon {
    * function postSlotRender(slot: EntitySlot, offset: Vector): void {}
    * ```
    */
-  POST_SLOT_RENDER = 1090,
+  MC_POST_SLOT_RENDER = 1090,
 
   /**
    * Fires after the player's hearts are rendered on the HUD.
@@ -1516,21 +1781,9 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PLAYER_HUD_RENDER_HEARTS = 1091,
+  MC_POST_PLAYERHUD_RENDER_HEARTS = 1091,
 
-  /**
-   * You cannot filter this callback.
-   *
-   * ```ts
-   * function prePlayerApplyInnateCollectibleNumber(
-   *   modCount: int,
-   *   player: EntityPlayer,
-   *   collectible: CollectibleType,
-   *   onlyCountTrueItems: boolean
-   * ): int | undefined {}
-   * ```
-   */
-  PRE_PLAYER_APPLY_INNATE_COLLECTIBLE_NUMBER = 1092,
+
 
   /**
    * Fires before a jingle plays.
@@ -1546,7 +1799,7 @@ export enum ModCallbackRepentogon {
    * function preMusicPlayJingle(music: Music): Music | boolean | undefined {}
    * ```
    */
-  PRE_MUSIC_PLAY_JINGLE = 1094,
+  MC_PRE_MUSIC_PLAY_JINGLE = 1094,
 
   /**
    * Fires after a collectible has been removed from a player.
@@ -1563,7 +1816,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_COLLECTIBLE_REMOVED = 1095,
+  MC_POST_TRIGGER_COLLECTIBLE_REMOVED = 1095,
 
   /**
    * Fires after a trinket has been added to a player.
@@ -1580,7 +1833,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_TRINKET_ADDED = 1096,
+  MC_POST_TRIGGER_TRINKET_ADDED = 1096,
 
   /**
    * Fires after a trinket has been removed from a player.
@@ -1593,7 +1846,7 @@ export enum ModCallbackRepentogon {
    * function postTrinketRemoved(player: EntityPlayer, trinket: TrinketType): void {}
    * ```
    */
-  POST_TRINKET_REMOVED = 1097,
+  MC_POST_TRIGGER_TRINKET_REMOVED = 1097,
 
   /**
    * Fires after the a weapon's attack is triggered.
@@ -1611,7 +1864,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_TRIGGER_WEAPON_FIRED = 1098,
+  MC_POST_TRIGGER_WEAPON_FIRED = 1098,
 
   /**
    * Fires after the level's layout has been generated.
@@ -1622,7 +1875,7 @@ export enum ModCallbackRepentogon {
    * function postLevelLayoutGenerated(levelGenerator: LevelGenerator): void {}
    * ```
    */
-  POST_LEVEL_LAYOUT_GENERATED = 1099,
+  MC_POST_LEVEL_LAYOUT_GENERATED = 1099,
 
   /**
    * Fires before a grid entity is spawned outside of room initialization.
@@ -1658,7 +1911,7 @@ export enum ModCallbackRepentogon {
    *   | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_SPAWN = 1100,
+  MC_PRE_GRID_ENTITY_SPAWN = 1100,
 
   /**
    * Fires after a grid entity has spawned in the room.
@@ -1671,7 +1924,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntitySpawn(grid: GridEntity): void {}
    * ```
    */
-  POST_GRID_ENTITY_SPAWN = 1101,
+  MC_POST_GRID_ENTITY_SPAWN = 1101,
 
   /**
    * Fires each frame the nightmare scene renders.
@@ -1682,7 +1935,7 @@ export enum ModCallbackRepentogon {
    * function postNightmareSceneRender(): void {}
    * ```
    */
-  POST_NIGHTMARE_SCENE_RENDER = 1102,
+  MC_POST_NIGHTMARE_SCENE_RENDER = 1102,
 
   /**
    * Fires when the Nightmare Screen first appears on the screen.
@@ -1693,7 +1946,7 @@ export enum ModCallbackRepentogon {
    * function postNightmareSceneShow(isDogmaNightmare: boolean): void {}
    * ```
    */
-  POST_NIGHTMARE_SCENE_SHOW = 1103,
+  MC_POST_NIGHTMARE_SCENE_SHOW = 1103,
 
   /**
    * Fires before the game selects which stage to load, usually when entering a trapdoor.
@@ -1711,7 +1964,7 @@ export enum ModCallbackRepentogon {
    * ): [levelStage?: LevelStage, stageType?: StageType] | undefined {}
    * ```
    */
-  PRE_LEVEL_SELECT = 1104,
+  MC_PRE_LEVEL_SELECT = 1104,
 
   /**
    * Fires each frame the weapon updates.
@@ -1728,7 +1981,7 @@ export enum ModCallbackRepentogon {
    *   isInterpolated: boolean
    * ): void {}
    */
-  POST_WEAPON_FIRE = 1105,
+  MC_POST_WEAPON_FIRE = 1105,
 
   /**
    * Fires before the walls of the backdrop are rendered.
@@ -1739,7 +1992,7 @@ export enum ModCallbackRepentogon {
    * function preBackdropRenderWalls(wallColor: Color): void {}
    * ```
    */
-  PRE_BACKDROP_RENDER_WALLS = 1106,
+  MC_PRE_BACKDROP_RENDER_WALLS = 1106,
 
   /**
    * Fires before the floor of the backdrop is rendered.
@@ -1750,7 +2003,7 @@ export enum ModCallbackRepentogon {
    * function preBackdropRenderFloor(floorColor: Color): void {}
    * ```
    */
-  PRE_BACKDROP_RENDER_FLOOR = 1107,
+  MC_PRE_BACKDROP_RENDER_FLOOR = 1107,
 
   /**
    * Fires before the water is rendered.
@@ -1761,7 +2014,7 @@ export enum ModCallbackRepentogon {
    * function preBackdropRenderWater(): void {}
    * ```
    */
-  PRE_BACKDROP_RENDER_WATER = 1108,
+  MC_PRE_BACKDROP_RENDER_WATER = 1108,
 
   /**
    * You cannot filter this callback.
@@ -1770,7 +2023,7 @@ export enum ModCallbackRepentogon {
    * function postBackdropPreRenderWalls(): void {}
    * ```
    */
-  POST_BACKDROP_PRE_RENDER_WALLS = 1109,
+  MC_POST_BACKDROP_PRE_RENDER_WALLS = 1109,
 
   /**
    * Fires when the game first calculates the chance to spawn a Planetarium by checking if the
@@ -1786,7 +2039,7 @@ export enum ModCallbackRepentogon {
    * function prePlanetariumApplyStagePenalty(): boolean | undefined {}
    * ```
    */
-  PRE_PLANETARIUM_APPLY_STAGE_PENALTY = 1110,
+  MC_PRE_PLANETARIUM_APPLY_STAGE_PENALTY = 1110,
 
   /**
    * Fires after `ModCallbackRepentogon.PRE_PLANETARIUM_APPLY_STAGE_PENALTY` and when the chance
@@ -1801,7 +2054,7 @@ export enum ModCallbackRepentogon {
    * function prePlanetariumApplyPlanetariumPenalty(): void {}
    * ```
    */
-  PRE_PLANETARIUM_APPLY_PLANETARIUM_PENALTY = 1111,
+  MC_PRE_PLANETARIUM_APPLY_PLANETARIUM_PENALTY = 1111,
 
   /**
    * Fires after `ModCallbackRepentogon.PRE_PLANETARIUM_APPLY_PLANETARIUM_PENALTY` and when the game
@@ -1821,7 +2074,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | int | undefined {}
    * ```
    */
-  PRE_PLANETARIUM_APPLY_TREASURE_ROOM_PENALTY = 1112,
+  MC_PRE_PLANETARIUM_APPLY_TREASURE_PENALTY = 1112,
 
   /**
    * Fires after `ModCallbackRepentogon.PRE_PLANETARIUM_APPLY_TREASURE_ROOM_PENALTY` and when the
@@ -1838,7 +2091,7 @@ export enum ModCallbackRepentogon {
    * function prePlanetariumApplyItems(chance: float): float | undefined {}
    * ```
    */
-  PRE_PLANETARIUM_APPLY_ITEMS = 1113,
+  MC_PRE_PLANETARIUM_APPLY_ITEMS = 1113,
 
   /**
    * Fires after `ModCallbackRepentogon.PRE_PLANETARIUM_APPLY_ITEMS` and when the game calculates
@@ -1852,7 +2105,7 @@ export enum ModCallbackRepentogon {
    * function prePlanetariumApplyTelescopeLens(chance: float): float | undefined {}
    * ```
    */
-  PRE_PLANETARIUM_APPLY_TELESCOPE_LENS = 1114,
+  MC_PRE_PLANETARIUM_APPLY_TELESCOPE_LENS = 1114,
 
   /**
    * Fires after `ModCallbackRepentogon.PRE_PLANETARIUM_APPLY_TELESCOPE_LENS` and when the final
@@ -1864,7 +2117,7 @@ export enum ModCallbackRepentogon {
    * function prePlanetariumCalculateFinal(chance: float): float | undefined {}
    * ```
    */
-  PRE_PLANETARIUM_CALCULATE_FINAL = 1115,
+  MC_POST_PLANETARIUM_CALCULATE = 1115,
 
   /**
    * Fires before a spritesheet is loaded.
@@ -1881,7 +2134,7 @@ export enum ModCallbackRepentogon {
    * function preReplaceSpritesheet(layerID: int, fileName: string): [layerId?: int, pngFileName?: string] | undefined {}
    * ```
    */
-  PRE_REPLACE_SPRITESHEET = 1116,
+  MC_PRE_REPLACE_SPRITESHEET = 1116,
 
   /**
    * Fires after a spritesheet has been loaded.
@@ -1894,7 +2147,7 @@ export enum ModCallbackRepentogon {
    * function preReplaceSpritesheet(layerID: int, fileName: string): void {}
    * ```
    */
-  POST_REPLACE_SPRITESHEET = 1117,
+  MC_POST_REPLACE_SPRITESHEET = 1117,
 
   /**
    * Fires before the hearts UI is rendered on the player's HUD.
@@ -1913,7 +2166,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_PLAYER_HUD_RENDER_HEARTS = 1118,
+  MC_PRE_PLAYERHUD_RENDER_HEARTS = 1118,
 
   /**
    * Fires before an active item is rendered on the player's HUD. Return true to prevent the item
@@ -1950,7 +2203,7 @@ export enum ModCallbackRepentogon {
    *   | undefined {}
    * ```
    */
-  PRE_PLAYER_HUD_RENDER_ACTIVE_ITEM = 1119,
+  MC_PRE_PLAYERHUD_RENDER_ACTIVE_ITEM = 1119,
 
   /**
    * Fires whenever a command with its autocomplete type set to `AutocompleteType.CUSTOM` is being
@@ -1971,7 +2224,7 @@ export enum ModCallbackRepentogon {
    * ): Array<string | [name: string, description: string]>| undefined {}
    * ```
    */
-  CONSOLE_AUTOCOMPLETE = 1120,
+  MC_CONSOLE_AUTOCOMPLETE = 1120,
 
   /**
    * Fries after an `EntitySlot` spawns.
@@ -1984,7 +2237,7 @@ export enum ModCallbackRepentogon {
    * function postSlotInit(slot: EntitySlot): void {}
    * ```
    */
-  POST_SLOT_INIT = 1121,
+  MC_POST_SLOT_INIT = 1121,
 
   /**
    * Fires after an `EntitySlot` updates.
@@ -1997,7 +2250,7 @@ export enum ModCallbackRepentogon {
    * function postSlotUpdate(slot: EntitySlot): void {}
    * ```
    */
-  POST_SLOT_UPDATE = 1122,
+  MC_POST_SLOT_UPDATE = 1122,
 
   /**
    * Fires before an `EntitySlot` spawns random pickups when blown up.
@@ -2012,7 +2265,7 @@ export enum ModCallbackRepentogon {
    * function preSlotCreateExplosionDrops(slot: EntitySlot): boolean | undefined {}
    * ```
    */
-  PRE_SLOT_CREATE_EXPLOSION_DROPS = 1123,
+  MC_PRE_SLOT_CREATE_EXPLOSION_DROPS = 1123,
 
   /**
    * Fires after an `EntitySlot` spawns random pickups when blown up.
@@ -2025,7 +2278,7 @@ export enum ModCallbackRepentogon {
    * function postSlotCreateExplosionDrops(slot: EntitySlot): void {}
    * ```
    */
-  POST_SLOT_CREATE_EXPLOSION_DROPS = 1124,
+  MC_POST_SLOT_CREATE_EXPLOSION_DROPS = 1124,
 
   /**
    * Fires before an `EntitySlot` sets its prize collectible. This is used by Shell Game, Hell Game,
@@ -2044,7 +2297,7 @@ export enum ModCallbackRepentogon {
    * ): CollectibleType | undefined {}
    * ```
    */
-  PRE_SLOT_SET_PRIZE_COLLECTIBLE = 1125,
+  MC_PRE_SLOT_SET_PRIZE_COLLECTIBLE = 1125,
 
   /**
    * Fires after an `EntitySlot` sets its prize collectible. This is used by Shell Game, Hell Game,
@@ -2058,7 +2311,7 @@ export enum ModCallbackRepentogon {
    * function postSlotCreateExplosionDrops(slot: EntitySlot, collectible: CollectibleType): void {}
    * ```
    */
-  POST_SLOT_SET_PRIZE_COLLECTIBLE = 1126,
+  MC_POST_SLOT_SET_PRIZE_COLLECTIBLE = 1126,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -2069,7 +2322,7 @@ export enum ModCallbackRepentogon {
    * function prePlayerLevelInitStats(player: EntityPlayer): void {}
    * ```
    */
-  PRE_PLAYER_LEVEL_INIT_STATS = 1127,
+  MC_PLAYER_INIT_PRE_LEVEL_INIT_STATS = 1127,
 
   /**
    * Fires after a player's `HealthType` changes, but before their existing health is corrected to
@@ -2092,7 +2345,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PLAYER_HEALTH_TYPE_CHANGE = 1128,
+  MC_PLAYER_HEALTH_TYPE_CHANGE = 1128,
 
   /**
    * You cannot filter this callback.
@@ -2101,7 +2354,7 @@ export enum ModCallbackRepentogon {
    * function postForcePillEffect(pillEffect: PillEffect, pillColor: PillColor): void {}
    * ```
    */
-  POST_FORCE_ADD_PILL_EFFECT = 1129,
+  MC_POST_FORCE_ADD_PILL_EFFECT = 1129,
 
   /**
    * Fires when the game starts to tally up vanilla items for calculating the chance of Devil and
@@ -2115,7 +2368,7 @@ export enum ModCallbackRepentogon {
    * function preDevilApplyItems(chance: number): number | undefined {}
    * ```
    */
-  PRE_DEVIL_APPLY_ITEMS = 1130,
+  MC_PRE_DEVIL_APPLY_ITEMS = 1130,
 
   /**
    * Fires after `ModCallbackRepentogon.PRE_DEVIL_APPLY_ITEMS` is called and when the game
@@ -2129,7 +2382,7 @@ export enum ModCallbackRepentogon {
    * function preDevilApplyStagePenalty(): boolean | undefined {}
    * ```
    */
-  PRE_DEVIL_APPLY_STAGE_PENALTY = 1131,
+  MC_PRE_DEVIL_APPLY_STAGE_PENALTY = 1131,
 
   /**
    * Fires after `ModCallbackRepentogon.PRE_DEVIL_APPLY_STAGE_PENALTY`is called and when the game
@@ -2144,7 +2397,7 @@ export enum ModCallbackRepentogon {
    * function preDevilApplySpecialItems(chance: number): number | undefined {}
    * ```
    */
-  PRE_DEVIL_APPLY_SPECIAL_ITEMS = 1132,
+  MC_PRE_DEVIL_APPLY_SPECIAL_ITEMS = 1132,
 
   /**
    * Fires after `ModCallbackRepentogon.PRE_DEVIL_APPLY_SPECIAL_ITEMS`. This is the final step of
@@ -2158,7 +2411,7 @@ export enum ModCallbackRepentogon {
    * function preDevilCalculateFinal(chance: number): number | undefined {}
    * ```
    */
-  PRE_DEVIL_CALCULATE_FINAL = 1133,
+  MC_POST_DEVIL_CALCULATE = 1133,
 
   /**
    * Fires when a Giantbook begins to play its animation.
@@ -2175,7 +2428,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_ITEM_OVERLAY_SHOW = 1134,
+  MC_POST_ITEM_OVERLAY_SHOW = 1134,
 
   /**
    * Fires before the game begins to render its contents.
@@ -2186,7 +2439,7 @@ export enum ModCallbackRepentogon {
    * function preRender(): void {}
    * ```
    */
-  PRE_RENDER = 1135,
+  MC_PRE_RENDER = 1135,
 
   /**
    * Fires before a room is placed in the level layout.
@@ -2204,7 +2457,7 @@ export enum ModCallbackRepentogon {
    * ): RoomConfigRoom | undefined {}
    * ```
    */
-  PRE_LEVEL_PLACE_ROOM = 1137,
+  MC_PRE_LEVEL_PLACE_ROOM = 1137,
 
   /**
    * Fires after room clear effects have been triggered for a specific player.
@@ -2217,7 +2470,7 @@ export enum ModCallbackRepentogon {
    * function postPlayerTriggerRoomClear(player: EntityPlayer): void {}
    * ```
    */
-  POST_PLAYER_TRIGGER_ROOM_CLEAR = 1138,
+  MC_POST_PLAYER_TRIGGER_ROOM_CLEAR = 1138,
 
   /**
    * Fires each frame after the Giantbook renders on the screen.
@@ -2230,7 +2483,7 @@ export enum ModCallbackRepentogon {
    * function postItemOverlayRender(giantbook: GiantbookType): void {}
    * ```
    */
-  POST_ITEM_OVERLAY_RENDER = 1139,
+  MC_POST_ITEM_OVERLAY_RENDER = 1139,
 
   /**
    * Fires after an active item has been discharged.
@@ -2248,7 +2501,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_DISCHARGE_ACTIVE_ITEM = 1140,
+  MC_POST_DISCHARGE_ACTIVE_ITEM = 1140,
 
   /**
    * Fires before a backdrop changes.
@@ -2261,7 +2514,7 @@ export enum ModCallbackRepentogon {
    * function preBackdropChange(backdrop: BackdropType): BackdropType | undefined {}
    * ```
    */
-  PRE_BACKDROP_CHANGE = 1141,
+  MC_PRE_BACKDROP_CHANGE = 1141,
 
   /**
    * Fires after a backdrop has changed.
@@ -2274,7 +2527,7 @@ export enum ModCallbackRepentogon {
    * function postBackdropChange(backdrop: BackdropType): void {}
    * ```
    */
-  POST_BACKDROP_CHANGE = 1142,
+  MC_POST_BACKDROP_CHANGE = 1142,
 
   /**
    * Fires after room clear effects has been triggered.
@@ -2285,7 +2538,7 @@ export enum ModCallbackRepentogon {
    * function postRoomTriggerClear(playSound: boolean): void {}
    * ```
    */
-  POST_ROOM_TRIGGER_CLEAR = 1143,
+  MC_POST_ROOM_TRIGGER_CLEAR = 1143,
 
   /**
    * Fires after a player drops a trinket onto the ground from their inventory.
@@ -2303,7 +2556,7 @@ export enum ModCallbackRepentogon {
    *   replacedTrinket: boolean
    * ): void {}
    */
-  POST_PLAYER_DROP_TRINKET = 1144,
+  MC_POST_PLAYER_DROP_TRINKET = 1144,
 
   /**
    * Fires before the lighting alpha is set.
@@ -2317,7 +2570,7 @@ export enum ModCallbackRepentogon {
    * function preGetLightingAlpha(float: number): float | undefined {}
    * ```
    */
-  PRE_GET_LIGHTING_ALPHA = 1150,
+  MC_PRE_GET_LIGHTING_ALPHA = 1150,
 
   /**
    * Fires before a grid entity's lighting is rendered.
@@ -2336,7 +2589,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_RENDER_GRID_LIGHTING = 1151,
+  MC_PRE_RENDER_GRID_LIGHTING = 1151,
 
   /**
    * Fires before an entity's lighting is rendered.
@@ -2355,7 +2608,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_RENDER_ENTITY_LIGHTING = 1152,
+  MC_PRE_RENDER_ENTITY_LIGHTING = 1152,
 
   /**
    * Fires before the player is updated.
@@ -2370,7 +2623,7 @@ export enum ModCallbackRepentogon {
    * function prePlayerUpdate(player: EntityPlayer): boolean | undefined {}
    * ```
    */
-  PRE_PLAYER_UPDATE = 1160,
+  MC_PRE_PLAYER_UPDATE = 1160,
 
   /**
    * Fires before the tear is updated.
@@ -2385,7 +2638,7 @@ export enum ModCallbackRepentogon {
    * function preTearUpdate(tear: EntityTear): boolean | undefined {}
    * ```
    */
-  PRE_TEAR_UPDATE = 1161,
+  MC_PRE_TEAR_UPDATE = 1161,
 
   /**
    * Fires before the familiar is updated.
@@ -2400,7 +2653,7 @@ export enum ModCallbackRepentogon {
    * function preFamiliarVariant(familiar: EntityFamiliar): boolean | undefined {}
    * ```
    */
-  PRE_FAMILIAR_UPDATE = 1162,
+  MC_PRE_FAMILIAR_UPDATE = 1162,
 
   /**
    * Fires before the bomb is updated.
@@ -2415,7 +2668,7 @@ export enum ModCallbackRepentogon {
    * function preBombUpdate(bomb: EntityBomb): boolean | undefined {}
    * ```
    */
-  PRE_BOMB_UPDATE = 1163,
+  MC_PRE_BOMB_UPDATE = 1163,
 
   /**
    * Fires before the pickup is updated.
@@ -2430,7 +2683,7 @@ export enum ModCallbackRepentogon {
    * function prePickupUpdate(pickup: EntityPickup): boolean | undefined {}
    * ```
    */
-  PRE_PICKUP_UPDATE = 1164,
+  MC_PRE_PICKUP_UPDATE = 1164,
 
   /**
    * Fires before the knife is updated.
@@ -2445,7 +2698,7 @@ export enum ModCallbackRepentogon {
    * function preKnifeUpdate(knife: EntityKnife): boolean | undefined {}
    * ```
    */
-  PRE_KNIFE_UPDATE = 1165,
+  MC_PRE_KNIFE_UPDATE = 1165,
 
   /**
    * Fires before the projectile is updated.
@@ -2460,7 +2713,7 @@ export enum ModCallbackRepentogon {
    * function preProjectileUpdate(projectile: EntityProjectile): boolean | undefined {}
    * ```
    */
-  PRE_PROJECTILE_UPDATE = 1166,
+  MC_PRE_PROJECTILE_UPDATE = 1166,
 
   /**
    * Fires before the laser is updated.
@@ -2475,7 +2728,7 @@ export enum ModCallbackRepentogon {
    * function preLaserUpdate(laser: EntityLaser): boolean | undefined {}
    * ```
    */
-  PRE_LASER_UPDATE = 1167,
+  MC_PRE_LASER_UPDATE = 1167,
 
   /**
    * Fires before the effect is updated.
@@ -2490,7 +2743,7 @@ export enum ModCallbackRepentogon {
    * function preEffectUpdate(effect: EntityEffect): boolean | undefined {}
    * ```
    */
-  PRE_EFFECT_UPDATE = 1168,
+  MC_PRE_EFFECT_UPDATE = 1168,
 
   /**
    * Fires before the `EntitySlot` is updated.
@@ -2505,7 +2758,7 @@ export enum ModCallbackRepentogon {
    * function preSlotUpdate(slot: EntitySlot): boolean | undefined {}
    * ```
    */
-  PRE_SLOT_UPDATE = 1169,
+  MC_PRE_SLOT_UPDATE = 1169,
 
   /**
    * Fires before a player collides with a grid entity.
@@ -2530,7 +2783,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_PLAYER_GRID_COLLISION = 1171,
+  MC_PRE_PLAYER_GRID_COLLISION = 1171,
 
   /**
    * Fires after the player collides with a grid entity.
@@ -2555,7 +2808,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PLAYER_GRID_COLLISION = 1172,
+  MC_PLAYER_GRID_COLLISION = 1172,
 
   /**
    * Fires before the tear collides with a grid entity.
@@ -2587,7 +2840,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_TEAR_GRID_COLLISION = 1173,
+  MC_PRE_TEAR_GRID_COLLISION = 1173,
 
   /**
    * Fires after the tear collides with a grid entity.
@@ -2619,7 +2872,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_TEAR_GRID_COLLISION = 1174,
+  MC_TEAR_GRID_COLLISION = 1174,
 
   /**
    * Fires before the familiar collides with a grid entity.
@@ -2644,7 +2897,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_FAMILIAR_GRID_COLLISION = 1175,
+  MC_PRE_FAMILIAR_GRID_COLLISION = 1175,
 
   /**
    * Fires after the familiar collides with a grid entity.
@@ -2669,7 +2922,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_FAMILIAR_GRID_COLLISION = 1176,
+  MC_FAMILIAR_GRID_COLLISION = 1176,
 
   /**
    * Fires before the bomb collides with a grid entity.
@@ -2694,7 +2947,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_BOMB_GRID_COLLISION = 1177,
+  MC_PRE_BOMB_GRID_COLLISION = 1177,
 
   /**
    * Fires before the bomb collides with a grid entity.
@@ -2719,7 +2972,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_BOMB_GRID_COLLISION = 1178,
+  MC_BOMB_GRID_COLLISION = 1178,
 
   /**
    * Fires before the pickup collides with a grid entity.
@@ -2744,7 +2997,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_PICKUP_GRID_COLLISION = 1179,
+  MC_PRE_PICKUP_GRID_COLLISION = 1179,
 
   /**
    * Fires after the pickup collides with a grid entity.
@@ -2769,7 +3022,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PICKUP_GRID_COLLISION = 1180,
+  MC_PICKUP_GRID_COLLISION = 1180,
 
   /**
    * Fires before the projectile collides with a grid entity.
@@ -2794,7 +3047,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_PROJECTILE_GRID_COLLISION = 1181,
+  MC_PRE_PROJECTILE_GRID_COLLISION = 1181,
 
   /**
    * Fires after the projectile collides with a grid entity.
@@ -2819,7 +3072,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PROJECTILE_GRID_COLLISION = 1182,
+  MC_PROJECTILE_GRID_COLLISION = 1182,
 
   /**
    * Fires before the NPC collides with a grid entity.
@@ -2844,7 +3097,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_NPC_GRID_COLLISION = 1183,
+  MC_PRE_NPC_GRID_COLLISION = 1183,
 
   /**
    * Fires after the NPC collides with a grid entity.
@@ -2869,7 +3122,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_NPC_GRID_COLLISION = 1184,
+  MC_NPC_GRID_COLLISION = 1184,
 
   /**
    * Fires before the player's active item is morphed from the 'M trinket. Return false to prevent
@@ -2885,7 +3138,7 @@ export enum ModCallbackRepentogon {
    * ): CollectibleType | boolean | undefined {}
    * ```
    */
-  PRE_M_MORPH_ACTIVE = 1190,
+  MC_PRE_M_MORPH_ACTIVE = 1190,
 
   /**
    * Fires before an NPC is split from the Meat Cleaver item effect. Return true to prevent the NPC
@@ -2899,7 +3152,7 @@ export enum ModCallbackRepentogon {
    * function preNPCSplit(npc: EntityNPC, isBlacklisted: boolean): boolean | undefined {}
    * ```
    */
-  PRE_NPC_SPLIT = 1191,
+  MC_PRE_NPC_SPLIT = 1191,
 
   /**
    * Fires when a grid entity spawns during room initialization. This does not fire for grid
@@ -2930,7 +3183,7 @@ export enum ModCallbackRepentogon {
    *   | undefined {}
    * ```
    */
-  PRE_ROOM_GRID_ENTITY_SPAWN = 1192,
+  MC_PRE_ROOM_GRID_ENTITY_SPAWN = 1192,
 
   /**
    * Fires before a new room is loaded.
@@ -2944,7 +3197,7 @@ export enum ModCallbackRepentogon {
    * function preNewRoom(room: Room, descriptor: RoomDescriptor): void {}
    * ```
    */
-  PRE_NEW_ROOM = 1200,
+  MC_PRE_NEW_ROOM = 1200,
 
   /**
    * Fires before the Mega Satan ending cutscene plays, forcibly ending the game.
@@ -2957,7 +3210,7 @@ export enum ModCallbackRepentogon {
    * function preMegaSatanEnding(): boolean | undefined {}
    * ```
    */
-  PRE_MEGA_SATAN_ENDING = 1201,
+  MC_PRE_MEGA_SATAN_ENDING = 1201,
 
   /**
    * Fires after all mods have their Lua scripts loaded. This is ideal for implementing mod
@@ -2967,7 +3220,7 @@ export enum ModCallbackRepentogon {
    * function postModsLoaded(): void {}
    * ```
    */
-  POST_MODS_LOADED = 1210,
+  MC_POST_MODS_LOADED = 1210,
 
   /**
    * Fires before a NPC morphs.
@@ -2999,7 +3252,7 @@ export enum ModCallbackRepentogon {
    *   | undefined {}
    * ```
    */
-  PRE_NPC_MORPH = 1212,
+  MC_PRE_NPC_MORPH = 1212,
 
   /**
    * Fires before a pickup morphs.
@@ -3037,7 +3290,7 @@ export enum ModCallbackRepentogon {
    *   | undefined {}
    * ```
    */
-  PRE_PICKUP_MORPH = 1213,
+  MC_PRE_PICKUP_MORPH = 1213,
 
   /**
    * Fires after a NPC morphs.
@@ -3053,7 +3306,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_NPC_MORPH = 1214,
+  MC_POST_NPC_MORPH = 1214,
 
   /**
    * Fires after a pickup morphs.
@@ -3072,7 +3325,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PICKUP_MORPH = 1215,
+  MC_POST_PICKUP_MORPH = 1215,
 
   /**
    * Fires before the completion marks render on the screen.
@@ -3090,7 +3343,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_COMPLETION_MARKS_RENDER = 1216,
+  MC_PRE_COMPLETION_MARKS_RENDER = 1216,
 
   /**
    * Fires after the completion marks render on the screen.
@@ -3104,7 +3357,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_COMPLETION_MARKS_RENDER = 1217,
+  MC_POST_COMPLETION_MARKS_RENDER = 1217,
 
   /**
    * Fires before the pause screen renders on the screen.
@@ -3118,7 +3371,7 @@ export enum ModCallbackRepentogon {
    * function prePauseScreenRender(pauseBody: Sprite, pauseStats: Sprite): boolean | undefined {}
    * ```
    */
-  PRE_PAUSE_SCREEN_RENDER = 1218,
+  MC_PRE_PAUSE_SCREEN_RENDER = 1218,
 
   /**
    * Fires after the pause screen renders on the screen.
@@ -3129,7 +3382,7 @@ export enum ModCallbackRepentogon {
    * function postPauseScreenRender(pauseBody: Sprite, pauseStats: Sprite): void {}
    * ```
    */
-  POST_PAUSE_SCREEN_RENDER = 1219,
+  MC_POST_PAUSE_SCREEN_RENDER = 1219,
 
   /**
    * Fires when the player is about to place a bomb. Return false to prevent the bomb from being
@@ -3143,7 +3396,7 @@ export enum ModCallbackRepentogon {
    * function prePlayerUseBomb(player: EntityPlayer): boolean | undefined {}
    * ```
    */
-  PRE_PLAYER_USE_BOMB = 1220,
+  MC_PRE_PLAYER_USE_BOMB = 1220,
 
   /**
    * Fires after the player places a bomb.
@@ -3156,7 +3409,7 @@ export enum ModCallbackRepentogon {
    * function postPlayerUseBomb(player: EntityPlayer, bomb: EntityBomb): void {}
    * ```
    */
-  POST_PLAYER_USE_BOMB = 1221,
+  MC_POST_PLAYER_USE_BOMB = 1221,
 
   /**
    * Fires whenever a NPC selects its target, such as when `EntityNPC.GetPlayerTarget` is called.
@@ -3171,7 +3424,7 @@ export enum ModCallbackRepentogon {
    * function preNPCPickTarget(npc: EntityNPC, target: Entity): Entity | undefined {}
    * ```
    */
-  PRE_NPC_PICK_TARGET = 1222,
+  MC_NPC_PICK_TARGET = 1222,
 
   /**
    * Fires when a Dark Red Champion NPC regenerates from a pile of goo.
@@ -3184,7 +3437,7 @@ export enum ModCallbackRepentogon {
    * function postNPCDarkRedChampionRegen(npc: EntityNPC): void {}
    * ```
    */
-  POST_NPC_DARK_RED_CHAMPION_REGEN = 1223,
+  MC_POST_NPC_DARK_RED_CHAMPION_REGEN = 1223,
 
   /**
    * Fires when a custom cache flag is being evaluated. Return a number to set the value of the
@@ -3202,7 +3455,7 @@ export enum ModCallbackRepentogon {
    * ): number | undefined {}
    * ```
    */
-  EVALUATE_CUSTOM_CACHE = 1224,
+  MC_EVALUATE_CUSTOM_CACHE = 1224,
 
   /**
    * Fires when a familiar's multiplier is being evaluated. Return a number to override the
@@ -3220,7 +3473,7 @@ export enum ModCallbackRepentogon {
    * ): number | undefined {}
    * ```
    */
-  EVALUATE_FAMILIAR_MULTIPLIER = 1225,
+  MC_EVALUATE_FAMILIAR_MULTIPLIER = 1225,
 
   /**
    * Fires when the player's stats are being calculated. This should not be confused with
@@ -3239,7 +3492,20 @@ export enum ModCallbackRepentogon {
    *
    * @see https://repentogon.com/xml/items.html
    */
-  EVALUATE_STAT = 1226,
+  MC_EVALUATE_STAT = 1226,
+
+  /**
+   * Called right before collision evaluation. Called once per game update. Unlike `MC_POST_UPDATE`
+   * can be used to update entity data, add or remove entities, with those changes being correctly
+   * applied during collision detection.
+   *
+   * You cannot filter this callback.
+   *
+   * ```ts
+   * function preRoomCollisionPass(): void {}
+   * ```
+   */
+  MC_PRE_ROOM_COLLISION_PASS = 1227,
 
   /**
    * Fires after a player collides with an entity.
@@ -3256,7 +3522,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PLAYER_COLLISION = 1231,
+  MC_POST_PLAYER_COLLISION = 1231,
 
   /**
    * Fires after a tear collides with an entity.
@@ -3269,7 +3535,7 @@ export enum ModCallbackRepentogon {
    * function postTearCollision(tear: EntityTear, collider: Entity, low: boolean): void {}
    * ```
    */
-  POST_TEAR_COLLISION = 1233,
+  MC_POST_TEAR_COLLISION = 1233,
 
   /**
    * Fires after a familiar collides with an entity.
@@ -3286,7 +3552,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_FAMILIAR_COLLISION = 1235,
+  MC_POST_FAMILIAR_COLLISION = 1235,
 
   /**
    * Fires after a bomb collides with an entity.
@@ -3299,7 +3565,7 @@ export enum ModCallbackRepentogon {
    * function postBombCollision(bomb: EntityBomb, collider: Entity, low: boolean): void {}
    * ```
    */
-  POST_BOMB_COLLISION = 1237,
+  MC_POST_BOMB_COLLISION = 1237,
 
   /**
    * Fires after a pickup collides with an entity.
@@ -3312,7 +3578,7 @@ export enum ModCallbackRepentogon {
    * function postPickupCollision(pickup: EntityPickup, collider: Entity, low: boolean): void {}
    * ```
    */
-  POST_PICKUP_COLLISION = 1239,
+  MC_POST_PICKUP_COLLISION = 1239,
 
   /**
    * Fires before an `EntitySlot` collides with an entity.
@@ -3335,7 +3601,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
    * ```
    */
-  PRE_SLOT_COLLISION = 1240,
+  MC_PRE_SLOT_COLLISION = 1240,
 
   /**
    * Fires after an `EntitySlot` collides with an entity.
@@ -3352,7 +3618,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_SLOT_COLLISION = 1241,
+  MC_POST_SLOT_COLLISION = 1241,
 
   /**
    * Fires after a knife collides with an entity.
@@ -3365,7 +3631,7 @@ export enum ModCallbackRepentogon {
    * function postKnifeCollision(knife: EntityKnife, collider: Entity, low: boolean): void {}
    * ```
    */
-  POST_KNIFE_COLLISION = 1243,
+  MC_POST_KNIFE_COLLISION = 1243,
 
   /**
    * Fires after a projectile collides with an entity.
@@ -3382,7 +3648,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PROJECTILE_COLLISION = 1245,
+  MC_POST_PROJECTILE_COLLISION = 1245,
 
   /**
    * Fires after a NPC collides with an entity.
@@ -3395,7 +3661,7 @@ export enum ModCallbackRepentogon {
    * function postNPCCollision(npc: EntityNPC, collider: Entity, low: boolean): void {}
    * ```
    */
-  POST_NPC_COLLISION = 1247,
+  MC_POST_NPC_COLLISION = 1247,
 
   /**
    * Fires before a laser collides with an entity.
@@ -3413,7 +3679,7 @@ export enum ModCallbackRepentogon {
    * function preLaserCollision(laser: EntityLaser, collider: Entity): boolean | undefined {}
    * ```
    */
-  PRE_LASER_COLLISION = 1248,
+  MC_PRE_LASER_COLLISION = 1248,
 
   /**
    * Fires after a laser collides with an entity.
@@ -3426,7 +3692,7 @@ export enum ModCallbackRepentogon {
    * function postLaserCollision(laser: EntityLaser, collider: Entity): void {}
    * ```
    */
-  POST_LASER_COLLISION = 1249,
+  MC_POST_LASER_COLLISION = 1249,
 
   /**
    * Fires after `EntityPickup.GetCoinValue` is called to determine the value of a coin pickup.
@@ -3442,24 +3708,9 @@ export enum ModCallbackRepentogon {
    * function getCoinValue(coin: EntityPickup): int | undefined {}
    * ```
    */
-  GET_COIN_VALUE = 1250,
+  MC_PICKUP_GET_COIN_VALUE = 1250,
 
-  /**
-   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
-   * - You can provide an optional third argument that will make the callback only fire if it
-   *   matches the `PlayerType` provided.
-   *
-   * ```ts
-   * function prePlayerGetMultiShotParams(
-   *   player: EntityPlayer,
-   *   multiShotParams: MultiShotParams,
-   *   weaponType: WeaponType
-   * ): MultiShotParams | undefined {}
-   * ```
-   *
-   * @deprecated Use `ModCallbackRepentogon.EVALUATE_MULTI_SHOT_PARAMS` instead.
-   */
-  PRE_PLAYER_GET_MULTI_SHOT_PARAMS = 1251,
+
 
   /**
    * Fires when a familiar fires a tear.
@@ -3472,7 +3723,7 @@ export enum ModCallbackRepentogon {
    * function postFamiliarFireProjectile(tear: EntityTear): void {}
    * ```
    */
-  POST_FAMILIAR_FIRE_PROJECTILE = 1252,
+  MC_POST_FAMILIAR_FIRE_PROJECTILE = 1252,
 
   /**
    * Fires when a player fires a Dr. Fetus bomb.
@@ -3483,7 +3734,7 @@ export enum ModCallbackRepentogon {
    * function postFireBomb(bomb: EntityBomb): void {}
    * ```
    */
-  POST_FIRE_BOMB = 1253,
+  MC_POST_FIRE_BOMB = 1253,
 
   /**
    * Fires when the player fires the Bone Club. This is only called when the club is initially
@@ -3495,7 +3746,7 @@ export enum ModCallbackRepentogon {
    * function postFireBoneClub(knife: EntityKnife): void {}
    * ```
    */
-  POST_FIRE_BONE_CLUB = 1254,
+  MC_POST_FIRE_BONE_CLUB = 1254,
 
   /**
    * Fires when a player fires a Brimstone laser.
@@ -3506,7 +3757,7 @@ export enum ModCallbackRepentogon {
    * function postFireBrimstone(laser: EntityLaser): void {}
    * ```
    */
-  POST_FIRE_BRIMSTONE = 1255,
+  MC_POST_FIRE_BRIMSTONE = 1255,
 
   /**
    * Fires when a player fires a Brimstone ball.
@@ -3517,7 +3768,7 @@ export enum ModCallbackRepentogon {
    * function postFireBrimstoneBall(ball: EntityEffect): void {}
    * ```
    */
-  POST_FIRE_BRIMSTONE_BALL = 1256,
+  MC_POST_FIRE_BRIMSTONE_BALL = 1256,
 
   /**
    * Fires when the player fires a knife from Mom's Knife.
@@ -3528,18 +3779,27 @@ export enum ModCallbackRepentogon {
    * function postFireKnife(knife: EntityKnife): void {}
    * ```
    */
-  POST_FIRE_KNIFE = 1257,
+  MC_POST_FIRE_KNIFE = 1257,
 
   /**
-   * Fires when the player swings the Spirit Sword.
+   * Called when a tear is fired from an existing tear/laser/knife.
    *
-   * You cannot filter this callback.
+   * This includes various vanilla effects such as Cricket's Body, The Parasite, Mucormycosis, etc.
+   * The originating effect is identified by the `SplitTearType` value.
+   *
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `SplitTearType` or string provided.
    *
    * ```ts
-   * function postFireSword(sword: EntityKnife): void {}
+   * function postFireSplitTear(
+   *   tear: EntityTear,
+   *   source: Entity,
+   *   splitType: SplitTearType | string
+   * ): void {}
    * ```
    */
-  POST_FIRE_SWORD = 1258,
+  MC_POST_FIRE_SPLIT_TEAR = 1258,
 
   /**
    * Fires when the player fires a Tech laser.
@@ -3550,7 +3810,7 @@ export enum ModCallbackRepentogon {
    * function postFireTechLaser(laser: EntityLaser): void {}
    * ```
    */
-  POST_FIRE_TECH_LASER = 1259,
+  MC_POST_FIRE_TECH_LASER = 1259,
 
   /**
    * Fires when the player fires a Tech X laser.
@@ -3561,7 +3821,7 @@ export enum ModCallbackRepentogon {
    * function postFireTechXLaser(laser: EntityLaser): void {}
    * ```
    */
-  POST_FIRE_TECH_X_LASER = 1260,
+  MC_POST_FIRE_TECH_X_LASER = 1260,
 
   /**
    * Fires when the familiar fires a Brimstone laser.
@@ -3574,7 +3834,7 @@ export enum ModCallbackRepentogon {
    * function postFamiliarFireBrimstone(laser: EntityLaser): void {}
    * ```
    */
-  POST_FAMILIAR_FIRE_BRIMSTONE = 1261,
+  MC_POST_FAMILIAR_FIRE_BRIMSTONE = 1261,
 
   /**
    * Fires when the familiar fires a Tech laser.
@@ -3587,7 +3847,7 @@ export enum ModCallbackRepentogon {
    * function postFamiliarFireTechLaser(laser: EntityLaser): void {}
    * ```
    */
-  POST_FAMILIAR_FIRE_TECH_LASER = 1262,
+  MC_POST_FAMILIAR_FIRE_TECH_LASER = 1262,
 
   /**
    * Fires when `Room.IsPersistentRoomEntity` is called.
@@ -3603,7 +3863,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  GET_IS_PERSISTENT_ROOM_ENTITY = 1263,
+  MC_IS_PERSISTENT_ROOM_ENTITY = 1263,
 
   /**
    * Fires before a trinket is rendered on the player's HUD. Return true to prevent the trinket from
@@ -3623,7 +3883,7 @@ export enum ModCallbackRepentogon {
    * ): { Position?: Vector, Scale?: number, CropOffset?: Vector } | boolean | undefined {}
    * ```
    */
-  PRE_PLAYER_HUD_RENDER_TRINKET = 1264,
+  MC_PRE_PLAYERHUD_TRINKET_RENDER = 1264,
 
   /**
    * Fires before a pickup is consumed from effects such as Void and Black Rune. Return false to
@@ -3637,7 +3897,7 @@ export enum ModCallbackRepentogon {
    * function prePickupVoided(pickup: EntityPickup, isBlackRune: boolean): boolean | undefined {}
    * ```
    */
-  PRE_PICKUP_VOIDED = 1265,
+  MC_PRE_PICKUP_VOIDED = 1265,
 
   /**
    * Fires before a pickup is consumed from The Abyss. Return false to prevent the pickup from being
@@ -3651,7 +3911,7 @@ export enum ModCallbackRepentogon {
    * function prePickupVoidedAbyss(pickup: EntityPickup): boolean | undefined {}
    * ```
    */
-  PRE_PICKUP_VOIDED_ABYSS = 1266,
+  MC_PRE_PICKUP_VOIDED_ABYSS = 1266,
 
   /**
    * Fires before a pickup is consumed from Compost. Return false to prevent the pickup from being
@@ -3665,7 +3925,7 @@ export enum ModCallbackRepentogon {
    * function prePickupComposted(pickup: EntityPickup): boolean | undefined {}
    * ```
    */
-  PRE_PICKUP_COMPOSTED = 1267,
+  MC_PRE_PICKUP_COMPOSTED = 1267,
 
   /**
    * Fires after a `TemporaryEffect` of an `ItemConfigItem` is removed from a player.
@@ -3680,7 +3940,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PLAYER_TRIGGER_EFFECT_REMOVED = 1268,
+  MC_POST_PLAYER_TRIGGER_EFFECT_REMOVED = 1268,
 
   /**
    * Fires after a `TemporaryEffect` of an `ItemConfigItem` is removed from the room.
@@ -3691,7 +3951,7 @@ export enum ModCallbackRepentogon {
    * function postRoomTriggerEffectRemoved(itemConfig: ItemConfigItem): void {}
    * ```
    */
-  POST_ROOM_TRIGGER_EFFECT_REMOVED = 1269,
+  MC_POST_ROOM_TRIGGER_EFFECT_REMOVED = 1269,
 
   /**
    * Fires after the boss intro is initialized.
@@ -3702,7 +3962,7 @@ export enum ModCallbackRepentogon {
    * function postBossIntroShow(boss1: BossID, boss2: BossID): void {}
    * ```
    */
-  POST_BOSS_INTRO_SHOW = 1270,
+  MC_POST_BOSS_INTRO_SHOW = 1270,
 
   /**
    * Fires each frame the room transition animation updates.
@@ -3715,7 +3975,7 @@ export enum ModCallbackRepentogon {
    * function postRoomTransitionUpdate(): void {}
    * ```
    */
-  POST_ROOM_TRANSITION_UPDATE = 1271,
+  MC_POST_ROOM_TRANSITION_UPDATE = 1271,
 
   /**
    * Fires each frame the room transition animation renders.
@@ -3728,7 +3988,7 @@ export enum ModCallbackRepentogon {
    * function postRoomTransitionRender(): void {}
    * ```
    */
-  POST_ROOM_TRANSITION_RENDER = 1272,
+  MC_POST_ROOM_TRANSITION_RENDER = 1272,
 
   /**
    * Fires after a `TemporaryEffect` is added to a player.
@@ -3746,7 +4006,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PLAYER_ADD_EFFECT = 1273,
+  MC_POST_PLAYER_ADD_EFFECT = 1273,
 
   /**
    * Fires after a `TemporaryEffect` is added to the room.
@@ -3759,7 +4019,7 @@ export enum ModCallbackRepentogon {
    * function postRoomAddEffect(itemConfig: ItemConfigItem): void {}
    * ```
    */
-  POST_ROOM_ADD_EFFECT = 1274,
+  MC_POST_ROOM_ADD_EFFECT = 1274,
 
   /**
    * Fires after `Game.BombDamage` is called. This is used by the game to damage entities within a
@@ -3784,7 +4044,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_BOMB_DAMAGE = 1275,
+  MC_POST_BOMB_DAMAGE = 1275,
 
   /**
    * Fires after `Game.BombTearflagEffects` is called. This is used by the game when `TearFlag`
@@ -3806,7 +4066,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_BOMB_TEAR_FLAG_EFFECTS = 1276,
+  MC_POST_BOMB_TEARFLAG_EFFECTS = 1276,
 
   /**
    * Fires before the effects of Tear Flags are applied to an enemy upon being hit or damaged.
@@ -3836,7 +4096,7 @@ export enum ModCallbackRepentogon {
    *   | { Position?: Vector; TearFlags?: BitFlags<TearFlag>; Damage?: number } {}
    * ```
    */
-  PRE_APPLY_TEAR_FLAG_EFFECTS = 1277,
+  MC_PRE_APPLY_TEARFLAG_EFFECTS = 1277,
 
   /**
    * Fires after the effects of Tear Flags are applied to an enemy upon being hit or damaged.
@@ -3857,7 +4117,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_APPLY_TEAR_FLAG_EFFECTS = 1278,
+  MC_POST_APPLY_TEARFLAG_EFFECTS = 1278,
 
   /**
    * Fires before a boss is selected for the floor.
@@ -3877,7 +4137,7 @@ export enum ModCallbackRepentogon {
    * ): BossID | undefined {}
    * ```
    */
-  PRE_BOSS_SELECT = 1280,
+  MC_PRE_BOSS_SELECT = 1280,
 
   /**
    * Fires before a costume is added to the player.
@@ -3895,7 +4155,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | ItemConfigItem | undefined {}
    * ```
    */
-  PRE_PLAYER_ADD_COSTUME = 1281,
+  MC_PRE_PLAYER_ADD_COSTUME = 1281,
 
   /**
    * Fires before the game tries to remove a costume from the player.
@@ -3911,7 +4171,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_PLAYER_REMOVE_COSTUME = 1282,
+  MC_PRE_PLAYER_REMOVE_COSTUME = 1282,
 
   /**
    * Fires after a costume is added to the player.
@@ -3926,7 +4186,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PLAYER_ADD_COSTUME = 1283,
+  MC_POST_PLAYER_ADD_COSTUME = 1283,
 
   /**
    * Fires after a costume is removed from the player.
@@ -3940,7 +4200,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PLAYER_REMOVE_COSTUME = 1284,
+  MC_POST_PLAYER_REMOVE_COSTUME = 1284,
 
   /**
    * Fires before the effects of sleeping on a bed are granted after the cutscene, such as healing.
@@ -3955,7 +4215,7 @@ export enum ModCallbackRepentogon {
    * function preTriggerBedSleepEffect(player: EntityPlayer): boolean | undefined {}
    * ```
    */
-  PRE_TRIGGER_BED_SLEEP_EFFECT = 1285,
+  MC_PRE_TRIGGER_BED_SLEEP_EFFECT = 1285,
 
   /**
    * Fires after the effects of sleeping on a bed are granted after the cutscene, such as healing.
@@ -3966,7 +4226,7 @@ export enum ModCallbackRepentogon {
    * function postTriggerBedSleepEffect(player: EntityPlayer): boolean | undefined {}
    * ```
    */
-  POST_TRIGGER_BED_SLEEP_EFFECT = 1286,
+  MC_POST_TRIGGER_BED_SLEEP_EFFECT = 1286,
 
   /**
    * Fires before the player's pocket items are swapped. Return true to prevent them from swapping.
@@ -3977,7 +4237,7 @@ export enum ModCallbackRepentogon {
    * function prePlayerPocketItemSwap(player: EntityPlayer): boolean | undefined {}
    * ```
    */
-  PRE_PLAYER_POCKET_ITEMS_SWAP = 1287,
+  MC_PRE_PLAYER_POCKET_ITEMS_SWAP = 1287,
 
   /**
    * Fires before the player sleeps on a bed after colliding with it. Return true to prevent the
@@ -3991,7 +4251,7 @@ export enum ModCallbackRepentogon {
    * function preBedSleep(player: EntityPlayer, bed: EntityPickup): boolean | undefined {}
    * ```
    */
-  PRE_BED_SLEEP = 1288,
+  MC_PRE_BED_SLEEP = 1288,
 
   /**
    * Fires before the `MultiShotParams` for a player are updated.
@@ -4011,7 +4271,7 @@ export enum ModCallbackRepentogon {
    * ): MultiShotParams | undefined {}
    * ```
    */
-  EVALUATE_MULTI_SHOT_PARAMS = 1289,
+  MC_EVALUATE_MULTI_SHOT_PARAMS = 1289,
 
   /**
    * Fires when the game tries to get a random available room index on the floor.
@@ -4028,7 +4288,173 @@ export enum ModCallbackRepentogon {
    * ): int | undefined {}
    * ```
    */
-  PRE_GET_RANDOM_ROOM_INDEX = 1290,
+  MC_PRE_GET_RANDOM_ROOM_INDEX = 1290,
+
+  /**
+   * Called before `Game.BombDamage` is called, used by the game to damage entities within a radius
+   * for explosions and similar effects.
+   *
+   * Return false to cancel, or an object containing changed values for `Position`, `Damage`,
+   * `Radius`, `TearFlags`, and/or `DamageFlags`.
+   *
+   * The optional third argument is used for the source entity.
+   *
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `EntityType` provided.
+   *
+   * ```ts
+   * function preBombDamage(
+   *   position: Vector,
+   *   damage: number,
+   *   radius: number,
+   *   lineCheck: boolean,
+   *   source: Entity | undefined,
+   *   tearFlags: BitFlags<TearFlag>,
+   *   damageFlags: BitFlags<DamageFlag>,
+   *   damageSource: boolean
+   * ):
+   *   | boolean
+   *   | {
+   *       Position?: Vector;
+   *       Damage?: number;
+   *       Radius?: number;
+   *       TearFlags?: BitFlags<TearFlag>;
+   *       DamageFlags?: BitFlags<DamageFlag>;
+   *     }
+   *   | undefined {}
+   * ```
+   */
+  MC_PRE_BOMB_DAMAGE = 1291,
+
+  /**
+   * Called before `Game.BombTearflagEffects` is called, used by the game when `TearFlags`-based
+   * effects are triggered from an explosion.
+   *
+   * Return false to cancel, or an object containing changed values for `Position`, `Radius`,
+   * `TearFlags`, and/or `RadiusMult`.
+   *
+   * The optional third argument is used for the source entity.
+   *
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `EntityType` provided.
+   *
+   * ```ts
+   * function preBombTearflagEffects(
+   *   position: Vector,
+   *   radius: number,
+   *   tearFlags: BitFlags<TearFlag>,
+   *   source: Entity | undefined,
+   *   radiusMult: number
+   * ):
+   *   | boolean
+   *   | {
+   *       Position?: Vector;
+   *       Radius?: number;
+   *       TearFlags?: BitFlags<TearFlag>;
+   *       RadiusMult?: number;
+   *     }
+   *   | undefined {}
+   * ```
+   */
+  MC_PRE_BOMB_TEARFLAG_EFFECTS = 1292,
+
+  /**
+   * Render callback for Tainted Isaac's inventory.
+   *
+   * Return `false` to cancel rendering, or a `Vector` to modify the Offset.
+   *
+   * You cannot filter this callback.
+   *
+   * ```ts
+   * function prePlayerHUDRenderInventory(
+   *   player: EntityPlayer,
+   *   offset: Vector,
+   *   scale: float
+   * ): boolean | Vector | undefined {}
+   * ```
+   */
+  MC_PRE_PLAYERHUD_RENDER_INVENTORY = 1293,
+
+  /**
+   * Render callback for Tainted Isaac's inventory.
+   *
+   * You cannot filter this callback.
+   *
+   * ```ts
+   * function postPlayerHUDRenderInventory(
+   *   player: EntityPlayer,
+   *   offset: Vector,
+   *   scale: float
+   * ): void {}
+   * ```
+   */
+  MC_POST_PLAYERHUD_RENDER_INVENTORY = 1294,
+
+  /**
+   * Render callback for Tainted ???'s poop spell queue.
+   *
+   * Return `false` to cancel rendering, or a `Vector` to modify the Offset.
+   *
+   * You cannot filter this callback.
+   *
+   * ```ts
+   * function prePlayerHUDRenderPoopSpellQueue(
+   *   player: EntityPlayer,
+   *   offset: Vector,
+   *   scale: float
+   * ): boolean | Vector | undefined {}
+   * ```
+   */
+  MC_PRE_PLAYERHUD_RENDER_POOP_SPELL_QUEUE = 1295,
+
+  /**
+   * Render callback for Tainted ???'s poop spell queue.
+   *
+   * You cannot filter this callback.
+   *
+   * ```ts
+   * function postPlayerHUDRenderPoopSpellQueue(
+   *   player: EntityPlayer,
+   *   offset: Vector,
+   *   scale: float
+   * ): void {}
+   * ```
+   */
+  MC_POST_PLAYERHUD_RENDER_POOP_SPELL_QUEUE = 1296,
+
+  /**
+   * Render callback for Tainted Cain's Bag of Crafting HUD.
+   *
+   * Return `false` to cancel rendering, or a `Vector` to modify the Offset.
+   *
+   * You cannot filter this callback.
+   *
+   * ```ts
+   * function prePlayerHUDRenderCraftingTable(
+   *   player: EntityPlayer,
+   *   offset: Vector,
+   *   scale: float
+   * ): boolean | Vector | undefined {}
+   * ```
+   */
+  MC_PRE_PLAYERHUD_RENDER_CRAFTING_TABLE = 1297,
+
+  /**
+   * Render callback for Tainted Cain's Bag of Crafting HUD.
+   *
+   * You cannot filter this callback.
+   *
+   * ```ts
+   * function postPlayerHUDRenderCraftingTable(
+   *   player: EntityPlayer,
+   *   offset: Vector,
+   *   scale: float
+   * ): void {}
+   * ```
+   */
+  MC_POST_PLAYERHUD_RENDER_CRAFTING_TABLE = 1298,
 
   /**
    * Fires after the Glowing Hourglass state is saved.
@@ -4039,7 +4465,7 @@ export enum ModCallbackRepentogon {
    * function postGlowingHourglassSave(slot: int): void {}
    * ```
    */
-  POST_GLOWING_HOURGLASS_SAVE = 1300,
+  MC_POST_GLOWING_HOURGLASS_SAVE = 1300,
 
   /**
    * Fires after the Glowing Hourglass state is loaded.
@@ -4050,7 +4476,7 @@ export enum ModCallbackRepentogon {
    * function postGlowingHourglassSave(slot: int): void {}
    * ```
    */
-  POST_GLOWING_HOURGLASS_LOAD = 1301,
+  MC_POST_GLOWING_HOURGLASS_LOAD = 1301,
 
   /**
    * Fires before the Glowing Hourglass state is saved.
@@ -4061,7 +4487,7 @@ export enum ModCallbackRepentogon {
    * function preGlowingHourglassSave(slot: int): void {}
    * ```
    */
-  PRE_GLOWING_HOURGLASS_SAVE = 1302,
+  MC_PRE_GLOWING_HOURGLASS_SAVE = 1302,
 
   /**
    * Fires before the Glowing Hourglass state is loaded.
@@ -4072,7 +4498,7 @@ export enum ModCallbackRepentogon {
    * function preGlowingHourglassLoad(slot: int): void {}
    * ```
    */
-  PRE_GLOWING_HOURGLASS_LOAD = 1303,
+  MC_PRE_GLOWING_HOURGLASS_LOAD = 1303,
 
   /**
    * Fires after the room saves all entities and grid entities.
@@ -4083,7 +4509,7 @@ export enum ModCallbackRepentogon {
    * function postRoomSaveState(room: Room, roomDescriptor: RoomDescriptor): void {}
    * ```
    */
-  POST_ROOM_SAVE_STATE = 1304,
+  MC_POST_ROOM_SAVE_STATE = 1304,
 
   /**
    * Fires before the room respawns all saved entities.
@@ -4094,7 +4520,7 @@ export enum ModCallbackRepentogon {
    * function preRoomRestoreState(room: Room, roomDescriptor: RoomDescriptor): void {}
    * ```
    */
-  PRE_ROOM_RESTORE_STATE = 1305,
+  MC_PRE_ROOM_RESTORE_STATE = 1305,
 
   /**
    * Fires after two rooms have been swapped due to the Curse of the Maze.
@@ -4105,7 +4531,7 @@ export enum ModCallbackRepentogon {
    * function postSwapRooms(roomDesc1: RoomDescriptor, roomDesc2: RoomDescriptor): void {}
    * ```
    */
-  POST_SWAP_ROOMS = 1306,
+  MC_POST_SWAP_ROOMS = 1306,
 
   /**
    * Fires when a room previously encountered on a floor has been saved. The saved room is restored
@@ -4121,7 +4547,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_BACKWARDS_ROOM_SAVE = 1307,
+  MC_POST_BACKWARDS_ROOM_SAVE = 1307,
 
   /**
    * Fires when a room previously encountered on a floor is loaded back into the game during the
@@ -4137,53 +4563,182 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_BACKWARDS_ROOM_RESTORE = 1308,
+  MC_POST_BACKWARDS_ROOM_RESTORE = 1308,
 
   /**
-   * Fires before the character menu is rendered on the screen while a custom character is selected.
-   * This callback does not trigger for vanilla characters.
+   * Will only run for characters present in the character select menu that are capable of being
+   * selected (IE, not hidden or locked behind an achievement).
+   *
+   * Return false to prevent the character from being selectable. This has no visual effects.
+   *
+   * `isBeingSelected` is true if the player is actually trying to start a run with the character.
+   * Returning false in this case will play the error buzzer sound.
+   *
+   * Otherwise, this is just a check by some other logic (such as deciding which characters are
+   * eligible for random character selection).
    *
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
    * - You can provide an optional third argument that will make the callback only fire if it
    *   matches the `PlayerType` provided.
    *
    * ```ts
-   * function preRenderCustomCharacterMenu(
+   * function canSelectCharacter(
+   *   playerType: PlayerType,
+   *   isBeingSelected: boolean
+   * ): boolean | undefined {}
+   * ```
+   */
+  MC_CAN_SELECT_CHARACTER = 1328,
+
+  /**
+   * Runs before the background page/stats/etc are rendered for the character currently selected in
+   * the character menu. Modifications made to the sprites at this time can affect the upcoming
+   * render. Return false to cancel rendering.
+   *
+   * `moddedSprite` can only be non-nil for modded characters. `hasCustomBackground` indicates if
+   * `moddedSprite` includes the background paper.
+   *
+   * `playerType` is -1 when "random character" is selected.
+   *
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `PlayerType` provided.
+   *
+   * ```ts
+   * function preRenderCharacterSelectPage(
    *   playerType: PlayerType,
    *   renderPos: Vector,
-   *   defaultSprite: Sprite
+   *   defaultSprite: Sprite,
+   *   moddedSprite: Sprite,
+   *   hasCustomBackground: boolean
+   * ): boolean | undefined {}
+   * ```
+   */
+  MC_PRE_RENDER_CHARACTER_SELECT_PAGE = 1329,
+
+  /**
+   * Runs after the background page/stats/etc are rendered for the character currently selected in
+   * the character menu.
+   *
+   * `playerType` is -1 when "random character" is selected.
+   *
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `PlayerType` provided.
+   *
+   * ```ts
+   * function postRenderCharacterSelectPage(
+   *   playerType: PlayerType,
+   *   renderPos: Vector,
+   *   defaultSprite: Sprite,
+   *   moddedSprite: Sprite,
+   *   hasCustomBackground: boolean
    * ): void {}
    * ```
    */
-  PRE_RENDER_CUSTOM_CHARACTER_MENU = 1333,
+  MC_POST_RENDER_CHARACTER_SELECT_PAGE = 1330,
+
+  /**
+   * Runs before each character portrait is rendered on the character wheel. Modifications made to
+   * the sprite can affect the upcoming render.
+   *
+   * Return false to cancel rendering, or a `Vector` to change the `renderPos`.
+   *
+   * `playerType` is -1 when "random character" is selected.
+   *
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `PlayerType` provided.
+   *
+   * ```ts
+   * function preRenderCharacterSelectPortrait(
+   *   playerType: PlayerType,
+   *   portraitSprite: Sprite,
+   *   renderPos: Vector,
+   *   defaultScale: Vector,
+   *   defaultColor: Color
+   * ): boolean | Vector | undefined {}
+   * ```
+   */
+  MC_PRE_RENDER_CHARACTER_SELECT_PORTRAIT = 1331,
+
+  /**
+   * Runs after each character portrait is rendered on the character wheel.
+   *
+   * `playerType` is -1 when "random character" is selected.
+   *
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `PlayerType` provided.
+   *
+   * ```ts
+   * function postRenderCharacterSelectPortrait(
+   *   playerType: PlayerType,
+   *   portraitSprite: Sprite,
+   *   renderPos: Vector,
+   *   defaultScale: Vector,
+   *   defaultColor: Color
+   * ): void {}
+   * ```
+   */
+  MC_POST_RENDER_CHARACTER_SELECT_PORTRAIT = 1332,
 
   /**
    * Fires before the `LootList` of a pickup is selected.
    *
    * Return a `LootList` to override the loot list used for the pickup.
    *
-   * ```ts
-   * function prePickupGetLootList(
-   * pickup: EntityPickup,
-   * shouldAdvance: boolean
-   * ) => LootList | undefined {}
-   * ```
-   */
-  PRE_PICKUP_GET_LOOT_LIST = 1334,
-
-  /**
-   * Fires before the ghost pickup effect from Guppy's Eye updates. Return false to prevent the
-   * ghost pickups from displaying.
-   *
-   * Return `false` to prevent the ghost pickups from being displayed.
+   * If you only want to slightly modify the loot (such as adding an extra pickup) use
+   * `ModCallbackRepentogon.MC_POST_PICKUP_GET_LOOT_LIST` instead to access a mutable list.
    *
    * You cannot filter this callback.
    *
    * ```ts
-   * function prePickupUpdateGhostPickups(pickup: EntityPickup) => boolean | undefined {}
+   * function prePickupGetLootList(
+   *   pickup: EntityPickup,
+   *   shouldAdvance: boolean,
+   *   rng: RNG,
+   *   player: EntityPlayer
+   * ): LootList | undefined {}
    * ```
    */
-  PRE_PICKUP_UPDATE_GHOST_PICKUPS = 1335,
+  MC_PRE_PICKUP_GET_LOOT_LIST = 1334,
+
+  /**
+   * Fires before the ghost pickup effect from Guppy's Eye updates.
+   *
+   * Return `true` to apply pickup ghost to your pickup entity, `false` to cancel it.
+   *
+   * You cannot filter this callback.
+   *
+   * ```ts
+   * function prePickupUpdateGhostPickups(pickup: EntityPickup): boolean | undefined {}
+   * ```
+   */
+  MC_PRE_PICKUP_UPDATE_GHOST_PICKUPS = 1335,
+
+  /**
+   * Called after the pickup determines its loot content. The provided `LootList` can be modified,
+   * so this is a good place to make small modifications such as adding to the loot.
+   *
+   * If `shouldAdvance` is false, the loot is being checked (such as for a Guppy's Eye preview) but
+   * the RNG should not be advanced. The provided RNG (the `DropRNG` of the entity) will be reset
+   * at the end of the callback to preserve the original seed, so you can use the provided RNG for
+   * easy consistent results between loot previews and when the loot actually spawns.
+   *
+   * You cannot filter this callback.
+   *
+   * ```ts
+   * function postPickupGetLootList(
+   *   pickup: EntityPickup,
+   *   lootList: LootList,
+   *   shouldAdvance: boolean,
+   *   rng: RNG,
+   *   player: EntityPlayer
+   * ): void {}
+   * ```
+   */
+  MC_POST_PICKUP_GET_LOOT_LIST = 1336,
 
   /**
    * Fires before a card is added to the player's inventory.
@@ -4203,7 +4758,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | CardType | undefined {}
    * ```
    */
-  PRE_PLAYER_ADD_CARD = 1350,
+  MC_PRE_PLAYER_ADD_CARD = 1350,
 
   /**
    * Fires after a card is added to the player's inventory.
@@ -4220,7 +4775,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PLAYER_ADD_CARD = 1351,
+  MC_POST_PLAYER_ADD_CARD = 1351,
 
   /**
    * Fires before a pill is added to the player's inventory.
@@ -4240,7 +4795,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | PillColor | undefined {}
    * ```
    */
-  PRE_PLAYER_ADD_PILL = 1352,
+  MC_PRE_PLAYER_ADD_PILL = 1352,
 
   /**
    * Fires after a pill is added to the player's inventory.
@@ -4257,7 +4812,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PLAYER_ADD_PILL = 1353,
+  MC_POST_PLAYER_ADD_PILL = 1353,
 
   /**
    * Fires after a card is removed from the player's inventory.
@@ -4274,7 +4829,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PLAYER_REMOVE_CARD = 1354,
+  MC_POST_PLAYER_REMOVE_CARD = 1354,
 
   /**
    * Fires after a pill is removed from the player's inventory.
@@ -4291,7 +4846,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PLAYER_REMOVE_PILL = 1355,
+  MC_POST_PLAYER_REMOVE_PILL = 1355,
 
   /**
    * Fires before the player picks up a card off the ground.
@@ -4309,7 +4864,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_PLAYER_COLLECT_CARD = 1356,
+  MC_PRE_PLAYER_COLLECT_CARD = 1356,
 
   /**
    * Fires after the player picks up a card off the ground.
@@ -4322,7 +4877,7 @@ export enum ModCallbackRepentogon {
    * function postPlayerCollectCard(player: EntityPlayer, pickup: EntityPickup): void {}
    * ```
    */
-  POST_PLAYER_COLLECT_CARD = 1357,
+  MC_POST_PLAYER_COLLECT_CARD = 1357,
 
   /**
    * Fires before the player picks up a pill off the ground.
@@ -4340,7 +4895,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_PLAYER_COLLECT_PILL = 1358,
+  MC_PRE_PLAYER_COLLECT_PILL = 1358,
 
   /**
    * Fires after the player picks up a pill off the ground.
@@ -4353,7 +4908,7 @@ export enum ModCallbackRepentogon {
    * function postPlayerCollectPill(player: EntityPlayer, pickup: EntityPickup): void {}
    * ```
    */
-  POST_PLAYER_COLLECT_PILL = 1359,
+  MC_POST_PLAYER_COLLECT_PILL = 1359,
 
   /**
    * Fires after the player drops a card from their inventory.
@@ -4370,7 +4925,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PLAYER_DROP_CARD = 1360,
+  MC_POST_PLAYER_DROP_CARD = 1360,
 
   /**
    * Fires after the player drops a pill from their inventory.
@@ -4387,7 +4942,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_PLAYER_DROP_PILL = 1361,
+  MC_POST_PLAYER_DROP_PILL = 1361,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4400,7 +4955,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_DECORATION_UPDATE = 1400,
+  MC_PRE_GRID_ENTITY_DECORATION_UPDATE = 1400,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4411,7 +4966,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityDecorationUpdate(decoration: GridEntity): void {}
    * ```
    */
-  POST_GRID_ENTITY_DECORATION_UPDATE = 1401,
+  MC_POST_GRID_ENTITY_DECORATION_UPDATE = 1401,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4422,7 +4977,7 @@ export enum ModCallbackRepentogon {
    * function preGridEntityDoorUpdate(door: GridEntityDoor): boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_DOOR_UPDATE = 1402,
+  MC_PRE_GRID_ENTITY_DOOR_UPDATE = 1402,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4433,7 +4988,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityDoorUpdate(door: GridEntityDoor): void {}
    * ```
    */
-  POST_GRID_ENTITY_DOOR_UPDATE = 1403,
+  MC_POST_GRID_ENTITY_DOOR_UPDATE = 1403,
 
   /**
    * Fire grid entities are largely unused and in most cases you'll want to target the `EntityNPC`
@@ -4447,7 +5002,7 @@ export enum ModCallbackRepentogon {
    * function preGridEntityDoorUpdate(fire: GridEntity): boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_FIRE_UPDATE = 1404,
+  MC_PRE_GRID_ENTITY_FIRE_UPDATE = 1404,
 
   /**
    * Fire grid entities are largely unused and in most cases you'll want to target the `EntityNPC`
@@ -4461,7 +5016,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityDoorUpdate(fire: GridEntity): void {}
    * ```
    */
-  POST_GRID_ENTITY_FIRE_UPDATE = 1405,
+  MC_POST_GRID_ENTITY_FIRE_UPDATE = 1405,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4472,7 +5027,7 @@ export enum ModCallbackRepentogon {
    * function preGridEntityGravityUpdate(gravity: GridEntity): boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_GRAVITY_UPDATE = 1406,
+  MC_PRE_GRID_ENTITY_GRAVITY_UPDATE = 1406,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4483,7 +5038,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityGravityUpdate(gravity: GridEntity): void {}
    * ```
    */
-  POST_GRID_ENTITY_GRAVITY_UPDATE = 1407,
+  MC_POST_GRID_ENTITY_GRAVITY_UPDATE = 1407,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4494,7 +5049,7 @@ export enum ModCallbackRepentogon {
    * function preGridEntityLockUpdate(lock: GridEntity): boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_LOCK_UPDATE = 1408,
+  MC_PRE_GRID_ENTITY_LOCK_UPDATE = 1408,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4505,7 +5060,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityLockUpdate(lock: GridEntity): void {}
    * ```
    */
-  POST_GRID_ENTITY_LOCK_UPDATE = 1409,
+  MC_POST_GRID_ENTITY_LOCK_UPDATE = 1409,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4516,7 +5071,7 @@ export enum ModCallbackRepentogon {
    * function preGridEntityPitUpdate(pit: GridEntityPit): boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_PIT_UPDATE = 1410,
+  MC_PRE_GRID_ENTITY_PIT_UPDATE = 1410,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4527,7 +5082,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityPitUpdate(pit: GridEntityPit): void {}
    * ```
    */
-  POST_GRID_ENTITY_PIT_UPDATE = 1411,
+  MC_POST_GRID_ENTITY_PIT_UPDATE = 1411,
 
   /**
    * This does not include the `EntityNPC` poops used by Tainted Blue Baby. Use
@@ -4541,7 +5096,7 @@ export enum ModCallbackRepentogon {
    * function preGridEntityPoopUpdate(poop): GridEntityPoop): boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_POOP_UPDATE = 1412,
+  MC_PRE_GRID_ENTITY_POOP_UPDATE = 1412,
 
   /**
    * This does not include the `EntityNPC` poops used by Tainted Blue Baby. Use
@@ -4555,7 +5110,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityPoopUpdate(poop): GridEntityPoop): boolean | undefined {}
    * ```
    */
-  POST_GRID_ENTITY_POOP_UPDATE = 1413,
+  MC_POST_GRID_ENTITY_POOP_UPDATE = 1413,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4568,7 +5123,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_PRESSURE_PLATE_UPDATE = 1414,
+  MC_PRE_GRID_ENTITY_PRESSUREPLATE_UPDATE = 1414,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4579,7 +5134,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityPressurePlateUpdate(pressurePlate: GridEntityPressurePlate): void {}
    * ```
    */
-  POST_GRID_ENTITY_PRESSURE_PLATE_UPDATE = 1415,
+  MC_POST_GRID_ENTITY_PRESSUREPLATE_UPDATE = 1415,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4590,7 +5145,7 @@ export enum ModCallbackRepentogon {
    * function preGridEntityRockUpdate(rock: GridEntityRock): boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_ROCK_UPDATE = 1416,
+  MC_PRE_GRID_ENTITY_ROCK_UPDATE = 1416,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4601,7 +5156,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityRockUpdate(rock: GridEntityRock): void {}
    * ```
    */
-  POST_GRID_ENTITY_ROCK_UPDATE = 1417,
+  MC_POST_GRID_ENTITY_ROCK_UPDATE = 1417,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4612,7 +5167,7 @@ export enum ModCallbackRepentogon {
    * function preGridEntitySpikesUpdate(spikes: GridEntitySpikes): boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_SPIKES_UPDATE = 1418,
+  MC_PRE_GRID_ENTITY_SPIKES_UPDATE = 1418,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4623,7 +5178,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntitySpikesUpdate(spikes: GridEntitySpikes): void {}
    * ```
    */
-  POST_GRID_ENTITY_SPIKES_UPDATE = 1419,
+  MC_POST_GRID_ENTITY_SPIKES_UPDATE = 1419,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4634,7 +5189,7 @@ export enum ModCallbackRepentogon {
    * function preGridEntityStaircaseUpdate(staircase: GridEntity): boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_STAIRCASE_UPDATE = 1420,
+  MC_PRE_GRID_ENTITY_STAIRCASE_UPDATE = 1420,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4645,7 +5200,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityStaircaseUpdate(staircase: GridEntity): void {}
    * ```
    */
-  POST_GRID_ENTITY_STAIRCASE_UPDATE = 1421,
+  MC_POST_GRID_ENTITY_STAIRCASE_UPDATE = 1421,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4656,7 +5211,7 @@ export enum ModCallbackRepentogon {
    * function preGridEntityStatueUpdate(statue: GridEntity): boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_STATUE_UPDATE = 1422,
+  MC_PRE_GRID_ENTITY_STATUE_UPDATE = 1422,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4667,7 +5222,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityStatueUpdate(statue: GridEntity): void {}
    * ```
    */
-  POST_GRID_ENTITY_STATUE_UPDATE = 1423,
+  MC_POST_GRID_ENTITY_STATUE_UPDATE = 1423,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4680,7 +5235,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_TELEPORTER_UPDATE = 1424,
+  MC_PRE_GRID_ENTITY_TELEPORTER_UPDATE = 1424,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4691,7 +5246,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityTeleporterUpdate(teleporter: GridEntity): void {}
    * ```
    */
-  POST_GRID_ENTITY_TELEPORTER_UPDATE = 1425,
+  MC_POST_GRID_ENTITY_TELEPORTER_UPDATE = 1425,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4702,7 +5257,7 @@ export enum ModCallbackRepentogon {
    * function preGridEntityTrapdoorUpdate(trapdoor: GridEntity): boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_TRAPDOOR_UPDATE = 1426,
+  MC_PRE_GRID_ENTITY_TRAPDOOR_UPDATE = 1426,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4713,7 +5268,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityTrapdoorUpdate(trapdoor: GridEntity): void {}
    * ```
    */
-  POST_GRID_ENTITY_TRAPDOOR_UPDATE = 1427,
+  MC_POST_GRID_ENTITY_TRAPDOOR_UPDATE = 1427,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4724,7 +5279,7 @@ export enum ModCallbackRepentogon {
    * function preGridEntityWebUpdate(web: GridEntity): boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_WEB_UPDATE = 1428,
+  MC_PRE_GRID_ENTITY_WEB_UPDATE = 1428,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4735,7 +5290,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityWebUpdate(web: GridEntity): void {}
    * ```
    */
-  POST_GRID_ENTITY_WEB_UPDATE = 1429,
+  MC_POST_GRID_ENTITY_WEB_UPDATE = 1429,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4746,7 +5301,7 @@ export enum ModCallbackRepentogon {
    * function preGridEntityTNTUpdate(tnt: GridEntityTNT): boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_TNT_UPDATE = 1430,
+  MC_PRE_GRID_ENTITY_TNT_UPDATE = 1430,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4757,7 +5312,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityTNTUpdate(tnt: GridEntityTNT): void {}
    * ```
    */
-  POST_GRID_ENTITY_TNT_UPDATE = 1431,
+  MC_POST_GRID_ENTITY_TNT_UPDATE = 1431,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4771,7 +5326,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_SPIKES_RENDER = 1432,
+  MC_PRE_GRID_ENTITY_SPIKES_RENDER = 1432,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4782,7 +5337,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntitySpikesRender(spikes: GridEntitySpikes, offset: Vector): void {}
    * ```
    */
-  POST_GRID_ENTITY_SPIKES_RENDER = 1433,
+  MC_POST_GRID_ENTITY_SPIKES_RENDER = 1433,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4796,7 +5351,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_WEB_RENDER = 1434,
+  MC_PRE_GRID_ENTITY_WEB_RENDER = 1434,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4807,7 +5362,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityWebRender(spikes: GridEntity, offset: Vector): void {}
    * ```
    */
-  POST_GRID_ENTITY_WEB_RENDER = 1435,
+  MC_POST_GRID_ENTITY_WEB_RENDER = 1435,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4821,7 +5376,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_TNT_RENDER = 1436,
+  MC_PRE_GRID_ENTITY_TNT_RENDER = 1436,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4832,7 +5387,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityTNTRender(web: GridEntityTNT, offset: Vector): void {}
    * ```
    */
-  POST_GRID_ENTITY_TNT_RENDER = 1437,
+  MC_POST_GRID_ENTITY_TNT_RENDER = 1437,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4846,7 +5401,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_TRAPDOOR_RENDER = 1438,
+  MC_PRE_GRID_ENTITY_TRAPDOOR_RENDER = 1438,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4857,7 +5412,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityTrapdoorRender(trapdoor: GridEntity, offset: Vector): void {}
    * ```
    */
-  POST_GRID_ENTITY_TRAPDOOR_RENDER = 1439,
+  MC_POST_GRID_ENTITY_TRAPDOOR_RENDER = 1439,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4871,7 +5426,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_STAIRCASE_RENDER = 1440,
+  MC_PRE_GRID_ENTITY_STAIRCASE_RENDER = 1440,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4882,7 +5437,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityStaircaseRender(staircase: GridEntity, offset: Vector): void {}
    * ```
    */
-  POST_GRID_ENTITY_STAIRCASE_RENDER = 1441,
+  MC_POST_GRID_ENTITY_STAIRCASE_RENDER = 1441,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4896,7 +5451,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_DECORATION_RENDER = 1444,
+  MC_PRE_GRID_ENTITY_DECORATION_RENDER = 1444,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4910,7 +5465,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_GRID_ENTITY_DECORATION_RENDER = 1445,
+  MC_POST_GRID_ENTITY_DECORATION_RENDER = 1445,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4924,7 +5479,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_DOOR_RENDER = 1446,
+  MC_PRE_GRID_ENTITY_DOOR_RENDER = 1446,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4935,7 +5490,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityDoorRender(door: GridEntityDoor, offset: Vector): void {}
    * ```
    */
-  POST_GRID_ENTITY_DOOR_RENDER = 1447,
+  MC_POST_GRID_ENTITY_DOOR_RENDER = 1447,
 
   /**
    * Fire grid entities are largely unused and in most cases you'll want to target the `EntityNPC`
@@ -4952,7 +5507,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_FIRE_RENDER = 1448,
+  MC_PRE_GRID_ENTITY_FIRE_RENDER = 1448,
 
   /**
    * Fire grid entities are largely unused and in most cases you'll want to target the `EntityNPC`
@@ -4966,7 +5521,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityFireRender(fire: GridEntity, offset: Vector): void {}
    * ```
    */
-  POST_GRID_ENTITY_FIRE_RENDER = 1449,
+  MC_POST_GRID_ENTITY_FIRE_RENDER = 1449,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4980,7 +5535,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_LOCK_RENDER = 1450,
+  MC_PRE_GRID_ENTITY_LOCK_RENDER = 1450,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -4991,7 +5546,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityLockRender(lock: GridEntity, offset: Vector): void {}
    * ```
    */
-  POST_GRID_ENTITY_LOCK_RENDER = 1451,
+  MC_POST_GRID_ENTITY_LOCK_RENDER = 1451,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -5005,7 +5560,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_TELEPORTER_RENDER = 1452,
+  MC_PRE_GRID_ENTITY_TELEPORTER_RENDER = 1452,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -5019,7 +5574,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_GRID_ENTITY_TELEPORTER_RENDER = 1453,
+  MC_POST_GRID_ENTITY_TELEPORTER_RENDER = 1453,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -5033,7 +5588,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_PIT_RENDER = 1454,
+  MC_PRE_GRID_ENTITY_PIT_RENDER = 1454,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -5044,7 +5599,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityPitRender(pit: GridEntityPit, offset: Vector): void {}
    * ```
    */
-  POST_GRID_ENTITY_PIT_RENDER = 1455,
+  MC_POST_GRID_ENTITY_PIT_RENDER = 1455,
 
   /**
    * This does not include the `EntityNPC` poops used by Tainted Blue Baby. Use
@@ -5061,7 +5616,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_POOP_RENDER = 1456,
+  MC_PRE_GRID_ENTITY_POOP_RENDER = 1456,
 
   /**
    * This does not include the `EntityNPC` poops used by Tainted Blue Baby. Use
@@ -5075,7 +5630,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityPoopRender(poop: GridEntityPoop, offset: Vector): void {}
    * ```
    */
-  POOP_GRID_ENTITY_POOP_RENDER = 1457,
+  MC_POST_GRID_ENTITY_POOP_RENDER = 1457,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -5089,7 +5644,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_ROCK_RENDER = 1458,
+  MC_PRE_GRID_ENTITY_ROCK_RENDER = 1458,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -5100,7 +5655,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityRockRender(lock: GridEntityRock, offset: Vector): void {}
    * ```
    */
-  POST_GRID_ENTITY_ROCK_RENDER = 1459,
+  MC_POST_GRID_ENTITY_ROCK_RENDER = 1459,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -5114,7 +5669,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_PRESSURE_PLATE_RENDER = 1460,
+  MC_PRE_GRID_ENTITY_PRESSUREPLATE_RENDER = 1460,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -5128,7 +5683,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_GRID_ENTITY_PRESSURE_PLATE_RENDER = 1461,
+  MC_POST_GRID_ENTITY_PRESSUREPLATE_RENDER = 1461,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -5142,7 +5697,7 @@ export enum ModCallbackRepentogon {
    * ): Vector | boolean | undefined {}
    * ```
    */
-  PRE_GRID_ENTITY_WALL_RENDER = 1462,
+  MC_PRE_GRID_ENTITY_WALL_RENDER = 1462,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -5153,7 +5708,7 @@ export enum ModCallbackRepentogon {
    * function postGridEntityWallRender(wall: GridEntity, offset: Vector): void {}
    * ```
    */
-  POST_GRID_ENTITY_WALL_RENDER = 1463,
+  MC_POST_GRID_ENTITY_WALL_RENDER = 1463,
 
   /**
    * Behaves like `ModCallback.INPUT_ACTION` except it only works on the main menu.
@@ -5174,7 +5729,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | float | undefined {}
    * ```
    */
-  MENU_INPUT_ACTION = 1464,
+  MC_MENU_INPUT_ACTION = 1464,
 
   /**
    * Fires before a status effect is applied to an entity.
@@ -5194,7 +5749,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_STATUS_EFFECT_APPLY = 1465,
+  MC_PRE_STATUS_EFFECT_APPLY = 1465,
 
   /**
    * Fires after a status effect is applied to an entity.
@@ -5212,7 +5767,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_STATUS_EFFECT_APPLY = 1466,
+  MC_POST_STATUS_EFFECT_APPLY = 1466,
 
   /**
    * Fires when a save slot is loaded by the game.
@@ -5223,7 +5778,7 @@ export enum ModCallbackRepentogon {
    * function postSaveSlotLoad(saveSlot: int, isSlotSelected: boolean, rawSlot: int): void {}
    * ```
    */
-  POST_SAVE_SLOT_LOAD = 1470,
+  MC_POST_SAVESLOT_LOAD = 1470,
 
   /**
    * Fires before a challenge is marked as completed.
@@ -5238,7 +5793,7 @@ export enum ModCallbackRepentogon {
    * function preChallengeDone(challenge: Challenge, player: EntityPlayer): boolean | undefined {}
    * ```
    */
-  PRE_CHALLENGE_DONE = 1471,
+  MC_PRE_CHALLENGE_DONE = 1471,
 
   /**
    * Fires after a challenge is marked as completed.
@@ -5251,7 +5806,7 @@ export enum ModCallbackRepentogon {
    * function postChallengeDone(challenge: Challenge, player: EntityPlayer): void {}
    * ```
    */
-  POST_CHALLENGE_DONE = 1472,
+  MC_POST_CHALLENGE_DONE = 1472,
 
   /**
    * Fires before `EntityFamiliar.CanCharm` is called. This is used ot determine whether the Siren
@@ -5267,7 +5822,7 @@ export enum ModCallbackRepentogon {
    * function preFamiliarCanCharm(familiar: EntityFamiliar): boolean | undefined {}
    * ```
    */
-  PRE_FAMILIAR_CAN_CHARM = 1473,
+  MC_PRE_FAMILIAR_CAN_CHARM = 1473,
 
   /**
    * Fires before the player gives birth to a familiar due to Cambion Conception. Return false to
@@ -5284,7 +5839,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_PLAYER_GIVE_BIRTH_CAMBION = 1474,
+  MC_PRE_PLAYER_GIVE_BIRTH_CAMBION = 1474,
 
   /**
    * Fires before the player gives birth to a familiar due to Immaculate Conception. Return false to
@@ -5301,7 +5856,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_PLAYER_GIVE_BIRTH_IMMACULATE = 1475,
+  MC_PRE_PLAYER_GIVE_BIRTH_IMMACULATE = 1475,
 
   /**
    * Fires after an achievement is unlocked.
@@ -5314,51 +5869,8 @@ export enum ModCallbackRepentogon {
    * function postAchievementUnlock(achievement: Achievement): void {}
    * ```
    */
-  POST_ACHIEVEMENT_UNLOCK = 1476,
+  MC_POST_ACHIEVEMENT_UNLOCK = 1476,
 
-  /**
-   * Fires before the minimap is updated.
-   *
-   * You cannot filter this callback.
-   *
-   * ```ts
-   * function preMinimapUpdate(): void {}
-   * ```
-   */
-  PRE_MINIMAP_UPDATE = 1477,
-
-  /**
-   * Fires after the minimap is updated.
-   *
-   * You cannot filter this callback.
-   *
-   * ```ts
-   * function postMinimapUpdate(): void {}
-   * ```
-   */
-  POST_MINIMAP_UPDATE = 1478,
-
-  /**
-   * Fires before the minimap is rendered.
-   *
-   * You cannot filter this callback.
-   *
-   * ```ts
-   * function preMinimapRender(): void {}
-   * ```
-   */
-  PRE_MINIMAP_RENDER = 1479,
-
-  /**
-   * Fires after the minimap is rendered.
-   *
-   * You cannot filter this callback.
-   *
-   * ```ts
-   * function postMinimapRender(): void {}
-   * ```
-   */
-  POST_MINIMAP_RENDER = 1480,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -5369,7 +5881,7 @@ export enum ModCallbackRepentogon {
    * function prePlayerRevive(player: EntityPlayer): boolean | undefined {}
    * ```
    */
-  PRE_PLAYER_REVIVE = 1481,
+  MC_PRE_PLAYER_REVIVE = 1481,
 
   /**
    * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -5380,7 +5892,7 @@ export enum ModCallbackRepentogon {
    * function postPlayerRevive(player: EntityPlayer): void {}
    * ```
    */
-  POST_PLAYER_REVIVE = 1482,
+  MC_POST_PLAYER_REVIVE = 1482,
 
   /**
    * Fires before a fortune is displayed on the screen.
@@ -5393,7 +5905,7 @@ export enum ModCallbackRepentogon {
    * function preFortuneDisplay(): boolean | undefined {}
    * ```
    */
-  PRE_FORTUNE_DISPLAY = 1483,
+  MC_PRE_FORTUNE_DISPLAY = 1483,
 
   /**
    * Fires before the item display text appears. Return false to prevent it from appearing.
@@ -5409,7 +5921,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_ITEM_TEXT_DISPLAY = 1484,
+  MC_PRE_ITEM_TEXT_DISPLAY = 1484,
 
   /**
    * Fires before a status effect target of an entity is set.
@@ -5424,7 +5936,7 @@ export enum ModCallbackRepentogon {
    * function getStatusEffectTarget(entity: Entity): Entity | undefined {}
    * ```
    */
-  GET_STATUS_EFFECT_TARGET = 1485,
+  MC_GET_STATUS_EFFECT_TARGET = 1485,
 
   /**
    * Fires before the entity's color is set with `Entity.SetColor`. This callback does not fire if
@@ -5448,7 +5960,7 @@ export enum ModCallbackRepentogon {
    * ): Color | boolean | undefined {}
    * ```
    */
-  PRE_ENTITY_SET_COLOR = 1486,
+  MC_PRE_ENTITY_SET_COLOR = 1486,
 
   /**
    * Fires after the entity's color is set with `Entity.SetColor`. This callback does not fire if
@@ -5469,7 +5981,7 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_ENTITY_SET_COLOR = 1487,
+  MC_POST_ENTITY_SET_COLOR = 1487,
 
   /**
    * Fires when a challenge/boss rush room wave starts.
@@ -5480,7 +5992,7 @@ export enum ModCallbackRepentogon {
    * function postStartAmbushWave(bossAmbush: boolean): void {}
    * ```
    */
-  POST_START_AMBUSH_WAVE = 1488,
+  MC_POST_START_AMBUSH_WAVE = 1488,
 
   /**
    * Fires when a Greed Mode wave starts.
@@ -5491,7 +6003,7 @@ export enum ModCallbackRepentogon {
    * function postStartGreedWave(): void {}
    * ```
    */
-  POST_START_GREED_WAVE = 1489,
+  MC_POST_START_GREED_WAVE = 1489,
 
   /**
    * Fires before the player's `TearParams` object is calculated.
@@ -5514,7 +6026,7 @@ export enum ModCallbackRepentogon {
    * ): TearParams | undefined {}
    * ```
    */
-  EVALUATE_TEAR_HIT_PARAMS = 1490,
+  MC_EVALUATE_TEAR_HIT_PARAMS = 1490,
 
   /**
    * Fires before a chest is opened.
@@ -5532,7 +6044,7 @@ export enum ModCallbackRepentogon {
    * ): boolean | undefined {}
    * ```
    */
-  PRE_OPEN_CHEST = 1491,
+  MC_PRE_OPEN_CHEST = 1491,
 
   /**
    * Fires after a chest is opened.
@@ -5548,5 +6060,58 @@ export enum ModCallbackRepentogon {
    * ): void {}
    * ```
    */
-  POST_OPEN_CHEST = 1492,
+  MC_POST_OPEN_CHEST = 1492,
+
+  /**
+   * Fires when a boss is defeated and the game checks for an extra "thematic" reward separate
+   * from the usual boss pool item.
+   *
+   * Return an object with a `Collectible` field to spawn a collectible, or a `Trinket` field to
+   * spawn a trinket, overwriting any previously planned spawn.
+   *
+   * Alternatively, return `true` to prevent any item from spawning.
+   *
+   * You cannot filter this callback.
+   *
+   * ```ts
+   * function getBossThematicItem(
+   *   spawned: boolean,
+   *   spawnedCollectible: CollectibleType,
+   *   spawnedTrinket: TrinketType
+   * ):
+   *   | boolean
+   *   | {
+   *       Collectible?: CollectibleType;
+   *       Trinket?: TrinketType;
+   *     }
+   *   | undefined {}
+   * ```
+   */
+  MC_GET_BOSS_THEMATIC_ITEM = 1493,
+
+  /**
+   * Fires before player costumes are shuffled. Return false to prevent the costume shuffle.
+   *
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `PlayerType` provided.
+   *
+   * ```ts
+   * function preShuffleCostumes(player: EntityPlayer, seed: Seed): boolean | undefined {}
+   * ```
+   */
+  MC_PRE_SHUFFLE_COSTUMES = 1494,
+
+  /**
+   * Fires after player costumes are shuffled.
+   *
+   * When registering this callback with the `Mod.AddCallbackRepentogon` method:
+   * - You can provide an optional third argument that will make the callback only fire if it
+   *   matches the `PlayerType` provided.
+   *
+   * ```ts
+   * function postShuffleCostumes(player: EntityPlayer, seed: Seed): void {}
+   * ```
+   */
+  MC_POST_SHUFFLE_COSTUMES = 1495,
 }
