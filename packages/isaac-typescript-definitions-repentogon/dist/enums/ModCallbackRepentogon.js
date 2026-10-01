@@ -22,7 +22,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_USE_PILL"] = 10] = "MC_USE_PILL";
+    ModCallbackRepentogon[ModCallbackRepentogon["USE_PILL"] = 10] = "USE_PILL";
     /**
      * A modified version of `ModCallback.ENTITY_TAKE_DMG`. This callback now allows an interface to
      * be returned to further modify how the entity takes damage.
@@ -63,7 +63,7 @@ export var ModCallbackRepentogon;
      *   | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_ENTITY_TAKE_DMG"] = 11] = "MC_ENTITY_TAKE_DMG";
+    ModCallbackRepentogon[ModCallbackRepentogon["ENTITY_TAKE_DMG"] = 11] = "ENTITY_TAKE_DMG";
     /**
      * Fires before an active item is used. Now allows you to `return { Discharge: false }` to cancel
      * the activation without discharging the item.
@@ -83,7 +83,7 @@ export var ModCallbackRepentogon;
      * ): boolean | { Discharge?: boolean } | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_USE_ITEM"] = 23] = "MC_PRE_USE_ITEM";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_USE_ITEM"] = 23] = "PRE_USE_ITEM";
     /**
      * A modified version of `ModCallback.PRE_FAMILIAR_COLLISION`. This callback now allows an
      * interface to be returned to further modify the collision behavior.
@@ -106,7 +106,7 @@ export var ModCallbackRepentogon;
      * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_FAMILIAR_COLLISION"] = 26] = "MC_PRE_FAMILIAR_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_FAMILIAR_COLLISION"] = 26] = "PRE_FAMILIAR_COLLISION";
     /**
      * A modified version of `ModCallback.PRE_NPC_COLLISION`. This callback now allows an interface to
      * be returned to further modify the collision behavior.
@@ -129,7 +129,7 @@ export var ModCallbackRepentogon;
      * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_NPC_COLLISION"] = 30] = "MC_PRE_NPC_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_NPC_COLLISION"] = 30] = "PRE_NPC_COLLISION";
     /**
      * A modified version of `ModCallback.PRE_PLAYER_COLLISION`. This callback now allows an interface
      * to be returned to further modify the collision behavior.
@@ -152,7 +152,7 @@ export var ModCallbackRepentogon;
      * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_COLLISION"] = 33] = "MC_PRE_PLAYER_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_COLLISION"] = 33] = "PRE_PLAYER_COLLISION";
     /**
      * A modified version of `ModCallback.POST_PICKUP_SELECTION`. This callback now provides the
      * requested Variant and requested SubType.
@@ -184,7 +184,7 @@ export var ModCallbackRepentogon;
      * ): [pickupVariant: PickupVariant, subType: int, continueSelection?: boolean] | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PICKUP_SELECTION"] = 37] = "MC_POST_PICKUP_SELECTION";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PICKUP_SELECTION"] = 37] = "POST_PICKUP_SELECTION";
     /**
      * A modified version of `ModCallback.PRE_PICKUP_COLLISION`. This callback now allows an interface
      * to be returned to further modify the collision behavior.
@@ -207,7 +207,7 @@ export var ModCallbackRepentogon;
      * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PICKUP_COLLISION"] = 38] = "MC_PRE_PICKUP_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PICKUP_COLLISION"] = 38] = "PRE_PICKUP_COLLISION";
     /**
      * A modified version of `ModCallback.PRE_TEAR_COLLISION`. This callback now allows an interface
      * to be returned to further modify the collision behavior.
@@ -230,7 +230,7 @@ export var ModCallbackRepentogon;
      * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_TEAR_COLLISION"] = 42] = "MC_PRE_TEAR_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_TEAR_COLLISION"] = 42] = "PRE_TEAR_COLLISION";
     /**
      * A modified version of `ModCallback.PRE_PROJECTILE_COLLISION`. This callback now allows an
      * interface to be returned to further modify the collision behavior.
@@ -253,7 +253,7 @@ export var ModCallbackRepentogon;
      * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PROJECTILE_COLLISION"] = 46] = "MC_PRE_PROJECTILE_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PROJECTILE_COLLISION"] = 46] = "PRE_PROJECTILE_COLLISION";
     /**
      * A modified version of `ModCallback.PRE_KNIFE_COLLISION`. This callback now allows an interface
      * to be returned to further modify the collision behavior.
@@ -276,7 +276,7 @@ export var ModCallbackRepentogon;
      * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_KNIFE_COLLISION"] = 53] = "MC_PRE_KNIFE_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_KNIFE_COLLISION"] = 53] = "PRE_KNIFE_COLLISION";
     /**
      * A modified version of `ModCallback.PRE_BOMB_COLLISION`. This callback now allows an interface
      * to be returned to further modify the collision behavior.
@@ -299,7 +299,7 @@ export var ModCallbackRepentogon;
      * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_BOMB_COLLISION"] = 60] = "MC_PRE_BOMB_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_BOMB_COLLISION"] = 60] = "PRE_BOMB_COLLISION";
     /**
      * Fires when the effect of a pill is resolved. Now passes `EntityPlayer` as an argument.
      *
@@ -317,7 +317,7 @@ export var ModCallbackRepentogon;
      * ): PillEffect | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_GET_PILL_EFFECT"] = 65] = "MC_GET_PILL_EFFECT";
+    ModCallbackRepentogon[ModCallbackRepentogon["GET_PILL_EFFECT"] = 65] = "GET_PILL_EFFECT";
     /**
      * A modified version of `ModCallback.POST_ENTITY_KILL`. This callback now provides an `EntityRef`
      * of whoever killed the entity.
@@ -328,7 +328,7 @@ export var ModCallbackRepentogon;
      * function postEntityKill(entity: Entity, source: EntityRef): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ENTITY_KILL"] = 68] = "MC_POST_ENTITY_KILL";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ENTITY_KILL"] = 68] = "POST_ENTITY_KILL";
     /**
      * Added boolean argument that identifies if it is running due to game shutdown.
      * Now runs earlier during shutdown, so code is less likely to crash.
@@ -339,9 +339,9 @@ export var ModCallbackRepentogon;
      * function preModUnload(mod: unknown, shuttingDown: boolean): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_MOD_UNLOAD"] = 73] = "MC_PRE_MOD_UNLOAD";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_MOD_UNLOAD"] = 73] = "PRE_MOD_UNLOAD";
     /**
-     * More reliable callback for after an active item has been used, since `MC_USE_ITEM` is intended
+     * More reliable callback for after an active item has been used, since `USE_ITEM` is intended
      * for modded active logic and is often terminated early.
      *
      * Note that the game usually hasn't actually discharged the item yet in most cases, but if
@@ -366,7 +366,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_USE_ITEM"] = 1003] = "MC_POST_USE_ITEM";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_USE_ITEM"] = 1003] = "POST_USE_ITEM";
     /**
      * Fires before a collectible is added to the player's inventory.
      *
@@ -406,7 +406,7 @@ export var ModCallbackRepentogon;
      *   | undefined {}
      *   ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_ADD_COLLECTIBLE"] = 1004] = "MC_PRE_ADD_COLLECTIBLE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_ADD_COLLECTIBLE"] = 1004] = "PRE_ADD_COLLECTIBLE";
     /**
      * Fires after a collectible has been added to the player's inventory.
      *
@@ -428,7 +428,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      *   ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ADD_COLLECTIBLE"] = 1005] = "MC_POST_ADD_COLLECTIBLE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ADD_COLLECTIBLE"] = 1005] = "POST_ADD_COLLECTIBLE";
     /**
      * Fires after an entity takes damage.
      *
@@ -445,7 +445,7 @@ export var ModCallbackRepentogon;
      *   damageCountdown: int
      * ): void {}
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ENTITY_TAKE_DMG"] = 1006] = "MC_POST_ENTITY_TAKE_DMG";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ENTITY_TAKE_DMG"] = 1006] = "POST_ENTITY_TAKE_DMG";
     /**
      * Fires before `ModCallback.ENTITY_TAKE_DMG` regardless if the player is considered invincible or
      * has items such as Holy Mantle. This callback can be used to give player invincibility that
@@ -467,7 +467,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_TAKE_DMG"] = 1008] = "MC_PRE_PLAYER_TAKE_DMG";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_TAKE_DMG"] = 1008] = "PRE_PLAYER_TAKE_DMG";
     /**
      * Fires before hearts are added to the player. `optionalArg` is reserved for certain
      * `Add(...)Hearts` functions, such as the `ignoreKeeper` argument for
@@ -488,7 +488,7 @@ export var ModCallbackRepentogon;
      * ): int | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_ADD_HEARTS"] = 1009] = "MC_PRE_PLAYER_ADD_HEARTS";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_ADD_HEARTS"] = 1009] = "PRE_PLAYER_ADD_HEARTS";
     /**
      * Fires after hearts are added to the player. `optionalArg` is reserved for certain
      * `Add(...)Hearts` functions, such as the `ignoreKeeper` argument for
@@ -507,7 +507,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_ADD_HEARTS"] = 1010] = "MC_POST_PLAYER_ADD_HEARTS";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_ADD_HEARTS"] = 1010] = "POST_PLAYER_ADD_HEARTS";
     /**
      * Fires after a rock is destroyed. `source` can be undefined if `GridEntity.Destroy` is called
      * instead of `GridEntity.DestroyWithSource`.
@@ -525,7 +525,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ROCK_DESTROY"] = 1011] = "MC_POST_GRID_ROCK_DESTROY";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ROCK_DESTROY"] = 1011] = "POST_GRID_ROCK_DESTROY";
     /**
      * Fires before a `GridEntity` attempts to inflict damage on an entity.
      *
@@ -546,7 +546,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_GRID_HURT_DAMAGE"] = 1012] = "MC_GRID_HURT_DAMAGE";
+    ModCallbackRepentogon[ModCallbackRepentogon["GRID_HURT_DAMAGE"] = 1012] = "GRID_HURT_DAMAGE";
     /**
      * Fires after a `GridEntity` has attempted to inflict damage on an entity. This does not
      * guarantee that the entity actually took damage, such as if the player is currently invincible.
@@ -566,7 +566,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_HURT_DAMAGE"] = 1013] = "MC_POST_GRID_HURT_DAMAGE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_HURT_DAMAGE"] = 1013] = "POST_GRID_HURT_DAMAGE";
     /**
      * Fires before a trinket is added to the player.
      *
@@ -585,7 +585,7 @@ export var ModCallbackRepentogon;
      * ): TrinketType | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_ADD_TRINKET"] = 1014] = "MC_PRE_ADD_TRINKET";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_ADD_TRINKET"] = 1014] = "PRE_ADD_TRINKET";
     /**
      * Fires before a pickup is added to the player's Bag of Crafting.
      *
@@ -604,7 +604,7 @@ export var ModCallbackRepentogon;
      * ): BagOfCraftingPickup[] | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_TRY_ADD_TO_BAG_OF_CRAFTING"] = 1015] = "MC_TRY_ADD_TO_BAG_OF_CRAFTING";
+    ModCallbackRepentogon[ModCallbackRepentogon["TRY_ADD_TO_BAG_OF_CRAFTING"] = 1015] = "TRY_ADD_TO_BAG_OF_CRAFTING";
     /**
      * Fires after a pickup is added to the player's Bag of Crafting.
      *
@@ -616,7 +616,7 @@ export var ModCallbackRepentogon;
      * function postAddToBagOfCrafting(player: EntityPlayer, pickup: EntityPickup): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ADD_TO_BAG_OF_CRAFTING"] = 1016] = "MC_POST_ADD_TO_BAG_OF_CRAFTING";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ADD_TO_BAG_OF_CRAFTING"] = 1016] = "POST_ADD_TO_BAG_OF_CRAFTING";
     /**
      * Called before a `GridEntityPoop` or `GridEntityTNT` takes damage.
      *
@@ -634,7 +634,7 @@ export var ModCallbackRepentogon;
      * ): int | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_HURT"] = 1017] = "MC_PRE_GRID_HURT";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_HURT"] = 1017] = "PRE_GRID_HURT";
     /**
      * Called after a `GridEntityPoop` or `GridEntityTNT` takes damage.
      *
@@ -650,7 +650,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_HURT"] = 1018] = "MC_POST_GRID_HURT";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_HURT"] = 1018] = "POST_GRID_HURT";
     /**
      * You cannot filter this callback.
      *
@@ -658,7 +658,7 @@ export var ModCallbackRepentogon;
      * function preHUDUpdate(): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_HUD_UPDATE"] = 1020] = "MC_HUD_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["HUD_UPDATE"] = 1020] = "HUD_UPDATE";
     /**
      * You cannot filter this callback.
      *
@@ -666,7 +666,7 @@ export var ModCallbackRepentogon;
      * function postHUDUpdate(): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_HUD_UPDATE"] = 1021] = "MC_POST_HUD_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_HUD_UPDATE"] = 1021] = "POST_HUD_UPDATE";
     /**
      * You cannot filter this callback.
      *
@@ -674,7 +674,7 @@ export var ModCallbackRepentogon;
      * function preHUDRender(): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_HUD_RENDER"] = 1022] = "MC_HUD_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["HUD_RENDER"] = 1022] = "HUD_RENDER";
     /**
      * Fires each time the main menu renders on the screen.
      *
@@ -684,7 +684,7 @@ export var ModCallbackRepentogon;
      * function postMainMenuRender(): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_MAIN_MENU_RENDER"] = 1023] = "MC_MAIN_MENU_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["MAIN_MENU_RENDER"] = 1023] = "MAIN_MENU_RENDER";
     /**
      * You cannot filter this callback.
      *
@@ -692,7 +692,7 @@ export var ModCallbackRepentogon;
      * function postHUDRender(): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_HUD_RENDER"] = 1024] = "MC_POST_HUD_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_HUD_RENDER"] = 1024] = "POST_HUD_RENDER";
     /**
      * Called before the game's main update cycle begins.
      *
@@ -704,13 +704,13 @@ export var ModCallbackRepentogon;
      * function preUpdate(): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_UPDATE"] = 1026] = "MC_PRE_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_UPDATE"] = 1026] = "PRE_UPDATE";
     /**
      * Return false to cancel rendering.
      *
      * Return an object to specify the `CollectibleType` or `TrinketType` of items to skip rendering
      * their sprites, leaving empty space instead. You can then use the `HistoryHUD` class to help you
-     * render in that space (preferably in `MC_POST_HISTORYHUD_RENDER`).
+     * render in that space (preferably in `POST_HISTORYHUD_RENDER`).
      *
      * You cannot filter this callback.
      *
@@ -721,7 +721,7 @@ export var ModCallbackRepentogon;
      * ): boolean | { HideCollectibles?: CollectibleType[]; HideTrinkets?: TrinketType[] } | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_HISTORYHUD_RENDER"] = 1027] = "MC_PRE_HISTORYHUD_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_HISTORYHUD_RENDER"] = 1027] = "PRE_HISTORYHUD_RENDER";
     /**
      * You cannot filter this callback.
      *
@@ -729,7 +729,7 @@ export var ModCallbackRepentogon;
      * function postHistoryHUDRender(historyHUD: HistoryHUD, renderPos: Vector): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_HISTORYHUD_RENDER"] = 1028] = "MC_POST_HISTORYHUD_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_HISTORYHUD_RENDER"] = 1028] = "POST_HISTORYHUD_RENDER";
     /**
      * Runs when the contents of the `HistoryHUD` are refreshed (typically when some item is added or removed).
      *
@@ -739,7 +739,7 @@ export var ModCallbackRepentogon;
      * function postHistoryHUDRecompute(historyHUD: HistoryHUD, playerIndex: int): int | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_HISTORYHUD_RECOMPUTE"] = 1029] = "MC_POST_HISTORYHUD_RECOMPUTE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_HISTORYHUD_RECOMPUTE"] = 1029] = "POST_HISTORYHUD_RECOMPUTE";
     /**
      * Fires before a sound effect is played.
      *
@@ -779,7 +779,7 @@ export var ModCallbackRepentogon;
      *   | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_SFX_PLAY"] = 1030] = "MC_PRE_SFX_PLAY";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_SFX_PLAY"] = 1030] = "PRE_SFX_PLAY";
     /**
      * Fires after a sound effect is played.
      *
@@ -798,7 +798,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_SFX_PLAY"] = 1031] = "MC_POST_SFX_PLAY";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_SFX_PLAY"] = 1031] = "POST_SFX_PLAY";
     /**
      * Fires after a projectile is destroyed.
      *
@@ -810,7 +810,7 @@ export var ModCallbackRepentogon;
      * function postProjectileDeath(projectile: EntityProjectile): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PROJECTILE_DEATH"] = 1032] = "MC_POST_PROJECTILE_DEATH";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PROJECTILE_DEATH"] = 1032] = "POST_PROJECTILE_DEATH";
     /**
      * Fires after a tear is destroyed.
      *
@@ -822,7 +822,7 @@ export var ModCallbackRepentogon;
      * function postTearDeath(tear: EntityTear): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_TEAR_DEATH"] = 1033] = "MC_POST_TEAR_DEATH";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_TEAR_DEATH"] = 1033] = "POST_TEAR_DEATH";
     /**
      * Fires before music is played. This callback is fired for both `MusicManager.Play` and
      * `MusicManager.Crossfade`. To distinguish the source, use the `isFade` parameter.
@@ -845,7 +845,7 @@ export var ModCallbackRepentogon;
      * ): Music | [music?: Music, volumeOrFadeRate?: number] | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_MUSIC_PLAY"] = 1034] = "MC_PRE_MUSIC_PLAY";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_MUSIC_PLAY"] = 1034] = "PRE_MUSIC_PLAY";
     /**
      * Fires before the combat layer of the playing music is toggled. This only fires for
      * `MusicManager.EnableLayer` and not when the combat layer is automatically enabled in rooms with
@@ -862,7 +862,7 @@ export var ModCallbackRepentogon;
      * function preMusicLayerToggle(layerID: int, enabled: boolean): boolean | int | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_MUSIC_LAYER_TOGGLE"] = 1035] = "MC_PRE_MUSIC_LAYER_TOGGLE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_MUSIC_LAYER_TOGGLE"] = 1035] = "PRE_MUSIC_LAYER_TOGGLE";
     /**
      * Runs before the Hemoptysis / Tainted Azazel sneeze attack.
      *
@@ -872,7 +872,7 @@ export var ModCallbackRepentogon;
      * function preBrimstoneSneeze(source: Entity, direction: Vector, damageScale: float): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_BRIMSTONE_SNEEZE"] = 1036] = "MC_PRE_BRIMSTONE_SNEEZE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_BRIMSTONE_SNEEZE"] = 1036] = "PRE_BRIMSTONE_SNEEZE";
     /**
      * Runs after the Hemoptysis / Tainted Azazel sneeze attack.
      *
@@ -882,7 +882,7 @@ export var ModCallbackRepentogon;
      * function postBrimstoneSneeze(source: Entity, direction: Vector, damageScale: float): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_BRIMSTONE_SNEEZE"] = 1037] = "MC_POST_BRIMSTONE_SNEEZE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_BRIMSTONE_SNEEZE"] = 1037] = "POST_BRIMSTONE_SNEEZE";
     /**
      * Fires before the player's head is rendered.
      *
@@ -900,7 +900,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_RENDER_PLAYER_HEAD"] = 1038] = "MC_PRE_RENDER_PLAYER_HEAD";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_RENDER_PLAYER_HEAD"] = 1038] = "PRE_RENDER_PLAYER_HEAD";
     /**
      * Fires before the player's body is rendered.
      *
@@ -918,7 +918,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_RENDER_PLAYER_BODY"] = 1039] = "MC_PRE_RENDER_PLAYER_BODY";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_RENDER_PLAYER_BODY"] = 1039] = "PRE_RENDER_PLAYER_BODY";
     /**
      * Fires before an entity is thrown by a player.
      *
@@ -934,7 +934,7 @@ export var ModCallbackRepentogon;
      * ): Vector | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_ENTITY_THROW"] = 1040] = "MC_PRE_ENTITY_THROW";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_ENTITY_THROW"] = 1040] = "PRE_ENTITY_THROW";
     /**
      * Fires after an entity is thrown by a player.
      *
@@ -948,7 +948,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ENTITY_THROW"] = 1041] = "MC_POST_ENTITY_THROW";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ENTITY_THROW"] = 1041] = "POST_ENTITY_THROW";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -958,7 +958,7 @@ export var ModCallbackRepentogon;
      * function postPlayerInitLevelStats(player: EntityPlayer): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PLAYER_INIT_POST_LEVEL_INIT_STATS"] = 1042] = "MC_PLAYER_INIT_POST_LEVEL_INIT_STATS";
+    ModCallbackRepentogon[ModCallbackRepentogon["PLAYER_INIT_POST_LEVEL_INIT_STATS"] = 1042] = "PLAYER_INIT_POST_LEVEL_INIT_STATS";
     /**
      * Fires before the current room is unloaded from being exited. `newLevel` is set to `true` when
      * entering a new level or exiting the run.
@@ -967,7 +967,7 @@ export var ModCallbackRepentogon;
      * function preRoomExit(player: EntityPlayer, newLevel: boolean): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_ROOM_EXIT"] = 1043] = "MC_PRE_ROOM_EXIT";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_ROOM_EXIT"] = 1043] = "PRE_ROOM_EXIT";
     /**
      * Fires after all entities and grid entities in the room have been rendered, but before effects
      * like overlays, shockwaves, and the mirror world shaders are applied. Rendering done in this
@@ -979,7 +979,7 @@ export var ModCallbackRepentogon;
      * function postRoomRenderEntities(): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ROOM_RENDER_ENTITIES"] = 1044] = "MC_POST_ROOM_RENDER_ENTITIES";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ROOM_RENDER_ENTITIES"] = 1044] = "POST_ROOM_RENDER_ENTITIES";
     /**
      * Fires before the completion mark is set. Return `false` to prevent it from being set.
      *
@@ -994,7 +994,7 @@ export var ModCallbackRepentogon;
      *  ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_COMPLETION_MARK_GET"] = 1047] = "MC_COMPLETION_MARK_GET";
+    ModCallbackRepentogon[ModCallbackRepentogon["COMPLETION_MARK_GET"] = 1047] = "COMPLETION_MARK_GET";
     /**
      * Fires after the completion mark is set.
      *
@@ -1006,7 +1006,7 @@ export var ModCallbackRepentogon;
      * function postCompletionMarkSet(completion: CompletionType, playerType: PlayerType): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_COMPLETION_MARK_GET"] = 1048] = "MC_POST_COMPLETION_MARK_GET";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_COMPLETION_MARK_GET"] = 1048] = "POST_COMPLETION_MARK_GET";
     /**
      * Fires before a completion event is recorded, such as when defeating an end boss or unlocking a
      * tainted character.
@@ -1021,7 +1021,7 @@ export var ModCallbackRepentogon;
      * function preCompletionEvent(completion: CompletionType): boolean | CompletionType | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_COMPLETION_EVENT"] = 1049] = "MC_PRE_COMPLETION_EVENT";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_COMPLETION_EVENT"] = 1049] = "PRE_COMPLETION_EVENT";
     /**
      * Fires before the game checks for vanilla revive effects like 1UP before determining whether to
      * show the game over screen.
@@ -1043,7 +1043,7 @@ export var ModCallbackRepentogon;
      *
      * @see https://repentogon.com/xml/items.html
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_TRIGGER_PLAYER_DEATH"] = 1050] = "MC_PRE_TRIGGER_PLAYER_DEATH";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_TRIGGER_PLAYER_DEATH"] = 1050] = "PRE_TRIGGER_PLAYER_DEATH";
     /**
      * Fires after the game checks for vanilla revive effects like 1UP before determining whether to
      * show the game over screen.
@@ -1061,7 +1061,7 @@ export var ModCallbackRepentogon;
      * function triggerPlayerDeathPostCheckRevives(player: EntityPlayer): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_TRIGGER_PLAYER_DEATH_POST_CHECK_REVIVES"] = 1051] = "MC_TRIGGER_PLAYER_DEATH_POST_CHECK_REVIVES";
+    ModCallbackRepentogon[ModCallbackRepentogon["TRIGGER_PLAYER_DEATH_POST_CHECK_REVIVES"] = 1051] = "TRIGGER_PLAYER_DEATH_POST_CHECK_REVIVES";
     /**
      * Fires before a completion event is recorded, such as when defeating an end boss or unlocking a
      * tainted character.
@@ -1072,9 +1072,9 @@ export var ModCallbackRepentogon;
      * function postCompletionEvent(completion: CompletionType): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_COMPLETION_EVENT"] = 1052] = "MC_POST_COMPLETION_EVENT";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_COMPLETION_EVENT"] = 1052] = "POST_COMPLETION_EVENT";
     /**
-     * Compared to `MC_POST_ADD_COLLECTIBLE`, this runs for all of "true" items, wisps, and
+     * Compared to `POST_ADD_COLLECTIBLE`, this runs for all of "true" items, wisps, and
      * REPENTOGON's innate items.
      *
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
@@ -1090,7 +1090,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_TRIGGER_COLLECTIBLE_ADDED"] = 1053] = "MC_POST_TRIGGER_COLLECTIBLE_ADDED";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_TRIGGER_COLLECTIBLE_ADDED"] = 1053] = "POST_TRIGGER_COLLECTIBLE_ADDED";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -1106,7 +1106,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ADD_INNATE_COLLECTIBLE"] = 1054] = "MC_POST_ADD_INNATE_COLLECTIBLE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ADD_INNATE_COLLECTIBLE"] = 1054] = "POST_ADD_INNATE_COLLECTIBLE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -1122,7 +1122,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ADD_INNATE_TRINKET"] = 1055] = "MC_POST_ADD_INNATE_TRINKET";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ADD_INNATE_TRINKET"] = 1055] = "POST_ADD_INNATE_TRINKET";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -1138,7 +1138,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_REMOVE_INNATE_COLLECTIBLE"] = 1056] = "MC_POST_REMOVE_INNATE_COLLECTIBLE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_REMOVE_INNATE_COLLECTIBLE"] = 1056] = "POST_REMOVE_INNATE_COLLECTIBLE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -1154,7 +1154,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_REMOVE_INNATE_TRINKET"] = 1057] = "MC_POST_REMOVE_INNATE_TRINKET";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_REMOVE_INNATE_TRINKET"] = 1057] = "POST_REMOVE_INNATE_TRINKET";
     /**
      * Fires before a level is initialized.
      *
@@ -1164,7 +1164,7 @@ export var ModCallbackRepentogon;
      * function preLevelInit(): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_LEVEL_INIT"] = 1060] = "MC_PRE_LEVEL_INIT";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_LEVEL_INIT"] = 1060] = "PRE_LEVEL_INIT";
     /**
      * Returning a Dimension that does not exist in the current floor will crash the game.
      *
@@ -1177,7 +1177,7 @@ export var ModCallbackRepentogon;
      * ): { TargetRoomIdx?: int, Dimension?: Dimension } | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_CHANGE_ROOM"] = 1061] = "MC_PRE_CHANGE_ROOM";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_CHANGE_ROOM"] = 1061] = "PRE_CHANGE_ROOM";
     /**
      * Fires after a player purchased a pickup from a shop. This also fires for Devil Deals taken.
      *
@@ -1189,7 +1189,7 @@ export var ModCallbackRepentogon;
      * postPickupShopPurchase(pickup: EntityPickup, player: EntityPlayer, moneySpent: int): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PICKUP_SHOP_PURCHASE"] = 1062] = "MC_POST_PICKUP_SHOP_PURCHASE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PICKUP_SHOP_PURCHASE"] = 1062] = "POST_PICKUP_SHOP_PURCHASE";
     /**
      * Fires when `EntityFamiliar.GetFollowerPriority` is called.
      *
@@ -1203,7 +1203,7 @@ export var ModCallbackRepentogon;
      * function getFollowerPriority(familiar: EntityFamiliar): FollowerPriority | | int | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_GET_FOLLOWER_PRIORITY"] = 1063] = "MC_GET_FOLLOWER_PRIORITY";
+    ModCallbackRepentogon[ModCallbackRepentogon["GET_FOLLOWER_PRIORITY"] = 1063] = "GET_FOLLOWER_PRIORITY";
     /**
      * Fires before a card is used.
      *
@@ -1221,7 +1221,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_USE_CARD"] = 1064] = "MC_PRE_USE_CARD";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_USE_CARD"] = 1064] = "PRE_USE_CARD";
     /**
      * Fires before a pill is used.
      *
@@ -1240,7 +1240,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_USE_PILL"] = 1065] = "MC_PRE_USE_PILL";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_USE_PILL"] = 1065] = "PRE_USE_PILL";
     /**
      * Fires before the price of a shop item is set.
      *
@@ -1259,7 +1259,7 @@ export var ModCallbackRepentogon;
      *  ): int | PickupPrice | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_GET_SHOP_ITEM_PRICE"] = 1066] = "MC_GET_SHOP_ITEM_PRICE";
+    ModCallbackRepentogon[ModCallbackRepentogon["GET_SHOP_ITEM_PRICE"] = 1066] = "GET_SHOP_ITEM_PRICE";
     /**
      * Fires when `EntityPlayer.GetHealthType` is called.
      *
@@ -1280,7 +1280,7 @@ export var ModCallbackRepentogon;
      * @see https://repentogon.com/xml/players.html
      * @see https://repentogon.com/xml/items.html
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PLAYER_GET_HEALTH_TYPE"] = 1067] = "MC_PLAYER_GET_HEALTH_TYPE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PLAYER_GET_HEALTH_TYPE"] = 1067] = "PLAYER_GET_HEALTH_TYPE";
     /**
      * Fires before room clear effects are triggered.
      *
@@ -1290,7 +1290,7 @@ export var ModCallbackRepentogon;
      * function preRoomTriggerClear(playSound: boolean): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_ROOM_TRIGGER_CLEAR"] = 1068] = "MC_PRE_ROOM_TRIGGER_CLEAR";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_ROOM_TRIGGER_CLEAR"] = 1068] = "PRE_ROOM_TRIGGER_CLEAR";
     /**
      * Fires before room clear effects are triggered for a specific player.
      *
@@ -1304,7 +1304,7 @@ export var ModCallbackRepentogon;
      * function postPlayerTriggerRoomClear(player: EntityPlayer): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_TRIGGER_ROOM_CLEAR"] = 1069] = "MC_PRE_PLAYER_TRIGGER_ROOM_CLEAR";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_TRIGGER_ROOM_CLEAR"] = 1069] = "PRE_PLAYER_TRIGGER_ROOM_CLEAR";
     /**
      * Fires before a shop is restocked from effects such as the Restock collectible or restock
      * machines.
@@ -1320,7 +1320,7 @@ export var ModCallbackRepentogon;
      * function preRestockShop(partial: boolean): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_RESTOCK_SHOP"] = 1070] = "MC_PRE_RESTOCK_SHOP";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_RESTOCK_SHOP"] = 1070] = "PRE_RESTOCK_SHOP";
     /**
      * Fires after a shop is restocked from effects such as the Restock collectible or restock
      * machines.
@@ -1334,7 +1334,7 @@ export var ModCallbackRepentogon;
      * function postRestockShop(partial: boolean): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_RESTOCK_SHOP"] = 1071] = "MC_POST_RESTOCK_SHOP";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_RESTOCK_SHOP"] = 1071] = "POST_RESTOCK_SHOP";
     /**
      * Fires when `EntityPlayer.GetActiveMaxCharge` is called.
      *
@@ -1353,7 +1353,7 @@ export var ModCallbackRepentogon;
      * ): int | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PLAYER_GET_ACTIVE_MAX_CHARGE"] = 1072] = "MC_PLAYER_GET_ACTIVE_MAX_CHARGE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PLAYER_GET_ACTIVE_MAX_CHARGE"] = 1072] = "PLAYER_GET_ACTIVE_MAX_CHARGE";
     /**
      * Fires when `EntityPlayer.GetActiveMinUsableCharge` is called.
      *
@@ -1374,7 +1374,7 @@ export var ModCallbackRepentogon;
      * ): int | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PLAYER_GET_ACTIVE_MIN_USABLE_CHARGE"] = 1073] = "MC_PLAYER_GET_ACTIVE_MIN_USABLE_CHARGE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PLAYER_GET_ACTIVE_MIN_USABLE_CHARGE"] = 1073] = "PLAYER_GET_ACTIVE_MIN_USABLE_CHARGE";
     /**
      * Fires when `EntityPlayer.GetHeartLimit` is called.
      *
@@ -1395,7 +1395,7 @@ export var ModCallbackRepentogon;
      * ): int | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PLAYER_GET_HEART_LIMIT"] = 1074] = "MC_PLAYER_GET_HEART_LIMIT";
+    ModCallbackRepentogon[ModCallbackRepentogon["PLAYER_GET_HEART_LIMIT"] = 1074] = "PLAYER_GET_HEART_LIMIT";
     /**
      * Fires when the Giantbook animation updates.
      *
@@ -1407,7 +1407,7 @@ export var ModCallbackRepentogon;
      * function postItemOverlayUpdate(giantbookID: GiantbookType, skipAnimation: boolean): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ITEM_OVERLAY_UPDATE"] = 1075] = "MC_POST_ITEM_OVERLAY_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ITEM_OVERLAY_UPDATE"] = 1075] = "POST_ITEM_OVERLAY_UPDATE";
     /**
      * Fires before the 1076 plays.
      *
@@ -1426,7 +1426,7 @@ export var ModCallbackRepentogon;
      * ): boolean | GiantbookType | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_ITEM_OVERLAY_SHOW"] = 1076] = "MC_PRE_ITEM_OVERLAY_SHOW";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_ITEM_OVERLAY_SHOW"] = 1076] = "PRE_ITEM_OVERLAY_SHOW";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -1436,7 +1436,7 @@ export var ModCallbackRepentogon;
      * function postPlayerNewRoomTempEffects(player: EntityPlayer): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_NEW_ROOM_TEMP_EFFECTS"] = 1077] = "MC_POST_PLAYER_NEW_ROOM_TEMP_EFFECTS";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_NEW_ROOM_TEMP_EFFECTS"] = 1077] = "POST_PLAYER_NEW_ROOM_TEMP_EFFECTS";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -1450,7 +1450,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_NEW_LEVEL"] = 1078] = "MC_POST_PLAYER_NEW_LEVEL";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_NEW_LEVEL"] = 1078] = "POST_PLAYER_NEW_LEVEL";
     /**
      * Fires after an active item is rendered on the player's HUD.
      *
@@ -1469,7 +1469,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYERHUD_RENDER_ACTIVE_ITEM"] = 1079] = "MC_POST_PLAYERHUD_RENDER_ACTIVE_ITEM";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYERHUD_RENDER_ACTIVE_ITEM"] = 1079] = "POST_PLAYERHUD_RENDER_ACTIVE_ITEM";
     /**
      * Fires before a familiar is rendered.
      *
@@ -1491,7 +1491,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_FAMILIAR_RENDER"] = 1080] = "MC_PRE_FAMILIAR_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_FAMILIAR_RENDER"] = 1080] = "PRE_FAMILIAR_RENDER";
     /**
      * Fires before a NPC is rendered.
      *
@@ -1509,7 +1509,7 @@ export var ModCallbackRepentogon;
      * function preNPCRender(npc: EntityNPC, offset: Vector): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_NPC_RENDER"] = 1081] = "MC_PRE_NPC_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_NPC_RENDER"] = 1081] = "PRE_NPC_RENDER";
     /**
      * Fires before a player is rendered.
      *
@@ -1528,7 +1528,7 @@ export var ModCallbackRepentogon;
      * function prePlayerRender(player: EntityPlayer, offset: Vector): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_RENDER"] = 1082] = "MC_PRE_PLAYER_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_RENDER"] = 1082] = "PRE_PLAYER_RENDER";
     /**
      * Fires before a pickup is rendered.
      *
@@ -1546,7 +1546,7 @@ export var ModCallbackRepentogon;
      * function prePickupRender(pickup: EntityPickup, offset: Vector): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PICKUP_RENDER"] = 1083] = "MC_PRE_PICKUP_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PICKUP_RENDER"] = 1083] = "PRE_PICKUP_RENDER";
     /**
      * Fires before a tear is rendered.
      *
@@ -1564,7 +1564,7 @@ export var ModCallbackRepentogon;
      * function preTearRender(tear: EntityTear, offset: Vector): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_TEAR_RENDER"] = 1084] = "MC_PRE_TEAR_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_TEAR_RENDER"] = 1084] = "PRE_TEAR_RENDER";
     /**
      * Fires before a projectile is rendered.
      *
@@ -1586,7 +1586,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PROJECTILE_RENDER"] = 1085] = "MC_PRE_PROJECTILE_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PROJECTILE_RENDER"] = 1085] = "PRE_PROJECTILE_RENDER";
     /**
      * Fires before a knife is rendered.
      *
@@ -1604,7 +1604,7 @@ export var ModCallbackRepentogon;
      * function preKnifeRender(knife: EntityKnife, offset: Vector): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_KNIFE_RENDER"] = 1086] = "MC_PRE_KNIFE_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_KNIFE_RENDER"] = 1086] = "PRE_KNIFE_RENDER";
     /**
      * Fires before an effect is rendered.
      *
@@ -1622,7 +1622,7 @@ export var ModCallbackRepentogon;
      * function preEffectRender(effect: EntityEffect, offset: Vector): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_EFFECT_RENDER"] = 1087] = "MC_PRE_EFFECT_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_EFFECT_RENDER"] = 1087] = "PRE_EFFECT_RENDER";
     /**
      * Fires before a bomb is rendered.
      *
@@ -1640,7 +1640,7 @@ export var ModCallbackRepentogon;
      * function preBombRender(bomb: EntityBomb, offset: Vector): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_BOMB_RENDER"] = 1088] = "MC_PRE_BOMB_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_BOMB_RENDER"] = 1088] = "PRE_BOMB_RENDER";
     /**
      * Fires before an `EntitySlot` is rendered.
      *
@@ -1658,7 +1658,7 @@ export var ModCallbackRepentogon;
      * function preSlotRender(slot: EntitySlot, offset: Vector): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_SLOT_RENDER"] = 1089] = "MC_PRE_SLOT_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_SLOT_RENDER"] = 1089] = "PRE_SLOT_RENDER";
     /**
      * Fires after an `EntitySlot` is rendered.
      *
@@ -1670,7 +1670,7 @@ export var ModCallbackRepentogon;
      * function postSlotRender(slot: EntitySlot, offset: Vector): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_SLOT_RENDER"] = 1090] = "MC_POST_SLOT_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_SLOT_RENDER"] = 1090] = "POST_SLOT_RENDER";
     /**
      * Fires after the player's hearts are rendered on the HUD.
      *
@@ -1686,7 +1686,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYERHUD_RENDER_HEARTS"] = 1091] = "MC_POST_PLAYERHUD_RENDER_HEARTS";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYERHUD_RENDER_HEARTS"] = 1091] = "POST_PLAYERHUD_RENDER_HEARTS";
     /**
      * Fires before a jingle plays.
      *
@@ -1701,7 +1701,7 @@ export var ModCallbackRepentogon;
      * function preMusicPlayJingle(music: Music): Music | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_MUSIC_PLAY_JINGLE"] = 1094] = "MC_PRE_MUSIC_PLAY_JINGLE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_MUSIC_PLAY_JINGLE"] = 1094] = "PRE_MUSIC_PLAY_JINGLE";
     /**
      * Fires after a collectible has been removed from a player.
      *
@@ -1717,7 +1717,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_TRIGGER_COLLECTIBLE_REMOVED"] = 1095] = "MC_POST_TRIGGER_COLLECTIBLE_REMOVED";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_TRIGGER_COLLECTIBLE_REMOVED"] = 1095] = "POST_TRIGGER_COLLECTIBLE_REMOVED";
     /**
      * Fires after a trinket has been added to a player.
      *
@@ -1733,7 +1733,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_TRIGGER_TRINKET_ADDED"] = 1096] = "MC_POST_TRIGGER_TRINKET_ADDED";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_TRIGGER_TRINKET_ADDED"] = 1096] = "POST_TRIGGER_TRINKET_ADDED";
     /**
      * Fires after a trinket has been removed from a player.
      *
@@ -1745,7 +1745,7 @@ export var ModCallbackRepentogon;
      * function postTrinketRemoved(player: EntityPlayer, trinket: TrinketType): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_TRIGGER_TRINKET_REMOVED"] = 1097] = "MC_POST_TRIGGER_TRINKET_REMOVED";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_TRIGGER_TRINKET_REMOVED"] = 1097] = "POST_TRIGGER_TRINKET_REMOVED";
     /**
      * Fires after the a weapon's attack is triggered.
      *
@@ -1762,7 +1762,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_TRIGGER_WEAPON_FIRED"] = 1098] = "MC_POST_TRIGGER_WEAPON_FIRED";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_TRIGGER_WEAPON_FIRED"] = 1098] = "POST_TRIGGER_WEAPON_FIRED";
     /**
      * Fires after the level's layout has been generated.
      *
@@ -1772,7 +1772,7 @@ export var ModCallbackRepentogon;
      * function postLevelLayoutGenerated(levelGenerator: LevelGenerator): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_LEVEL_LAYOUT_GENERATED"] = 1099] = "MC_POST_LEVEL_LAYOUT_GENERATED";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_LEVEL_LAYOUT_GENERATED"] = 1099] = "POST_LEVEL_LAYOUT_GENERATED";
     /**
      * Fires before a grid entity is spawned outside of room initialization.
      *
@@ -1807,7 +1807,7 @@ export var ModCallbackRepentogon;
      *   | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_SPAWN"] = 1100] = "MC_PRE_GRID_ENTITY_SPAWN";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_SPAWN"] = 1100] = "PRE_GRID_ENTITY_SPAWN";
     /**
      * Fires after a grid entity has spawned in the room.
      *
@@ -1819,7 +1819,7 @@ export var ModCallbackRepentogon;
      * function postGridEntitySpawn(grid: GridEntity): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_SPAWN"] = 1101] = "MC_POST_GRID_ENTITY_SPAWN";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_SPAWN"] = 1101] = "POST_GRID_ENTITY_SPAWN";
     /**
      * Fires each frame the nightmare scene renders.
      *
@@ -1829,7 +1829,7 @@ export var ModCallbackRepentogon;
      * function postNightmareSceneRender(): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_NIGHTMARE_SCENE_RENDER"] = 1102] = "MC_POST_NIGHTMARE_SCENE_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_NIGHTMARE_SCENE_RENDER"] = 1102] = "POST_NIGHTMARE_SCENE_RENDER";
     /**
      * Fires when the Nightmare Screen first appears on the screen.
      *
@@ -1839,7 +1839,7 @@ export var ModCallbackRepentogon;
      * function postNightmareSceneShow(isDogmaNightmare: boolean): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_NIGHTMARE_SCENE_SHOW"] = 1103] = "MC_POST_NIGHTMARE_SCENE_SHOW";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_NIGHTMARE_SCENE_SHOW"] = 1103] = "POST_NIGHTMARE_SCENE_SHOW";
     /**
      * Fires before the game selects which stage to load, usually when entering a trapdoor.
      *
@@ -1856,7 +1856,7 @@ export var ModCallbackRepentogon;
      * ): [levelStage?: LevelStage, stageType?: StageType] | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_LEVEL_SELECT"] = 1104] = "MC_PRE_LEVEL_SELECT";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_LEVEL_SELECT"] = 1104] = "PRE_LEVEL_SELECT";
     /**
      * Fires each frame the weapon updates.
      *
@@ -1872,7 +1872,7 @@ export var ModCallbackRepentogon;
      *   isInterpolated: boolean
      * ): void {}
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_WEAPON_FIRE"] = 1105] = "MC_POST_WEAPON_FIRE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_WEAPON_FIRE"] = 1105] = "POST_WEAPON_FIRE";
     /**
      * Fires before the walls of the backdrop are rendered.
      *
@@ -1882,7 +1882,7 @@ export var ModCallbackRepentogon;
      * function preBackdropRenderWalls(wallColor: Color): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_BACKDROP_RENDER_WALLS"] = 1106] = "MC_PRE_BACKDROP_RENDER_WALLS";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_BACKDROP_RENDER_WALLS"] = 1106] = "PRE_BACKDROP_RENDER_WALLS";
     /**
      * Fires before the floor of the backdrop is rendered.
      *
@@ -1892,7 +1892,7 @@ export var ModCallbackRepentogon;
      * function preBackdropRenderFloor(floorColor: Color): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_BACKDROP_RENDER_FLOOR"] = 1107] = "MC_PRE_BACKDROP_RENDER_FLOOR";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_BACKDROP_RENDER_FLOOR"] = 1107] = "PRE_BACKDROP_RENDER_FLOOR";
     /**
      * Fires before the water is rendered.
      *
@@ -1902,7 +1902,7 @@ export var ModCallbackRepentogon;
      * function preBackdropRenderWater(): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_BACKDROP_RENDER_WATER"] = 1108] = "MC_PRE_BACKDROP_RENDER_WATER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_BACKDROP_RENDER_WATER"] = 1108] = "PRE_BACKDROP_RENDER_WATER";
     /**
      * You cannot filter this callback.
      *
@@ -1910,7 +1910,7 @@ export var ModCallbackRepentogon;
      * function postBackdropPreRenderWalls(): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_BACKDROP_PRE_RENDER_WALLS"] = 1109] = "MC_POST_BACKDROP_PRE_RENDER_WALLS";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_BACKDROP_PRE_RENDER_WALLS"] = 1109] = "POST_BACKDROP_PRE_RENDER_WALLS";
     /**
      * Fires when the game first calculates the chance to spawn a Planetarium by checking if the
      * current floor is valid. By default, the game prevents Planetariums from spawning after Chapter
@@ -1925,7 +1925,7 @@ export var ModCallbackRepentogon;
      * function prePlanetariumApplyStagePenalty(): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLANETARIUM_APPLY_STAGE_PENALTY"] = 1110] = "MC_PRE_PLANETARIUM_APPLY_STAGE_PENALTY";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLANETARIUM_APPLY_STAGE_PENALTY"] = 1110] = "PRE_PLANETARIUM_APPLY_STAGE_PENALTY";
     /**
      * Fires after `ModCallbackRepentogon.PRE_PLANETARIUM_APPLY_STAGE_PENALTY` and when the chance
      * penalty is applied. The penalty locks the planetarium chance to 1% (or 10% with Telescope Lens)
@@ -1939,7 +1939,7 @@ export var ModCallbackRepentogon;
      * function prePlanetariumApplyPlanetariumPenalty(): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLANETARIUM_APPLY_PLANETARIUM_PENALTY"] = 1111] = "MC_PRE_PLANETARIUM_APPLY_PLANETARIUM_PENALTY";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLANETARIUM_APPLY_PLANETARIUM_PENALTY"] = 1111] = "PRE_PLANETARIUM_APPLY_PLANETARIUM_PENALTY";
     /**
      * Fires after `ModCallbackRepentogon.PRE_PLANETARIUM_APPLY_PLANETARIUM_PENALTY` and when the game
      * applies the Treasure Room visit penalty. By default, the game applies a penalty depending on
@@ -1958,7 +1958,7 @@ export var ModCallbackRepentogon;
      * ): boolean | int | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLANETARIUM_APPLY_TREASURE_PENALTY"] = 1112] = "MC_PRE_PLANETARIUM_APPLY_TREASURE_PENALTY";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLANETARIUM_APPLY_TREASURE_PENALTY"] = 1112] = "PRE_PLANETARIUM_APPLY_TREASURE_PENALTY";
     /**
      * Fires after `ModCallbackRepentogon.PRE_PLANETARIUM_APPLY_TREASURE_ROOM_PENALTY` and when the
      * game modifies the Planetarium chance from items such as Crystal Ball and Magic 8 Ball.
@@ -1974,7 +1974,7 @@ export var ModCallbackRepentogon;
      * function prePlanetariumApplyItems(chance: float): float | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLANETARIUM_APPLY_ITEMS"] = 1113] = "MC_PRE_PLANETARIUM_APPLY_ITEMS";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLANETARIUM_APPLY_ITEMS"] = 1113] = "PRE_PLANETARIUM_APPLY_ITEMS";
     /**
      * Fires after `ModCallbackRepentogon.PRE_PLANETARIUM_APPLY_ITEMS` and when the game calculates
      * the additional 9% chance from having Telescope Lens.
@@ -1987,7 +1987,7 @@ export var ModCallbackRepentogon;
      * function prePlanetariumApplyTelescopeLens(chance: float): float | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLANETARIUM_APPLY_TELESCOPE_LENS"] = 1114] = "MC_PRE_PLANETARIUM_APPLY_TELESCOPE_LENS";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLANETARIUM_APPLY_TELESCOPE_LENS"] = 1114] = "PRE_PLANETARIUM_APPLY_TELESCOPE_LENS";
     /**
      * Fires after `ModCallbackRepentogon.PRE_PLANETARIUM_APPLY_TELESCOPE_LENS` and when the final
      * planetarium chance is calculated.
@@ -1998,7 +1998,7 @@ export var ModCallbackRepentogon;
      * function prePlanetariumCalculateFinal(chance: float): float | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLANETARIUM_CALCULATE"] = 1115] = "MC_POST_PLANETARIUM_CALCULATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLANETARIUM_CALCULATE"] = 1115] = "POST_PLANETARIUM_CALCULATE";
     /**
      * Fires before a spritesheet is loaded.
      *
@@ -2014,7 +2014,7 @@ export var ModCallbackRepentogon;
      * function preReplaceSpritesheet(layerID: int, fileName: string): [layerId?: int, pngFileName?: string] | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_REPLACE_SPRITESHEET"] = 1116] = "MC_PRE_REPLACE_SPRITESHEET";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_REPLACE_SPRITESHEET"] = 1116] = "PRE_REPLACE_SPRITESHEET";
     /**
      * Fires after a spritesheet has been loaded.
      *
@@ -2026,7 +2026,7 @@ export var ModCallbackRepentogon;
      * function preReplaceSpritesheet(layerID: int, fileName: string): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_REPLACE_SPRITESHEET"] = 1117] = "MC_POST_REPLACE_SPRITESHEET";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_REPLACE_SPRITESHEET"] = 1117] = "POST_REPLACE_SPRITESHEET";
     /**
      * Fires before the hearts UI is rendered on the player's HUD.
      *
@@ -2044,7 +2044,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYERHUD_RENDER_HEARTS"] = 1118] = "MC_PRE_PLAYERHUD_RENDER_HEARTS";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYERHUD_RENDER_HEARTS"] = 1118] = "PRE_PLAYERHUD_RENDER_HEARTS";
     /**
      * Fires before an active item is rendered on the player's HUD. Return true to prevent the item
      * from rendering.
@@ -2080,7 +2080,7 @@ export var ModCallbackRepentogon;
      *   | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYERHUD_RENDER_ACTIVE_ITEM"] = 1119] = "MC_PRE_PLAYERHUD_RENDER_ACTIVE_ITEM";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYERHUD_RENDER_ACTIVE_ITEM"] = 1119] = "PRE_PLAYERHUD_RENDER_ACTIVE_ITEM";
     /**
      * Fires whenever a command with its autocomplete type set to `AutocompleteType.CUSTOM` is being
      * autocompleted in the console.
@@ -2100,7 +2100,7 @@ export var ModCallbackRepentogon;
      * ): Array<string | [name: string, description: string]>| undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_CONSOLE_AUTOCOMPLETE"] = 1120] = "MC_CONSOLE_AUTOCOMPLETE";
+    ModCallbackRepentogon[ModCallbackRepentogon["CONSOLE_AUTOCOMPLETE"] = 1120] = "CONSOLE_AUTOCOMPLETE";
     /**
      * Fries after an `EntitySlot` spawns.
      *
@@ -2112,7 +2112,7 @@ export var ModCallbackRepentogon;
      * function postSlotInit(slot: EntitySlot): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_SLOT_INIT"] = 1121] = "MC_POST_SLOT_INIT";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_SLOT_INIT"] = 1121] = "POST_SLOT_INIT";
     /**
      * Fires after an `EntitySlot` updates.
      *
@@ -2124,7 +2124,7 @@ export var ModCallbackRepentogon;
      * function postSlotUpdate(slot: EntitySlot): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_SLOT_UPDATE"] = 1122] = "MC_POST_SLOT_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_SLOT_UPDATE"] = 1122] = "POST_SLOT_UPDATE";
     /**
      * Fires before an `EntitySlot` spawns random pickups when blown up.
      *
@@ -2138,7 +2138,7 @@ export var ModCallbackRepentogon;
      * function preSlotCreateExplosionDrops(slot: EntitySlot): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_SLOT_CREATE_EXPLOSION_DROPS"] = 1123] = "MC_PRE_SLOT_CREATE_EXPLOSION_DROPS";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_SLOT_CREATE_EXPLOSION_DROPS"] = 1123] = "PRE_SLOT_CREATE_EXPLOSION_DROPS";
     /**
      * Fires after an `EntitySlot` spawns random pickups when blown up.
      *
@@ -2150,7 +2150,7 @@ export var ModCallbackRepentogon;
      * function postSlotCreateExplosionDrops(slot: EntitySlot): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_SLOT_CREATE_EXPLOSION_DROPS"] = 1124] = "MC_POST_SLOT_CREATE_EXPLOSION_DROPS";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_SLOT_CREATE_EXPLOSION_DROPS"] = 1124] = "POST_SLOT_CREATE_EXPLOSION_DROPS";
     /**
      * Fires before an `EntitySlot` sets its prize collectible. This is used by Shell Game, Hell Game,
      * and Crane Game.
@@ -2168,7 +2168,7 @@ export var ModCallbackRepentogon;
      * ): CollectibleType | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_SLOT_SET_PRIZE_COLLECTIBLE"] = 1125] = "MC_PRE_SLOT_SET_PRIZE_COLLECTIBLE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_SLOT_SET_PRIZE_COLLECTIBLE"] = 1125] = "PRE_SLOT_SET_PRIZE_COLLECTIBLE";
     /**
      * Fires after an `EntitySlot` sets its prize collectible. This is used by Shell Game, Hell Game,
      * and Crane Game.
@@ -2181,7 +2181,7 @@ export var ModCallbackRepentogon;
      * function postSlotCreateExplosionDrops(slot: EntitySlot, collectible: CollectibleType): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_SLOT_SET_PRIZE_COLLECTIBLE"] = 1126] = "MC_POST_SLOT_SET_PRIZE_COLLECTIBLE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_SLOT_SET_PRIZE_COLLECTIBLE"] = 1126] = "POST_SLOT_SET_PRIZE_COLLECTIBLE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -2191,7 +2191,7 @@ export var ModCallbackRepentogon;
      * function prePlayerLevelInitStats(player: EntityPlayer): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PLAYER_INIT_PRE_LEVEL_INIT_STATS"] = 1127] = "MC_PLAYER_INIT_PRE_LEVEL_INIT_STATS";
+    ModCallbackRepentogon[ModCallbackRepentogon["PLAYER_INIT_PRE_LEVEL_INIT_STATS"] = 1127] = "PLAYER_INIT_PRE_LEVEL_INIT_STATS";
     /**
      * Fires after a player's `HealthType` changes, but before their existing health is corrected to
      * fit the new health type. After the callback runs, if the player's new health type doesn't
@@ -2213,7 +2213,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PLAYER_HEALTH_TYPE_CHANGE"] = 1128] = "MC_PLAYER_HEALTH_TYPE_CHANGE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PLAYER_HEALTH_TYPE_CHANGE"] = 1128] = "PLAYER_HEALTH_TYPE_CHANGE";
     /**
      * You cannot filter this callback.
      *
@@ -2221,7 +2221,7 @@ export var ModCallbackRepentogon;
      * function postForcePillEffect(pillEffect: PillEffect, pillColor: PillColor): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_FORCE_ADD_PILL_EFFECT"] = 1129] = "MC_POST_FORCE_ADD_PILL_EFFECT";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_FORCE_ADD_PILL_EFFECT"] = 1129] = "POST_FORCE_ADD_PILL_EFFECT";
     /**
      * Fires when the game starts to tally up vanilla items for calculating the chance of Devil and
      * Angel Deals. This is called before the stage penalty is applied.
@@ -2234,7 +2234,7 @@ export var ModCallbackRepentogon;
      * function preDevilApplyItems(chance: number): number | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_DEVIL_APPLY_ITEMS"] = 1130] = "MC_PRE_DEVIL_APPLY_ITEMS";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_DEVIL_APPLY_ITEMS"] = 1130] = "PRE_DEVIL_APPLY_ITEMS";
     /**
      * Fires after `ModCallbackRepentogon.PRE_DEVIL_APPLY_ITEMS` is called and when the game
      * calculates the stage penalty if a Devil or Angel Deal has appeared on a previous floor.
@@ -2247,7 +2247,7 @@ export var ModCallbackRepentogon;
      * function preDevilApplyStagePenalty(): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_DEVIL_APPLY_STAGE_PENALTY"] = 1131] = "MC_PRE_DEVIL_APPLY_STAGE_PENALTY";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_DEVIL_APPLY_STAGE_PENALTY"] = 1131] = "PRE_DEVIL_APPLY_STAGE_PENALTY";
     /**
      * Fires after `ModCallbackRepentogon.PRE_DEVIL_APPLY_STAGE_PENALTY`is called and when the game
      * calculates the chance from items which bypasses the stage penalty such as Goat Head and
@@ -2261,7 +2261,7 @@ export var ModCallbackRepentogon;
      * function preDevilApplySpecialItems(chance: number): number | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_DEVIL_APPLY_SPECIAL_ITEMS"] = 1132] = "MC_PRE_DEVIL_APPLY_SPECIAL_ITEMS";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_DEVIL_APPLY_SPECIAL_ITEMS"] = 1132] = "PRE_DEVIL_APPLY_SPECIAL_ITEMS";
     /**
      * Fires after `ModCallbackRepentogon.PRE_DEVIL_APPLY_SPECIAL_ITEMS`. This is the final step of
      * calculating the Devil and Angel Deal chance.
@@ -2274,7 +2274,7 @@ export var ModCallbackRepentogon;
      * function preDevilCalculateFinal(chance: number): number | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_DEVIL_CALCULATE"] = 1133] = "MC_POST_DEVIL_CALCULATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_DEVIL_CALCULATE"] = 1133] = "POST_DEVIL_CALCULATE";
     /**
      * Fires when a Giantbook begins to play its animation.
      *
@@ -2290,7 +2290,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ITEM_OVERLAY_SHOW"] = 1134] = "MC_POST_ITEM_OVERLAY_SHOW";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ITEM_OVERLAY_SHOW"] = 1134] = "POST_ITEM_OVERLAY_SHOW";
     /**
      * Fires before the game begins to render its contents.
      *
@@ -2300,7 +2300,7 @@ export var ModCallbackRepentogon;
      * function preRender(): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_RENDER"] = 1135] = "MC_PRE_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_RENDER"] = 1135] = "PRE_RENDER";
     /**
      * Fires before a room is placed in the level layout.
      *
@@ -2317,7 +2317,7 @@ export var ModCallbackRepentogon;
      * ): RoomConfigRoom | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_LEVEL_PLACE_ROOM"] = 1137] = "MC_PRE_LEVEL_PLACE_ROOM";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_LEVEL_PLACE_ROOM"] = 1137] = "PRE_LEVEL_PLACE_ROOM";
     /**
      * Fires after room clear effects have been triggered for a specific player.
      *
@@ -2329,7 +2329,7 @@ export var ModCallbackRepentogon;
      * function postPlayerTriggerRoomClear(player: EntityPlayer): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_TRIGGER_ROOM_CLEAR"] = 1138] = "MC_POST_PLAYER_TRIGGER_ROOM_CLEAR";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_TRIGGER_ROOM_CLEAR"] = 1138] = "POST_PLAYER_TRIGGER_ROOM_CLEAR";
     /**
      * Fires each frame after the Giantbook renders on the screen.
      *
@@ -2341,7 +2341,7 @@ export var ModCallbackRepentogon;
      * function postItemOverlayRender(giantbook: GiantbookType): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ITEM_OVERLAY_RENDER"] = 1139] = "MC_POST_ITEM_OVERLAY_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ITEM_OVERLAY_RENDER"] = 1139] = "POST_ITEM_OVERLAY_RENDER";
     /**
      * Fires after an active item has been discharged.
      *
@@ -2358,7 +2358,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_DISCHARGE_ACTIVE_ITEM"] = 1140] = "MC_POST_DISCHARGE_ACTIVE_ITEM";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_DISCHARGE_ACTIVE_ITEM"] = 1140] = "POST_DISCHARGE_ACTIVE_ITEM";
     /**
      * Fires before a backdrop changes.
      *
@@ -2370,7 +2370,7 @@ export var ModCallbackRepentogon;
      * function preBackdropChange(backdrop: BackdropType): BackdropType | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_BACKDROP_CHANGE"] = 1141] = "MC_PRE_BACKDROP_CHANGE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_BACKDROP_CHANGE"] = 1141] = "PRE_BACKDROP_CHANGE";
     /**
      * Fires after a backdrop has changed.
      *
@@ -2382,7 +2382,7 @@ export var ModCallbackRepentogon;
      * function postBackdropChange(backdrop: BackdropType): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_BACKDROP_CHANGE"] = 1142] = "MC_POST_BACKDROP_CHANGE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_BACKDROP_CHANGE"] = 1142] = "POST_BACKDROP_CHANGE";
     /**
      * Fires after room clear effects has been triggered.
      *
@@ -2392,7 +2392,7 @@ export var ModCallbackRepentogon;
      * function postRoomTriggerClear(playSound: boolean): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ROOM_TRIGGER_CLEAR"] = 1143] = "MC_POST_ROOM_TRIGGER_CLEAR";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ROOM_TRIGGER_CLEAR"] = 1143] = "POST_ROOM_TRIGGER_CLEAR";
     /**
      * Fires after a player drops a trinket onto the ground from their inventory.
      *
@@ -2409,7 +2409,7 @@ export var ModCallbackRepentogon;
      *   replacedTrinket: boolean
      * ): void {}
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_DROP_TRINKET"] = 1144] = "MC_POST_PLAYER_DROP_TRINKET";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_DROP_TRINKET"] = 1144] = "POST_PLAYER_DROP_TRINKET";
     /**
      * Fires before the lighting alpha is set.
      *
@@ -2422,7 +2422,7 @@ export var ModCallbackRepentogon;
      * function preGetLightingAlpha(float: number): float | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GET_LIGHTING_ALPHA"] = 1150] = "MC_PRE_GET_LIGHTING_ALPHA";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GET_LIGHTING_ALPHA"] = 1150] = "PRE_GET_LIGHTING_ALPHA";
     /**
      * Fires before a grid entity's lighting is rendered.
      *
@@ -2440,7 +2440,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_RENDER_GRID_LIGHTING"] = 1151] = "MC_PRE_RENDER_GRID_LIGHTING";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_RENDER_GRID_LIGHTING"] = 1151] = "PRE_RENDER_GRID_LIGHTING";
     /**
      * Fires before an entity's lighting is rendered.
      *
@@ -2458,7 +2458,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_RENDER_ENTITY_LIGHTING"] = 1152] = "MC_PRE_RENDER_ENTITY_LIGHTING";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_RENDER_ENTITY_LIGHTING"] = 1152] = "PRE_RENDER_ENTITY_LIGHTING";
     /**
      * Fires before the player is updated.
      *
@@ -2472,7 +2472,7 @@ export var ModCallbackRepentogon;
      * function prePlayerUpdate(player: EntityPlayer): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_UPDATE"] = 1160] = "MC_PRE_PLAYER_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_UPDATE"] = 1160] = "PRE_PLAYER_UPDATE";
     /**
      * Fires before the tear is updated.
      *
@@ -2486,7 +2486,7 @@ export var ModCallbackRepentogon;
      * function preTearUpdate(tear: EntityTear): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_TEAR_UPDATE"] = 1161] = "MC_PRE_TEAR_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_TEAR_UPDATE"] = 1161] = "PRE_TEAR_UPDATE";
     /**
      * Fires before the familiar is updated.
      *
@@ -2500,7 +2500,7 @@ export var ModCallbackRepentogon;
      * function preFamiliarVariant(familiar: EntityFamiliar): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_FAMILIAR_UPDATE"] = 1162] = "MC_PRE_FAMILIAR_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_FAMILIAR_UPDATE"] = 1162] = "PRE_FAMILIAR_UPDATE";
     /**
      * Fires before the bomb is updated.
      *
@@ -2514,7 +2514,7 @@ export var ModCallbackRepentogon;
      * function preBombUpdate(bomb: EntityBomb): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_BOMB_UPDATE"] = 1163] = "MC_PRE_BOMB_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_BOMB_UPDATE"] = 1163] = "PRE_BOMB_UPDATE";
     /**
      * Fires before the pickup is updated.
      *
@@ -2528,7 +2528,7 @@ export var ModCallbackRepentogon;
      * function prePickupUpdate(pickup: EntityPickup): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PICKUP_UPDATE"] = 1164] = "MC_PRE_PICKUP_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PICKUP_UPDATE"] = 1164] = "PRE_PICKUP_UPDATE";
     /**
      * Fires before the knife is updated.
      *
@@ -2542,7 +2542,7 @@ export var ModCallbackRepentogon;
      * function preKnifeUpdate(knife: EntityKnife): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_KNIFE_UPDATE"] = 1165] = "MC_PRE_KNIFE_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_KNIFE_UPDATE"] = 1165] = "PRE_KNIFE_UPDATE";
     /**
      * Fires before the projectile is updated.
      *
@@ -2556,7 +2556,7 @@ export var ModCallbackRepentogon;
      * function preProjectileUpdate(projectile: EntityProjectile): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PROJECTILE_UPDATE"] = 1166] = "MC_PRE_PROJECTILE_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PROJECTILE_UPDATE"] = 1166] = "PRE_PROJECTILE_UPDATE";
     /**
      * Fires before the laser is updated.
      *
@@ -2570,7 +2570,7 @@ export var ModCallbackRepentogon;
      * function preLaserUpdate(laser: EntityLaser): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_LASER_UPDATE"] = 1167] = "MC_PRE_LASER_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_LASER_UPDATE"] = 1167] = "PRE_LASER_UPDATE";
     /**
      * Fires before the effect is updated.
      *
@@ -2584,7 +2584,7 @@ export var ModCallbackRepentogon;
      * function preEffectUpdate(effect: EntityEffect): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_EFFECT_UPDATE"] = 1168] = "MC_PRE_EFFECT_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_EFFECT_UPDATE"] = 1168] = "PRE_EFFECT_UPDATE";
     /**
      * Fires before the `EntitySlot` is updated.
      *
@@ -2598,7 +2598,7 @@ export var ModCallbackRepentogon;
      * function preSlotUpdate(slot: EntitySlot): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_SLOT_UPDATE"] = 1169] = "MC_PRE_SLOT_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_SLOT_UPDATE"] = 1169] = "PRE_SLOT_UPDATE";
     /**
      * Fires before a player collides with a grid entity.
      *
@@ -2622,7 +2622,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_GRID_COLLISION"] = 1171] = "MC_PRE_PLAYER_GRID_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_GRID_COLLISION"] = 1171] = "PRE_PLAYER_GRID_COLLISION";
     /**
      * Fires after the player collides with a grid entity.
      *
@@ -2646,7 +2646,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PLAYER_GRID_COLLISION"] = 1172] = "MC_PLAYER_GRID_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PLAYER_GRID_COLLISION"] = 1172] = "PLAYER_GRID_COLLISION";
     /**
      * Fires before the tear collides with a grid entity.
      *
@@ -2677,7 +2677,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_TEAR_GRID_COLLISION"] = 1173] = "MC_PRE_TEAR_GRID_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_TEAR_GRID_COLLISION"] = 1173] = "PRE_TEAR_GRID_COLLISION";
     /**
      * Fires after the tear collides with a grid entity.
      *
@@ -2708,7 +2708,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_TEAR_GRID_COLLISION"] = 1174] = "MC_TEAR_GRID_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["TEAR_GRID_COLLISION"] = 1174] = "TEAR_GRID_COLLISION";
     /**
      * Fires before the familiar collides with a grid entity.
      *
@@ -2732,7 +2732,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_FAMILIAR_GRID_COLLISION"] = 1175] = "MC_PRE_FAMILIAR_GRID_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_FAMILIAR_GRID_COLLISION"] = 1175] = "PRE_FAMILIAR_GRID_COLLISION";
     /**
      * Fires after the familiar collides with a grid entity.
      *
@@ -2756,7 +2756,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_FAMILIAR_GRID_COLLISION"] = 1176] = "MC_FAMILIAR_GRID_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["FAMILIAR_GRID_COLLISION"] = 1176] = "FAMILIAR_GRID_COLLISION";
     /**
      * Fires before the bomb collides with a grid entity.
      *
@@ -2780,7 +2780,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_BOMB_GRID_COLLISION"] = 1177] = "MC_PRE_BOMB_GRID_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_BOMB_GRID_COLLISION"] = 1177] = "PRE_BOMB_GRID_COLLISION";
     /**
      * Fires before the bomb collides with a grid entity.
      *
@@ -2804,7 +2804,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_BOMB_GRID_COLLISION"] = 1178] = "MC_BOMB_GRID_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["BOMB_GRID_COLLISION"] = 1178] = "BOMB_GRID_COLLISION";
     /**
      * Fires before the pickup collides with a grid entity.
      *
@@ -2828,7 +2828,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PICKUP_GRID_COLLISION"] = 1179] = "MC_PRE_PICKUP_GRID_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PICKUP_GRID_COLLISION"] = 1179] = "PRE_PICKUP_GRID_COLLISION";
     /**
      * Fires after the pickup collides with a grid entity.
      *
@@ -2852,7 +2852,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PICKUP_GRID_COLLISION"] = 1180] = "MC_PICKUP_GRID_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PICKUP_GRID_COLLISION"] = 1180] = "PICKUP_GRID_COLLISION";
     /**
      * Fires before the projectile collides with a grid entity.
      *
@@ -2876,7 +2876,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PROJECTILE_GRID_COLLISION"] = 1181] = "MC_PRE_PROJECTILE_GRID_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PROJECTILE_GRID_COLLISION"] = 1181] = "PRE_PROJECTILE_GRID_COLLISION";
     /**
      * Fires after the projectile collides with a grid entity.
      *
@@ -2900,7 +2900,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PROJECTILE_GRID_COLLISION"] = 1182] = "MC_PROJECTILE_GRID_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PROJECTILE_GRID_COLLISION"] = 1182] = "PROJECTILE_GRID_COLLISION";
     /**
      * Fires before the NPC collides with a grid entity.
      *
@@ -2924,7 +2924,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_NPC_GRID_COLLISION"] = 1183] = "MC_PRE_NPC_GRID_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_NPC_GRID_COLLISION"] = 1183] = "PRE_NPC_GRID_COLLISION";
     /**
      * Fires after the NPC collides with a grid entity.
      *
@@ -2948,7 +2948,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_NPC_GRID_COLLISION"] = 1184] = "MC_NPC_GRID_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["NPC_GRID_COLLISION"] = 1184] = "NPC_GRID_COLLISION";
     /**
      * Fires before the player's active item is morphed from the 'M trinket. Return false to prevent
      * the item from being rerolled. Return a `CollectibleType` to override what the item rerolls
@@ -2963,7 +2963,7 @@ export var ModCallbackRepentogon;
      * ): CollectibleType | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_M_MORPH_ACTIVE"] = 1190] = "MC_PRE_M_MORPH_ACTIVE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_M_MORPH_ACTIVE"] = 1190] = "PRE_M_MORPH_ACTIVE";
     /**
      * Fires before an NPC is split from the Meat Cleaver item effect. Return true to prevent the NPC
      * from splitting. NPCs will still take damage from the Meat Cleaver even if you return true.
@@ -2976,7 +2976,7 @@ export var ModCallbackRepentogon;
      * function preNPCSplit(npc: EntityNPC, isBlacklisted: boolean): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_NPC_SPLIT"] = 1191] = "MC_PRE_NPC_SPLIT";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_NPC_SPLIT"] = 1191] = "PRE_NPC_SPLIT";
     /**
      * Fires when a grid entity spawns during room initialization. This does not fire for grid
      * entities spawned after room initialization or floor decorations. If you wish to modify those,
@@ -3006,7 +3006,7 @@ export var ModCallbackRepentogon;
      *   | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_ROOM_GRID_ENTITY_SPAWN"] = 1192] = "MC_PRE_ROOM_GRID_ENTITY_SPAWN";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_ROOM_GRID_ENTITY_SPAWN"] = 1192] = "PRE_ROOM_GRID_ENTITY_SPAWN";
     /**
      * Fires before a new room is loaded.
      *
@@ -3019,7 +3019,7 @@ export var ModCallbackRepentogon;
      * function preNewRoom(room: Room, descriptor: RoomDescriptor): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_NEW_ROOM"] = 1200] = "MC_PRE_NEW_ROOM";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_NEW_ROOM"] = 1200] = "PRE_NEW_ROOM";
     /**
      * Fires before the Mega Satan ending cutscene plays, forcibly ending the game.
      *
@@ -3031,7 +3031,7 @@ export var ModCallbackRepentogon;
      * function preMegaSatanEnding(): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_MEGA_SATAN_ENDING"] = 1201] = "MC_PRE_MEGA_SATAN_ENDING";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_MEGA_SATAN_ENDING"] = 1201] = "PRE_MEGA_SATAN_ENDING";
     /**
      * Fires after all mods have their Lua scripts loaded. This is ideal for implementing mod
      * compatibility without abusing load order in `metadata.xml`.
@@ -3040,7 +3040,7 @@ export var ModCallbackRepentogon;
      * function postModsLoaded(): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_MODS_LOADED"] = 1210] = "MC_POST_MODS_LOADED";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_MODS_LOADED"] = 1210] = "POST_MODS_LOADED";
     /**
      * Fires before a NPC morphs.
      *
@@ -3071,7 +3071,7 @@ export var ModCallbackRepentogon;
      *   | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_NPC_MORPH"] = 1212] = "MC_PRE_NPC_MORPH";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_NPC_MORPH"] = 1212] = "PRE_NPC_MORPH";
     /**
      * Fires before a pickup morphs.
      *
@@ -3108,7 +3108,7 @@ export var ModCallbackRepentogon;
      *   | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PICKUP_MORPH"] = 1213] = "MC_PRE_PICKUP_MORPH";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PICKUP_MORPH"] = 1213] = "PRE_PICKUP_MORPH";
     /**
      * Fires after a NPC morphs.
      *
@@ -3123,7 +3123,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_NPC_MORPH"] = 1214] = "MC_POST_NPC_MORPH";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_NPC_MORPH"] = 1214] = "POST_NPC_MORPH";
     /**
      * Fires after a pickup morphs.
      *
@@ -3141,7 +3141,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PICKUP_MORPH"] = 1215] = "MC_POST_PICKUP_MORPH";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PICKUP_MORPH"] = 1215] = "POST_PICKUP_MORPH";
     /**
      * Fires before the completion marks render on the screen.
      *
@@ -3158,7 +3158,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_COMPLETION_MARKS_RENDER"] = 1216] = "MC_PRE_COMPLETION_MARKS_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_COMPLETION_MARKS_RENDER"] = 1216] = "PRE_COMPLETION_MARKS_RENDER";
     /**
      * Fires after the completion marks render on the screen.
      *
@@ -3171,7 +3171,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_COMPLETION_MARKS_RENDER"] = 1217] = "MC_POST_COMPLETION_MARKS_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_COMPLETION_MARKS_RENDER"] = 1217] = "POST_COMPLETION_MARKS_RENDER";
     /**
      * Fires before the pause screen renders on the screen.
      *
@@ -3184,7 +3184,7 @@ export var ModCallbackRepentogon;
      * function prePauseScreenRender(pauseBody: Sprite, pauseStats: Sprite): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PAUSE_SCREEN_RENDER"] = 1218] = "MC_PRE_PAUSE_SCREEN_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PAUSE_SCREEN_RENDER"] = 1218] = "PRE_PAUSE_SCREEN_RENDER";
     /**
      * Fires after the pause screen renders on the screen.
      *
@@ -3194,7 +3194,7 @@ export var ModCallbackRepentogon;
      * function postPauseScreenRender(pauseBody: Sprite, pauseStats: Sprite): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PAUSE_SCREEN_RENDER"] = 1219] = "MC_POST_PAUSE_SCREEN_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PAUSE_SCREEN_RENDER"] = 1219] = "POST_PAUSE_SCREEN_RENDER";
     /**
      * Fires when the player is about to place a bomb. Return false to prevent the bomb from being
      * placed.
@@ -3207,7 +3207,7 @@ export var ModCallbackRepentogon;
      * function prePlayerUseBomb(player: EntityPlayer): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_USE_BOMB"] = 1220] = "MC_PRE_PLAYER_USE_BOMB";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_USE_BOMB"] = 1220] = "PRE_PLAYER_USE_BOMB";
     /**
      * Fires after the player places a bomb.
      *
@@ -3219,7 +3219,7 @@ export var ModCallbackRepentogon;
      * function postPlayerUseBomb(player: EntityPlayer, bomb: EntityBomb): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_USE_BOMB"] = 1221] = "MC_POST_PLAYER_USE_BOMB";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_USE_BOMB"] = 1221] = "POST_PLAYER_USE_BOMB";
     /**
      * Fires whenever a NPC selects its target, such as when `EntityNPC.GetPlayerTarget` is called.
      *
@@ -3233,7 +3233,7 @@ export var ModCallbackRepentogon;
      * function preNPCPickTarget(npc: EntityNPC, target: Entity): Entity | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_NPC_PICK_TARGET"] = 1222] = "MC_NPC_PICK_TARGET";
+    ModCallbackRepentogon[ModCallbackRepentogon["NPC_PICK_TARGET"] = 1222] = "NPC_PICK_TARGET";
     /**
      * Fires when a Dark Red Champion NPC regenerates from a pile of goo.
      *
@@ -3245,7 +3245,7 @@ export var ModCallbackRepentogon;
      * function postNPCDarkRedChampionRegen(npc: EntityNPC): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_NPC_DARK_RED_CHAMPION_REGEN"] = 1223] = "MC_POST_NPC_DARK_RED_CHAMPION_REGEN";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_NPC_DARK_RED_CHAMPION_REGEN"] = 1223] = "POST_NPC_DARK_RED_CHAMPION_REGEN";
     /**
      * Fires when a custom cache flag is being evaluated. Return a number to set the value of the
      * custom cache flag.
@@ -3262,7 +3262,7 @@ export var ModCallbackRepentogon;
      * ): number | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_EVALUATE_CUSTOM_CACHE"] = 1224] = "MC_EVALUATE_CUSTOM_CACHE";
+    ModCallbackRepentogon[ModCallbackRepentogon["EVALUATE_CUSTOM_CACHE"] = 1224] = "EVALUATE_CUSTOM_CACHE";
     /**
      * Fires when a familiar's multiplier is being evaluated. Return a number to override the
      * familiar's multiplier.
@@ -3279,7 +3279,7 @@ export var ModCallbackRepentogon;
      * ): number | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_EVALUATE_FAMILIAR_MULTIPLIER"] = 1225] = "MC_EVALUATE_FAMILIAR_MULTIPLIER";
+    ModCallbackRepentogon[ModCallbackRepentogon["EVALUATE_FAMILIAR_MULTIPLIER"] = 1225] = "EVALUATE_FAMILIAR_MULTIPLIER";
     /**
      * Fires when the player's stats are being calculated. This should not be confused with
      * `ModCallback.EVALUATE_CACHE`, which fires when a `CacheFlag` is being evaluated.
@@ -3297,9 +3297,9 @@ export var ModCallbackRepentogon;
      *
      * @see https://repentogon.com/xml/items.html
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_EVALUATE_STAT"] = 1226] = "MC_EVALUATE_STAT";
+    ModCallbackRepentogon[ModCallbackRepentogon["EVALUATE_STAT"] = 1226] = "EVALUATE_STAT";
     /**
-     * Called right before collision evaluation. Called once per game update. Unlike `MC_POST_UPDATE`
+     * Called right before collision evaluation. Called once per game update. Unlike `POST_UPDATE`
      * can be used to update entity data, add or remove entities, with those changes being correctly
      * applied during collision detection.
      *
@@ -3309,7 +3309,7 @@ export var ModCallbackRepentogon;
      * function preRoomCollisionPass(): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_ROOM_COLLISION_PASS"] = 1227] = "MC_PRE_ROOM_COLLISION_PASS";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_ROOM_COLLISION_PASS"] = 1227] = "PRE_ROOM_COLLISION_PASS";
     /**
      * Fires after a player collides with an entity.
      *
@@ -3325,7 +3325,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_COLLISION"] = 1231] = "MC_POST_PLAYER_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_COLLISION"] = 1231] = "POST_PLAYER_COLLISION";
     /**
      * Fires after a tear collides with an entity.
      *
@@ -3337,7 +3337,7 @@ export var ModCallbackRepentogon;
      * function postTearCollision(tear: EntityTear, collider: Entity, low: boolean): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_TEAR_COLLISION"] = 1233] = "MC_POST_TEAR_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_TEAR_COLLISION"] = 1233] = "POST_TEAR_COLLISION";
     /**
      * Fires after a familiar collides with an entity.
      *
@@ -3353,7 +3353,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_FAMILIAR_COLLISION"] = 1235] = "MC_POST_FAMILIAR_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_FAMILIAR_COLLISION"] = 1235] = "POST_FAMILIAR_COLLISION";
     /**
      * Fires after a bomb collides with an entity.
      *
@@ -3365,7 +3365,7 @@ export var ModCallbackRepentogon;
      * function postBombCollision(bomb: EntityBomb, collider: Entity, low: boolean): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_BOMB_COLLISION"] = 1237] = "MC_POST_BOMB_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_BOMB_COLLISION"] = 1237] = "POST_BOMB_COLLISION";
     /**
      * Fires after a pickup collides with an entity.
      *
@@ -3377,7 +3377,7 @@ export var ModCallbackRepentogon;
      * function postPickupCollision(pickup: EntityPickup, collider: Entity, low: boolean): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PICKUP_COLLISION"] = 1239] = "MC_POST_PICKUP_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PICKUP_COLLISION"] = 1239] = "POST_PICKUP_COLLISION";
     /**
      * Fires before an `EntitySlot` collides with an entity.
      *
@@ -3399,7 +3399,7 @@ export var ModCallbackRepentogon;
      * ): boolean | { Collide?: boolean, SkipCollisionEffects?: boolean } | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_SLOT_COLLISION"] = 1240] = "MC_PRE_SLOT_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_SLOT_COLLISION"] = 1240] = "PRE_SLOT_COLLISION";
     /**
      * Fires after an `EntitySlot` collides with an entity.
      *
@@ -3415,7 +3415,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_SLOT_COLLISION"] = 1241] = "MC_POST_SLOT_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_SLOT_COLLISION"] = 1241] = "POST_SLOT_COLLISION";
     /**
      * Fires after a knife collides with an entity.
      *
@@ -3427,7 +3427,7 @@ export var ModCallbackRepentogon;
      * function postKnifeCollision(knife: EntityKnife, collider: Entity, low: boolean): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_KNIFE_COLLISION"] = 1243] = "MC_POST_KNIFE_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_KNIFE_COLLISION"] = 1243] = "POST_KNIFE_COLLISION";
     /**
      * Fires after a projectile collides with an entity.
      *
@@ -3443,7 +3443,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PROJECTILE_COLLISION"] = 1245] = "MC_POST_PROJECTILE_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PROJECTILE_COLLISION"] = 1245] = "POST_PROJECTILE_COLLISION";
     /**
      * Fires after a NPC collides with an entity.
      *
@@ -3455,7 +3455,7 @@ export var ModCallbackRepentogon;
      * function postNPCCollision(npc: EntityNPC, collider: Entity, low: boolean): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_NPC_COLLISION"] = 1247] = "MC_POST_NPC_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_NPC_COLLISION"] = 1247] = "POST_NPC_COLLISION";
     /**
      * Fires before a laser collides with an entity.
      *
@@ -3472,7 +3472,7 @@ export var ModCallbackRepentogon;
      * function preLaserCollision(laser: EntityLaser, collider: Entity): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_LASER_COLLISION"] = 1248] = "MC_PRE_LASER_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_LASER_COLLISION"] = 1248] = "PRE_LASER_COLLISION";
     /**
      * Fires after a laser collides with an entity.
      *
@@ -3484,7 +3484,7 @@ export var ModCallbackRepentogon;
      * function postLaserCollision(laser: EntityLaser, collider: Entity): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_LASER_COLLISION"] = 1249] = "MC_POST_LASER_COLLISION";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_LASER_COLLISION"] = 1249] = "POST_LASER_COLLISION";
     /**
      * Fires after `EntityPickup.GetCoinValue` is called to determine the value of a coin pickup.
      *
@@ -3499,7 +3499,7 @@ export var ModCallbackRepentogon;
      * function getCoinValue(coin: EntityPickup): int | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PICKUP_GET_COIN_VALUE"] = 1250] = "MC_PICKUP_GET_COIN_VALUE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PICKUP_GET_COIN_VALUE"] = 1250] = "PICKUP_GET_COIN_VALUE";
     /**
      * Fires when a familiar fires a tear.
      *
@@ -3511,7 +3511,7 @@ export var ModCallbackRepentogon;
      * function postFamiliarFireProjectile(tear: EntityTear): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_FAMILIAR_FIRE_PROJECTILE"] = 1252] = "MC_POST_FAMILIAR_FIRE_PROJECTILE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_FAMILIAR_FIRE_PROJECTILE"] = 1252] = "POST_FAMILIAR_FIRE_PROJECTILE";
     /**
      * Fires when a player fires a Dr. Fetus bomb.
      *
@@ -3521,7 +3521,7 @@ export var ModCallbackRepentogon;
      * function postFireBomb(bomb: EntityBomb): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_FIRE_BOMB"] = 1253] = "MC_POST_FIRE_BOMB";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_FIRE_BOMB"] = 1253] = "POST_FIRE_BOMB";
     /**
      * Fires when the player fires the Bone Club. This is only called when the club is initially
      * spawned, not when it's swung or thrown.
@@ -3532,7 +3532,7 @@ export var ModCallbackRepentogon;
      * function postFireBoneClub(knife: EntityKnife): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_FIRE_BONE_CLUB"] = 1254] = "MC_POST_FIRE_BONE_CLUB";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_FIRE_BONE_CLUB"] = 1254] = "POST_FIRE_BONE_CLUB";
     /**
      * Fires when a player fires a Brimstone laser.
      *
@@ -3542,7 +3542,7 @@ export var ModCallbackRepentogon;
      * function postFireBrimstone(laser: EntityLaser): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_FIRE_BRIMSTONE"] = 1255] = "MC_POST_FIRE_BRIMSTONE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_FIRE_BRIMSTONE"] = 1255] = "POST_FIRE_BRIMSTONE";
     /**
      * Fires when a player fires a Brimstone ball.
      *
@@ -3552,7 +3552,7 @@ export var ModCallbackRepentogon;
      * function postFireBrimstoneBall(ball: EntityEffect): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_FIRE_BRIMSTONE_BALL"] = 1256] = "MC_POST_FIRE_BRIMSTONE_BALL";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_FIRE_BRIMSTONE_BALL"] = 1256] = "POST_FIRE_BRIMSTONE_BALL";
     /**
      * Fires when the player fires a knife from Mom's Knife.
      *
@@ -3562,7 +3562,7 @@ export var ModCallbackRepentogon;
      * function postFireKnife(knife: EntityKnife): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_FIRE_KNIFE"] = 1257] = "MC_POST_FIRE_KNIFE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_FIRE_KNIFE"] = 1257] = "POST_FIRE_KNIFE";
     /**
      * Called when a tear is fired from an existing tear/laser/knife.
      *
@@ -3581,7 +3581,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_FIRE_SPLIT_TEAR"] = 1258] = "MC_POST_FIRE_SPLIT_TEAR";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_FIRE_SPLIT_TEAR"] = 1258] = "POST_FIRE_SPLIT_TEAR";
     /**
      * Fires when the player fires a Tech laser.
      *
@@ -3591,7 +3591,7 @@ export var ModCallbackRepentogon;
      * function postFireTechLaser(laser: EntityLaser): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_FIRE_TECH_LASER"] = 1259] = "MC_POST_FIRE_TECH_LASER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_FIRE_TECH_LASER"] = 1259] = "POST_FIRE_TECH_LASER";
     /**
      * Fires when the player fires a Tech X laser.
      *
@@ -3601,7 +3601,7 @@ export var ModCallbackRepentogon;
      * function postFireTechXLaser(laser: EntityLaser): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_FIRE_TECH_X_LASER"] = 1260] = "MC_POST_FIRE_TECH_X_LASER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_FIRE_TECH_X_LASER"] = 1260] = "POST_FIRE_TECH_X_LASER";
     /**
      * Fires when the familiar fires a Brimstone laser.
      *
@@ -3613,7 +3613,7 @@ export var ModCallbackRepentogon;
      * function postFamiliarFireBrimstone(laser: EntityLaser): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_FAMILIAR_FIRE_BRIMSTONE"] = 1261] = "MC_POST_FAMILIAR_FIRE_BRIMSTONE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_FAMILIAR_FIRE_BRIMSTONE"] = 1261] = "POST_FAMILIAR_FIRE_BRIMSTONE";
     /**
      * Fires when the familiar fires a Tech laser.
      *
@@ -3625,7 +3625,7 @@ export var ModCallbackRepentogon;
      * function postFamiliarFireTechLaser(laser: EntityLaser): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_FAMILIAR_FIRE_TECH_LASER"] = 1262] = "MC_POST_FAMILIAR_FIRE_TECH_LASER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_FAMILIAR_FIRE_TECH_LASER"] = 1262] = "POST_FAMILIAR_FIRE_TECH_LASER";
     /**
      * Fires when `Room.IsPersistentRoomEntity` is called.
      *
@@ -3640,7 +3640,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_IS_PERSISTENT_ROOM_ENTITY"] = 1263] = "MC_IS_PERSISTENT_ROOM_ENTITY";
+    ModCallbackRepentogon[ModCallbackRepentogon["IS_PERSISTENT_ROOM_ENTITY"] = 1263] = "IS_PERSISTENT_ROOM_ENTITY";
     /**
      * Fires before a trinket is rendered on the player's HUD. Return true to prevent the trinket from
      * rendering. You can return an object with various fields to override how the trinket renders on
@@ -3659,7 +3659,7 @@ export var ModCallbackRepentogon;
      * ): { Position?: Vector, Scale?: number, CropOffset?: Vector } | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYERHUD_TRINKET_RENDER"] = 1264] = "MC_PRE_PLAYERHUD_TRINKET_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYERHUD_TRINKET_RENDER"] = 1264] = "PRE_PLAYERHUD_TRINKET_RENDER";
     /**
      * Fires before a pickup is consumed from effects such as Void and Black Rune. Return false to
      * prevent the pickup from being consumed.
@@ -3672,7 +3672,7 @@ export var ModCallbackRepentogon;
      * function prePickupVoided(pickup: EntityPickup, isBlackRune: boolean): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PICKUP_VOIDED"] = 1265] = "MC_PRE_PICKUP_VOIDED";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PICKUP_VOIDED"] = 1265] = "PRE_PICKUP_VOIDED";
     /**
      * Fires before a pickup is consumed from The Abyss. Return false to prevent the pickup from being
      * consumed.
@@ -3685,7 +3685,7 @@ export var ModCallbackRepentogon;
      * function prePickupVoidedAbyss(pickup: EntityPickup): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PICKUP_VOIDED_ABYSS"] = 1266] = "MC_PRE_PICKUP_VOIDED_ABYSS";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PICKUP_VOIDED_ABYSS"] = 1266] = "PRE_PICKUP_VOIDED_ABYSS";
     /**
      * Fires before a pickup is consumed from Compost. Return false to prevent the pickup from being
      * consumed.
@@ -3698,7 +3698,7 @@ export var ModCallbackRepentogon;
      * function prePickupComposted(pickup: EntityPickup): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PICKUP_COMPOSTED"] = 1267] = "MC_PRE_PICKUP_COMPOSTED";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PICKUP_COMPOSTED"] = 1267] = "PRE_PICKUP_COMPOSTED";
     /**
      * Fires after a `TemporaryEffect` of an `ItemConfigItem` is removed from a player.
      *
@@ -3712,7 +3712,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_TRIGGER_EFFECT_REMOVED"] = 1268] = "MC_POST_PLAYER_TRIGGER_EFFECT_REMOVED";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_TRIGGER_EFFECT_REMOVED"] = 1268] = "POST_PLAYER_TRIGGER_EFFECT_REMOVED";
     /**
      * Fires after a `TemporaryEffect` of an `ItemConfigItem` is removed from the room.
      *
@@ -3722,7 +3722,7 @@ export var ModCallbackRepentogon;
      * function postRoomTriggerEffectRemoved(itemConfig: ItemConfigItem): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ROOM_TRIGGER_EFFECT_REMOVED"] = 1269] = "MC_POST_ROOM_TRIGGER_EFFECT_REMOVED";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ROOM_TRIGGER_EFFECT_REMOVED"] = 1269] = "POST_ROOM_TRIGGER_EFFECT_REMOVED";
     /**
      * Fires after the boss intro is initialized.
      *
@@ -3732,7 +3732,7 @@ export var ModCallbackRepentogon;
      * function postBossIntroShow(boss1: BossID, boss2: BossID): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_BOSS_INTRO_SHOW"] = 1270] = "MC_POST_BOSS_INTRO_SHOW";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_BOSS_INTRO_SHOW"] = 1270] = "POST_BOSS_INTRO_SHOW";
     /**
      * Fires each frame the room transition animation updates.
      *
@@ -3744,7 +3744,7 @@ export var ModCallbackRepentogon;
      * function postRoomTransitionUpdate(): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ROOM_TRANSITION_UPDATE"] = 1271] = "MC_POST_ROOM_TRANSITION_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ROOM_TRANSITION_UPDATE"] = 1271] = "POST_ROOM_TRANSITION_UPDATE";
     /**
      * Fires each frame the room transition animation renders.
      *
@@ -3756,7 +3756,7 @@ export var ModCallbackRepentogon;
      * function postRoomTransitionRender(): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ROOM_TRANSITION_RENDER"] = 1272] = "MC_POST_ROOM_TRANSITION_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ROOM_TRANSITION_RENDER"] = 1272] = "POST_ROOM_TRANSITION_RENDER";
     /**
      * Fires after a `TemporaryEffect` is added to a player.
      *
@@ -3773,7 +3773,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_ADD_EFFECT"] = 1273] = "MC_POST_PLAYER_ADD_EFFECT";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_ADD_EFFECT"] = 1273] = "POST_PLAYER_ADD_EFFECT";
     /**
      * Fires after a `TemporaryEffect` is added to the room.
      *
@@ -3785,7 +3785,7 @@ export var ModCallbackRepentogon;
      * function postRoomAddEffect(itemConfig: ItemConfigItem): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ROOM_ADD_EFFECT"] = 1274] = "MC_POST_ROOM_ADD_EFFECT";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ROOM_ADD_EFFECT"] = 1274] = "POST_ROOM_ADD_EFFECT";
     /**
      * Fires after `Game.BombDamage` is called. This is used by the game to damage entities within a
      * radius for explosions and similar effects.
@@ -3809,7 +3809,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_BOMB_DAMAGE"] = 1275] = "MC_POST_BOMB_DAMAGE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_BOMB_DAMAGE"] = 1275] = "POST_BOMB_DAMAGE";
     /**
      * Fires after `Game.BombTearflagEffects` is called. This is used by the game when `TearFlag`
      * based effects are triggered from an explosion.
@@ -3830,7 +3830,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_BOMB_TEARFLAG_EFFECTS"] = 1276] = "MC_POST_BOMB_TEARFLAG_EFFECTS";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_BOMB_TEARFLAG_EFFECTS"] = 1276] = "POST_BOMB_TEARFLAG_EFFECTS";
     /**
      * Fires before the effects of Tear Flags are applied to an enemy upon being hit or damaged.
      *
@@ -3859,7 +3859,7 @@ export var ModCallbackRepentogon;
      *   | { Position?: Vector; TearFlags?: BitFlags<TearFlag>; Damage?: number } {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_APPLY_TEARFLAG_EFFECTS"] = 1277] = "MC_PRE_APPLY_TEARFLAG_EFFECTS";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_APPLY_TEARFLAG_EFFECTS"] = 1277] = "PRE_APPLY_TEARFLAG_EFFECTS";
     /**
      * Fires after the effects of Tear Flags are applied to an enemy upon being hit or damaged.
      *
@@ -3879,7 +3879,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_APPLY_TEARFLAG_EFFECTS"] = 1278] = "MC_POST_APPLY_TEARFLAG_EFFECTS";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_APPLY_TEARFLAG_EFFECTS"] = 1278] = "POST_APPLY_TEARFLAG_EFFECTS";
     /**
      * Fires before a boss is selected for the floor.
      *
@@ -3898,7 +3898,7 @@ export var ModCallbackRepentogon;
      * ): BossID | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_BOSS_SELECT"] = 1280] = "MC_PRE_BOSS_SELECT";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_BOSS_SELECT"] = 1280] = "PRE_BOSS_SELECT";
     /**
      * Fires before a costume is added to the player.
      *
@@ -3915,7 +3915,7 @@ export var ModCallbackRepentogon;
      * ): boolean | ItemConfigItem | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_ADD_COSTUME"] = 1281] = "MC_PRE_PLAYER_ADD_COSTUME";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_ADD_COSTUME"] = 1281] = "PRE_PLAYER_ADD_COSTUME";
     /**
      * Fires before the game tries to remove a costume from the player.
      *
@@ -3930,7 +3930,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_REMOVE_COSTUME"] = 1282] = "MC_PRE_PLAYER_REMOVE_COSTUME";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_REMOVE_COSTUME"] = 1282] = "PRE_PLAYER_REMOVE_COSTUME";
     /**
      * Fires after a costume is added to the player.
      *
@@ -3944,7 +3944,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_ADD_COSTUME"] = 1283] = "MC_POST_PLAYER_ADD_COSTUME";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_ADD_COSTUME"] = 1283] = "POST_PLAYER_ADD_COSTUME";
     /**
      * Fires after a costume is removed from the player.
      *
@@ -3957,7 +3957,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_REMOVE_COSTUME"] = 1284] = "MC_POST_PLAYER_REMOVE_COSTUME";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_REMOVE_COSTUME"] = 1284] = "POST_PLAYER_REMOVE_COSTUME";
     /**
      * Fires before the effects of sleeping on a bed are granted after the cutscene, such as healing.
      * Return true to prevent the effects from activating.
@@ -3971,7 +3971,7 @@ export var ModCallbackRepentogon;
      * function preTriggerBedSleepEffect(player: EntityPlayer): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_TRIGGER_BED_SLEEP_EFFECT"] = 1285] = "MC_PRE_TRIGGER_BED_SLEEP_EFFECT";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_TRIGGER_BED_SLEEP_EFFECT"] = 1285] = "PRE_TRIGGER_BED_SLEEP_EFFECT";
     /**
      * Fires after the effects of sleeping on a bed are granted after the cutscene, such as healing.
      *
@@ -3981,7 +3981,7 @@ export var ModCallbackRepentogon;
      * function postTriggerBedSleepEffect(player: EntityPlayer): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_TRIGGER_BED_SLEEP_EFFECT"] = 1286] = "MC_POST_TRIGGER_BED_SLEEP_EFFECT";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_TRIGGER_BED_SLEEP_EFFECT"] = 1286] = "POST_TRIGGER_BED_SLEEP_EFFECT";
     /**
      * Fires before the player's pocket items are swapped. Return true to prevent them from swapping.
      *
@@ -3991,7 +3991,7 @@ export var ModCallbackRepentogon;
      * function prePlayerPocketItemSwap(player: EntityPlayer): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_POCKET_ITEMS_SWAP"] = 1287] = "MC_PRE_PLAYER_POCKET_ITEMS_SWAP";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_POCKET_ITEMS_SWAP"] = 1287] = "PRE_PLAYER_POCKET_ITEMS_SWAP";
     /**
      * Fires before the player sleeps on a bed after colliding with it. Return true to prevent the
      * player from sleeping on the bed.
@@ -4004,7 +4004,7 @@ export var ModCallbackRepentogon;
      * function preBedSleep(player: EntityPlayer, bed: EntityPickup): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_BED_SLEEP"] = 1288] = "MC_PRE_BED_SLEEP";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_BED_SLEEP"] = 1288] = "PRE_BED_SLEEP";
     /**
      * Fires before the `MultiShotParams` for a player are updated.
      *
@@ -4023,7 +4023,7 @@ export var ModCallbackRepentogon;
      * ): MultiShotParams | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_EVALUATE_MULTI_SHOT_PARAMS"] = 1289] = "MC_EVALUATE_MULTI_SHOT_PARAMS";
+    ModCallbackRepentogon[ModCallbackRepentogon["EVALUATE_MULTI_SHOT_PARAMS"] = 1289] = "EVALUATE_MULTI_SHOT_PARAMS";
     /**
      * Fires when the game tries to get a random available room index on the floor.
      *
@@ -4039,7 +4039,7 @@ export var ModCallbackRepentogon;
      * ): int | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GET_RANDOM_ROOM_INDEX"] = 1290] = "MC_PRE_GET_RANDOM_ROOM_INDEX";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GET_RANDOM_ROOM_INDEX"] = 1290] = "PRE_GET_RANDOM_ROOM_INDEX";
     /**
      * Called before `Game.BombDamage` is called, used by the game to damage entities within a radius
      * for explosions and similar effects.
@@ -4075,7 +4075,7 @@ export var ModCallbackRepentogon;
      *   | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_BOMB_DAMAGE"] = 1291] = "MC_PRE_BOMB_DAMAGE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_BOMB_DAMAGE"] = 1291] = "PRE_BOMB_DAMAGE";
     /**
      * Called before `Game.BombTearflagEffects` is called, used by the game when `TearFlags`-based
      * effects are triggered from an explosion.
@@ -4107,7 +4107,7 @@ export var ModCallbackRepentogon;
      *   | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_BOMB_TEARFLAG_EFFECTS"] = 1292] = "MC_PRE_BOMB_TEARFLAG_EFFECTS";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_BOMB_TEARFLAG_EFFECTS"] = 1292] = "PRE_BOMB_TEARFLAG_EFFECTS";
     /**
      * Render callback for Tainted Isaac's inventory.
      *
@@ -4123,7 +4123,7 @@ export var ModCallbackRepentogon;
      * ): boolean | Vector | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYERHUD_RENDER_INVENTORY"] = 1293] = "MC_PRE_PLAYERHUD_RENDER_INVENTORY";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYERHUD_RENDER_INVENTORY"] = 1293] = "PRE_PLAYERHUD_RENDER_INVENTORY";
     /**
      * Render callback for Tainted Isaac's inventory.
      *
@@ -4137,7 +4137,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYERHUD_RENDER_INVENTORY"] = 1294] = "MC_POST_PLAYERHUD_RENDER_INVENTORY";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYERHUD_RENDER_INVENTORY"] = 1294] = "POST_PLAYERHUD_RENDER_INVENTORY";
     /**
      * Render callback for Tainted ???'s poop spell queue.
      *
@@ -4153,7 +4153,7 @@ export var ModCallbackRepentogon;
      * ): boolean | Vector | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYERHUD_RENDER_POOP_SPELL_QUEUE"] = 1295] = "MC_PRE_PLAYERHUD_RENDER_POOP_SPELL_QUEUE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYERHUD_RENDER_POOP_SPELL_QUEUE"] = 1295] = "PRE_PLAYERHUD_RENDER_POOP_SPELL_QUEUE";
     /**
      * Render callback for Tainted ???'s poop spell queue.
      *
@@ -4167,7 +4167,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYERHUD_RENDER_POOP_SPELL_QUEUE"] = 1296] = "MC_POST_PLAYERHUD_RENDER_POOP_SPELL_QUEUE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYERHUD_RENDER_POOP_SPELL_QUEUE"] = 1296] = "POST_PLAYERHUD_RENDER_POOP_SPELL_QUEUE";
     /**
      * Render callback for Tainted Cain's Bag of Crafting HUD.
      *
@@ -4183,7 +4183,7 @@ export var ModCallbackRepentogon;
      * ): boolean | Vector | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYERHUD_RENDER_CRAFTING_TABLE"] = 1297] = "MC_PRE_PLAYERHUD_RENDER_CRAFTING_TABLE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYERHUD_RENDER_CRAFTING_TABLE"] = 1297] = "PRE_PLAYERHUD_RENDER_CRAFTING_TABLE";
     /**
      * Render callback for Tainted Cain's Bag of Crafting HUD.
      *
@@ -4197,7 +4197,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYERHUD_RENDER_CRAFTING_TABLE"] = 1298] = "MC_POST_PLAYERHUD_RENDER_CRAFTING_TABLE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYERHUD_RENDER_CRAFTING_TABLE"] = 1298] = "POST_PLAYERHUD_RENDER_CRAFTING_TABLE";
     /**
      * Fires after the Glowing Hourglass state is saved.
      *
@@ -4207,7 +4207,7 @@ export var ModCallbackRepentogon;
      * function postGlowingHourglassSave(slot: int): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GLOWING_HOURGLASS_SAVE"] = 1300] = "MC_POST_GLOWING_HOURGLASS_SAVE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GLOWING_HOURGLASS_SAVE"] = 1300] = "POST_GLOWING_HOURGLASS_SAVE";
     /**
      * Fires after the Glowing Hourglass state is loaded.
      *
@@ -4217,7 +4217,7 @@ export var ModCallbackRepentogon;
      * function postGlowingHourglassSave(slot: int): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GLOWING_HOURGLASS_LOAD"] = 1301] = "MC_POST_GLOWING_HOURGLASS_LOAD";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GLOWING_HOURGLASS_LOAD"] = 1301] = "POST_GLOWING_HOURGLASS_LOAD";
     /**
      * Fires before the Glowing Hourglass state is saved.
      *
@@ -4227,7 +4227,7 @@ export var ModCallbackRepentogon;
      * function preGlowingHourglassSave(slot: int): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GLOWING_HOURGLASS_SAVE"] = 1302] = "MC_PRE_GLOWING_HOURGLASS_SAVE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GLOWING_HOURGLASS_SAVE"] = 1302] = "PRE_GLOWING_HOURGLASS_SAVE";
     /**
      * Fires before the Glowing Hourglass state is loaded.
      *
@@ -4237,7 +4237,7 @@ export var ModCallbackRepentogon;
      * function preGlowingHourglassLoad(slot: int): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GLOWING_HOURGLASS_LOAD"] = 1303] = "MC_PRE_GLOWING_HOURGLASS_LOAD";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GLOWING_HOURGLASS_LOAD"] = 1303] = "PRE_GLOWING_HOURGLASS_LOAD";
     /**
      * Fires after the room saves all entities and grid entities.
      *
@@ -4247,7 +4247,7 @@ export var ModCallbackRepentogon;
      * function postRoomSaveState(room: Room, roomDescriptor: RoomDescriptor): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ROOM_SAVE_STATE"] = 1304] = "MC_POST_ROOM_SAVE_STATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ROOM_SAVE_STATE"] = 1304] = "POST_ROOM_SAVE_STATE";
     /**
      * Fires before the room respawns all saved entities.
      *
@@ -4257,7 +4257,7 @@ export var ModCallbackRepentogon;
      * function preRoomRestoreState(room: Room, roomDescriptor: RoomDescriptor): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_ROOM_RESTORE_STATE"] = 1305] = "MC_PRE_ROOM_RESTORE_STATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_ROOM_RESTORE_STATE"] = 1305] = "PRE_ROOM_RESTORE_STATE";
     /**
      * Fires after two rooms have been swapped due to the Curse of the Maze.
      *
@@ -4267,7 +4267,7 @@ export var ModCallbackRepentogon;
      * function postSwapRooms(roomDesc1: RoomDescriptor, roomDesc2: RoomDescriptor): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_SWAP_ROOMS"] = 1306] = "MC_POST_SWAP_ROOMS";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_SWAP_ROOMS"] = 1306] = "POST_SWAP_ROOMS";
     /**
      * Fires when a room previously encountered on a floor has been saved. The saved room is restored
      * later to be used for the Ascent route.
@@ -4282,7 +4282,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_BACKWARDS_ROOM_SAVE"] = 1307] = "MC_POST_BACKWARDS_ROOM_SAVE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_BACKWARDS_ROOM_SAVE"] = 1307] = "POST_BACKWARDS_ROOM_SAVE";
     /**
      * Fires when a room previously encountered on a floor is loaded back into the game during the
      * Ascent route.
@@ -4297,7 +4297,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_BACKWARDS_ROOM_RESTORE"] = 1308] = "MC_POST_BACKWARDS_ROOM_RESTORE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_BACKWARDS_ROOM_RESTORE"] = 1308] = "POST_BACKWARDS_ROOM_RESTORE";
     /**
      * Will only run for characters present in the character select menu that are capable of being
      * selected (IE, not hidden or locked behind an achievement).
@@ -4321,7 +4321,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_CAN_SELECT_CHARACTER"] = 1328] = "MC_CAN_SELECT_CHARACTER";
+    ModCallbackRepentogon[ModCallbackRepentogon["CAN_SELECT_CHARACTER"] = 1328] = "CAN_SELECT_CHARACTER";
     /**
      * Runs before the background page/stats/etc are rendered for the character currently selected in
      * the character menu. Modifications made to the sprites at this time can affect the upcoming
@@ -4346,7 +4346,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_RENDER_CHARACTER_SELECT_PAGE"] = 1329] = "MC_PRE_RENDER_CHARACTER_SELECT_PAGE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_RENDER_CHARACTER_SELECT_PAGE"] = 1329] = "PRE_RENDER_CHARACTER_SELECT_PAGE";
     /**
      * Runs after the background page/stats/etc are rendered for the character currently selected in
      * the character menu.
@@ -4367,7 +4367,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_RENDER_CHARACTER_SELECT_PAGE"] = 1330] = "MC_POST_RENDER_CHARACTER_SELECT_PAGE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_RENDER_CHARACTER_SELECT_PAGE"] = 1330] = "POST_RENDER_CHARACTER_SELECT_PAGE";
     /**
      * Runs before each character portrait is rendered on the character wheel. Modifications made to
      * the sprite can affect the upcoming render.
@@ -4390,7 +4390,7 @@ export var ModCallbackRepentogon;
      * ): boolean | Vector | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_RENDER_CHARACTER_SELECT_PORTRAIT"] = 1331] = "MC_PRE_RENDER_CHARACTER_SELECT_PORTRAIT";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_RENDER_CHARACTER_SELECT_PORTRAIT"] = 1331] = "PRE_RENDER_CHARACTER_SELECT_PORTRAIT";
     /**
      * Runs after each character portrait is rendered on the character wheel.
      *
@@ -4410,14 +4410,14 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_RENDER_CHARACTER_SELECT_PORTRAIT"] = 1332] = "MC_POST_RENDER_CHARACTER_SELECT_PORTRAIT";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_RENDER_CHARACTER_SELECT_PORTRAIT"] = 1332] = "POST_RENDER_CHARACTER_SELECT_PORTRAIT";
     /**
      * Fires before the `LootList` of a pickup is selected.
      *
      * Return a `LootList` to override the loot list used for the pickup.
      *
      * If you only want to slightly modify the loot (such as adding an extra pickup) use
-     * `ModCallbackRepentogon.MC_POST_PICKUP_GET_LOOT_LIST` instead to access a mutable list.
+     * `ModCallbackRepentogon.POST_PICKUP_GET_LOOT_LIST` instead to access a mutable list.
      *
      * You cannot filter this callback.
      *
@@ -4430,7 +4430,7 @@ export var ModCallbackRepentogon;
      * ): LootList | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PICKUP_GET_LOOT_LIST"] = 1334] = "MC_PRE_PICKUP_GET_LOOT_LIST";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PICKUP_GET_LOOT_LIST"] = 1334] = "PRE_PICKUP_GET_LOOT_LIST";
     /**
      * Fires before the ghost pickup effect from Guppy's Eye updates.
      *
@@ -4442,7 +4442,7 @@ export var ModCallbackRepentogon;
      * function prePickupUpdateGhostPickups(pickup: EntityPickup): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PICKUP_UPDATE_GHOST_PICKUPS"] = 1335] = "MC_PRE_PICKUP_UPDATE_GHOST_PICKUPS";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PICKUP_UPDATE_GHOST_PICKUPS"] = 1335] = "PRE_PICKUP_UPDATE_GHOST_PICKUPS";
     /**
      * Called after the pickup determines its loot content. The provided `LootList` can be modified,
      * so this is a good place to make small modifications such as adding to the loot.
@@ -4464,7 +4464,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PICKUP_GET_LOOT_LIST"] = 1336] = "MC_POST_PICKUP_GET_LOOT_LIST";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PICKUP_GET_LOOT_LIST"] = 1336] = "POST_PICKUP_GET_LOOT_LIST";
     /**
      * Fires before a card is added to the player's inventory.
      *
@@ -4483,7 +4483,7 @@ export var ModCallbackRepentogon;
      * ): boolean | CardType | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_ADD_CARD"] = 1350] = "MC_PRE_PLAYER_ADD_CARD";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_ADD_CARD"] = 1350] = "PRE_PLAYER_ADD_CARD";
     /**
      * Fires after a card is added to the player's inventory.
      *
@@ -4499,7 +4499,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_ADD_CARD"] = 1351] = "MC_POST_PLAYER_ADD_CARD";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_ADD_CARD"] = 1351] = "POST_PLAYER_ADD_CARD";
     /**
      * Fires before a pill is added to the player's inventory.
      *
@@ -4518,7 +4518,7 @@ export var ModCallbackRepentogon;
      * ): boolean | PillColor | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_ADD_PILL"] = 1352] = "MC_PRE_PLAYER_ADD_PILL";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_ADD_PILL"] = 1352] = "PRE_PLAYER_ADD_PILL";
     /**
      * Fires after a pill is added to the player's inventory.
      *
@@ -4534,7 +4534,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_ADD_PILL"] = 1353] = "MC_POST_PLAYER_ADD_PILL";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_ADD_PILL"] = 1353] = "POST_PLAYER_ADD_PILL";
     /**
      * Fires after a card is removed from the player's inventory.
      *
@@ -4550,7 +4550,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_REMOVE_CARD"] = 1354] = "MC_POST_PLAYER_REMOVE_CARD";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_REMOVE_CARD"] = 1354] = "POST_PLAYER_REMOVE_CARD";
     /**
      * Fires after a pill is removed from the player's inventory.
      *
@@ -4566,7 +4566,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_REMOVE_PILL"] = 1355] = "MC_POST_PLAYER_REMOVE_PILL";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_REMOVE_PILL"] = 1355] = "POST_PLAYER_REMOVE_PILL";
     /**
      * Fires before the player picks up a card off the ground.
      *
@@ -4583,7 +4583,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_COLLECT_CARD"] = 1356] = "MC_PRE_PLAYER_COLLECT_CARD";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_COLLECT_CARD"] = 1356] = "PRE_PLAYER_COLLECT_CARD";
     /**
      * Fires after the player picks up a card off the ground.
      *
@@ -4595,7 +4595,7 @@ export var ModCallbackRepentogon;
      * function postPlayerCollectCard(player: EntityPlayer, pickup: EntityPickup): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_COLLECT_CARD"] = 1357] = "MC_POST_PLAYER_COLLECT_CARD";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_COLLECT_CARD"] = 1357] = "POST_PLAYER_COLLECT_CARD";
     /**
      * Fires before the player picks up a pill off the ground.
      *
@@ -4612,7 +4612,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_COLLECT_PILL"] = 1358] = "MC_PRE_PLAYER_COLLECT_PILL";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_COLLECT_PILL"] = 1358] = "PRE_PLAYER_COLLECT_PILL";
     /**
      * Fires after the player picks up a pill off the ground.
      *
@@ -4624,7 +4624,7 @@ export var ModCallbackRepentogon;
      * function postPlayerCollectPill(player: EntityPlayer, pickup: EntityPickup): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_COLLECT_PILL"] = 1359] = "MC_POST_PLAYER_COLLECT_PILL";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_COLLECT_PILL"] = 1359] = "POST_PLAYER_COLLECT_PILL";
     /**
      * Fires after the player drops a card from their inventory.
      *
@@ -4640,7 +4640,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_DROP_CARD"] = 1360] = "MC_POST_PLAYER_DROP_CARD";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_DROP_CARD"] = 1360] = "POST_PLAYER_DROP_CARD";
     /**
      * Fires after the player drops a pill from their inventory.
      *
@@ -4656,7 +4656,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_DROP_PILL"] = 1361] = "MC_POST_PLAYER_DROP_PILL";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_DROP_PILL"] = 1361] = "POST_PLAYER_DROP_PILL";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4668,7 +4668,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_DECORATION_UPDATE"] = 1400] = "MC_PRE_GRID_ENTITY_DECORATION_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_DECORATION_UPDATE"] = 1400] = "PRE_GRID_ENTITY_DECORATION_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4678,7 +4678,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityDecorationUpdate(decoration: GridEntity): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_DECORATION_UPDATE"] = 1401] = "MC_POST_GRID_ENTITY_DECORATION_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_DECORATION_UPDATE"] = 1401] = "POST_GRID_ENTITY_DECORATION_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4688,7 +4688,7 @@ export var ModCallbackRepentogon;
      * function preGridEntityDoorUpdate(door: GridEntityDoor): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_DOOR_UPDATE"] = 1402] = "MC_PRE_GRID_ENTITY_DOOR_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_DOOR_UPDATE"] = 1402] = "PRE_GRID_ENTITY_DOOR_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4698,7 +4698,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityDoorUpdate(door: GridEntityDoor): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_DOOR_UPDATE"] = 1403] = "MC_POST_GRID_ENTITY_DOOR_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_DOOR_UPDATE"] = 1403] = "POST_GRID_ENTITY_DOOR_UPDATE";
     /**
      * Fire grid entities are largely unused and in most cases you'll want to target the `EntityNPC`
      * fireplaces with `ModCallback.PRE_NPC_UPDATE`.
@@ -4711,7 +4711,7 @@ export var ModCallbackRepentogon;
      * function preGridEntityDoorUpdate(fire: GridEntity): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_FIRE_UPDATE"] = 1404] = "MC_PRE_GRID_ENTITY_FIRE_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_FIRE_UPDATE"] = 1404] = "PRE_GRID_ENTITY_FIRE_UPDATE";
     /**
      * Fire grid entities are largely unused and in most cases you'll want to target the `EntityNPC`
      * fireplaces with `ModCallback.POST_NPC_UPDATE`.
@@ -4724,7 +4724,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityDoorUpdate(fire: GridEntity): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_FIRE_UPDATE"] = 1405] = "MC_POST_GRID_ENTITY_FIRE_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_FIRE_UPDATE"] = 1405] = "POST_GRID_ENTITY_FIRE_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4734,7 +4734,7 @@ export var ModCallbackRepentogon;
      * function preGridEntityGravityUpdate(gravity: GridEntity): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_GRAVITY_UPDATE"] = 1406] = "MC_PRE_GRID_ENTITY_GRAVITY_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_GRAVITY_UPDATE"] = 1406] = "PRE_GRID_ENTITY_GRAVITY_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4744,7 +4744,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityGravityUpdate(gravity: GridEntity): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_GRAVITY_UPDATE"] = 1407] = "MC_POST_GRID_ENTITY_GRAVITY_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_GRAVITY_UPDATE"] = 1407] = "POST_GRID_ENTITY_GRAVITY_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4754,7 +4754,7 @@ export var ModCallbackRepentogon;
      * function preGridEntityLockUpdate(lock: GridEntity): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_LOCK_UPDATE"] = 1408] = "MC_PRE_GRID_ENTITY_LOCK_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_LOCK_UPDATE"] = 1408] = "PRE_GRID_ENTITY_LOCK_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4764,7 +4764,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityLockUpdate(lock: GridEntity): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_LOCK_UPDATE"] = 1409] = "MC_POST_GRID_ENTITY_LOCK_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_LOCK_UPDATE"] = 1409] = "POST_GRID_ENTITY_LOCK_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4774,7 +4774,7 @@ export var ModCallbackRepentogon;
      * function preGridEntityPitUpdate(pit: GridEntityPit): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_PIT_UPDATE"] = 1410] = "MC_PRE_GRID_ENTITY_PIT_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_PIT_UPDATE"] = 1410] = "PRE_GRID_ENTITY_PIT_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4784,7 +4784,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityPitUpdate(pit: GridEntityPit): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_PIT_UPDATE"] = 1411] = "MC_POST_GRID_ENTITY_PIT_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_PIT_UPDATE"] = 1411] = "POST_GRID_ENTITY_PIT_UPDATE";
     /**
      * This does not include the `EntityNPC` poops used by Tainted Blue Baby. Use
      * `ModCallback.PRE_NPC_UPDATE` if you wish to target them.
@@ -4797,7 +4797,7 @@ export var ModCallbackRepentogon;
      * function preGridEntityPoopUpdate(poop): GridEntityPoop): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_POOP_UPDATE"] = 1412] = "MC_PRE_GRID_ENTITY_POOP_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_POOP_UPDATE"] = 1412] = "PRE_GRID_ENTITY_POOP_UPDATE";
     /**
      * This does not include the `EntityNPC` poops used by Tainted Blue Baby. Use
      * `ModCallback.POST_NPC_UPDATE` if you wish to target them.
@@ -4810,7 +4810,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityPoopUpdate(poop): GridEntityPoop): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_POOP_UPDATE"] = 1413] = "MC_POST_GRID_ENTITY_POOP_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_POOP_UPDATE"] = 1413] = "POST_GRID_ENTITY_POOP_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4822,7 +4822,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_PRESSUREPLATE_UPDATE"] = 1414] = "MC_PRE_GRID_ENTITY_PRESSUREPLATE_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_PRESSUREPLATE_UPDATE"] = 1414] = "PRE_GRID_ENTITY_PRESSUREPLATE_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4832,7 +4832,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityPressurePlateUpdate(pressurePlate: GridEntityPressurePlate): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_PRESSUREPLATE_UPDATE"] = 1415] = "MC_POST_GRID_ENTITY_PRESSUREPLATE_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_PRESSUREPLATE_UPDATE"] = 1415] = "POST_GRID_ENTITY_PRESSUREPLATE_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4842,7 +4842,7 @@ export var ModCallbackRepentogon;
      * function preGridEntityRockUpdate(rock: GridEntityRock): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_ROCK_UPDATE"] = 1416] = "MC_PRE_GRID_ENTITY_ROCK_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_ROCK_UPDATE"] = 1416] = "PRE_GRID_ENTITY_ROCK_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4852,7 +4852,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityRockUpdate(rock: GridEntityRock): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_ROCK_UPDATE"] = 1417] = "MC_POST_GRID_ENTITY_ROCK_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_ROCK_UPDATE"] = 1417] = "POST_GRID_ENTITY_ROCK_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4862,7 +4862,7 @@ export var ModCallbackRepentogon;
      * function preGridEntitySpikesUpdate(spikes: GridEntitySpikes): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_SPIKES_UPDATE"] = 1418] = "MC_PRE_GRID_ENTITY_SPIKES_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_SPIKES_UPDATE"] = 1418] = "PRE_GRID_ENTITY_SPIKES_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4872,7 +4872,7 @@ export var ModCallbackRepentogon;
      * function postGridEntitySpikesUpdate(spikes: GridEntitySpikes): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_SPIKES_UPDATE"] = 1419] = "MC_POST_GRID_ENTITY_SPIKES_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_SPIKES_UPDATE"] = 1419] = "POST_GRID_ENTITY_SPIKES_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4882,7 +4882,7 @@ export var ModCallbackRepentogon;
      * function preGridEntityStaircaseUpdate(staircase: GridEntity): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_STAIRCASE_UPDATE"] = 1420] = "MC_PRE_GRID_ENTITY_STAIRCASE_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_STAIRCASE_UPDATE"] = 1420] = "PRE_GRID_ENTITY_STAIRCASE_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4892,7 +4892,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityStaircaseUpdate(staircase: GridEntity): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_STAIRCASE_UPDATE"] = 1421] = "MC_POST_GRID_ENTITY_STAIRCASE_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_STAIRCASE_UPDATE"] = 1421] = "POST_GRID_ENTITY_STAIRCASE_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4902,7 +4902,7 @@ export var ModCallbackRepentogon;
      * function preGridEntityStatueUpdate(statue: GridEntity): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_STATUE_UPDATE"] = 1422] = "MC_PRE_GRID_ENTITY_STATUE_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_STATUE_UPDATE"] = 1422] = "PRE_GRID_ENTITY_STATUE_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4912,7 +4912,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityStatueUpdate(statue: GridEntity): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_STATUE_UPDATE"] = 1423] = "MC_POST_GRID_ENTITY_STATUE_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_STATUE_UPDATE"] = 1423] = "POST_GRID_ENTITY_STATUE_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4924,7 +4924,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_TELEPORTER_UPDATE"] = 1424] = "MC_PRE_GRID_ENTITY_TELEPORTER_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_TELEPORTER_UPDATE"] = 1424] = "PRE_GRID_ENTITY_TELEPORTER_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4934,7 +4934,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityTeleporterUpdate(teleporter: GridEntity): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_TELEPORTER_UPDATE"] = 1425] = "MC_POST_GRID_ENTITY_TELEPORTER_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_TELEPORTER_UPDATE"] = 1425] = "POST_GRID_ENTITY_TELEPORTER_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4944,7 +4944,7 @@ export var ModCallbackRepentogon;
      * function preGridEntityTrapdoorUpdate(trapdoor: GridEntity): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_TRAPDOOR_UPDATE"] = 1426] = "MC_PRE_GRID_ENTITY_TRAPDOOR_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_TRAPDOOR_UPDATE"] = 1426] = "PRE_GRID_ENTITY_TRAPDOOR_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4954,7 +4954,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityTrapdoorUpdate(trapdoor: GridEntity): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_TRAPDOOR_UPDATE"] = 1427] = "MC_POST_GRID_ENTITY_TRAPDOOR_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_TRAPDOOR_UPDATE"] = 1427] = "POST_GRID_ENTITY_TRAPDOOR_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4964,7 +4964,7 @@ export var ModCallbackRepentogon;
      * function preGridEntityWebUpdate(web: GridEntity): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_WEB_UPDATE"] = 1428] = "MC_PRE_GRID_ENTITY_WEB_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_WEB_UPDATE"] = 1428] = "PRE_GRID_ENTITY_WEB_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4974,7 +4974,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityWebUpdate(web: GridEntity): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_WEB_UPDATE"] = 1429] = "MC_POST_GRID_ENTITY_WEB_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_WEB_UPDATE"] = 1429] = "POST_GRID_ENTITY_WEB_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4984,7 +4984,7 @@ export var ModCallbackRepentogon;
      * function preGridEntityTNTUpdate(tnt: GridEntityTNT): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_TNT_UPDATE"] = 1430] = "MC_PRE_GRID_ENTITY_TNT_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_TNT_UPDATE"] = 1430] = "PRE_GRID_ENTITY_TNT_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -4994,7 +4994,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityTNTUpdate(tnt: GridEntityTNT): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_TNT_UPDATE"] = 1431] = "MC_POST_GRID_ENTITY_TNT_UPDATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_TNT_UPDATE"] = 1431] = "POST_GRID_ENTITY_TNT_UPDATE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5007,7 +5007,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_SPIKES_RENDER"] = 1432] = "MC_PRE_GRID_ENTITY_SPIKES_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_SPIKES_RENDER"] = 1432] = "PRE_GRID_ENTITY_SPIKES_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5017,7 +5017,7 @@ export var ModCallbackRepentogon;
      * function postGridEntitySpikesRender(spikes: GridEntitySpikes, offset: Vector): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_SPIKES_RENDER"] = 1433] = "MC_POST_GRID_ENTITY_SPIKES_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_SPIKES_RENDER"] = 1433] = "POST_GRID_ENTITY_SPIKES_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5030,7 +5030,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_WEB_RENDER"] = 1434] = "MC_PRE_GRID_ENTITY_WEB_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_WEB_RENDER"] = 1434] = "PRE_GRID_ENTITY_WEB_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5040,7 +5040,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityWebRender(spikes: GridEntity, offset: Vector): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_WEB_RENDER"] = 1435] = "MC_POST_GRID_ENTITY_WEB_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_WEB_RENDER"] = 1435] = "POST_GRID_ENTITY_WEB_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5053,7 +5053,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_TNT_RENDER"] = 1436] = "MC_PRE_GRID_ENTITY_TNT_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_TNT_RENDER"] = 1436] = "PRE_GRID_ENTITY_TNT_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5063,7 +5063,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityTNTRender(web: GridEntityTNT, offset: Vector): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_TNT_RENDER"] = 1437] = "MC_POST_GRID_ENTITY_TNT_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_TNT_RENDER"] = 1437] = "POST_GRID_ENTITY_TNT_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5076,7 +5076,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_TRAPDOOR_RENDER"] = 1438] = "MC_PRE_GRID_ENTITY_TRAPDOOR_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_TRAPDOOR_RENDER"] = 1438] = "PRE_GRID_ENTITY_TRAPDOOR_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5086,7 +5086,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityTrapdoorRender(trapdoor: GridEntity, offset: Vector): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_TRAPDOOR_RENDER"] = 1439] = "MC_POST_GRID_ENTITY_TRAPDOOR_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_TRAPDOOR_RENDER"] = 1439] = "POST_GRID_ENTITY_TRAPDOOR_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5099,7 +5099,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_STAIRCASE_RENDER"] = 1440] = "MC_PRE_GRID_ENTITY_STAIRCASE_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_STAIRCASE_RENDER"] = 1440] = "PRE_GRID_ENTITY_STAIRCASE_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5109,7 +5109,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityStaircaseRender(staircase: GridEntity, offset: Vector): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_STAIRCASE_RENDER"] = 1441] = "MC_POST_GRID_ENTITY_STAIRCASE_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_STAIRCASE_RENDER"] = 1441] = "POST_GRID_ENTITY_STAIRCASE_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5122,7 +5122,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_DECORATION_RENDER"] = 1444] = "MC_PRE_GRID_ENTITY_DECORATION_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_DECORATION_RENDER"] = 1444] = "PRE_GRID_ENTITY_DECORATION_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5135,7 +5135,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_DECORATION_RENDER"] = 1445] = "MC_POST_GRID_ENTITY_DECORATION_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_DECORATION_RENDER"] = 1445] = "POST_GRID_ENTITY_DECORATION_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5148,7 +5148,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_DOOR_RENDER"] = 1446] = "MC_PRE_GRID_ENTITY_DOOR_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_DOOR_RENDER"] = 1446] = "PRE_GRID_ENTITY_DOOR_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5158,7 +5158,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityDoorRender(door: GridEntityDoor, offset: Vector): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_DOOR_RENDER"] = 1447] = "MC_POST_GRID_ENTITY_DOOR_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_DOOR_RENDER"] = 1447] = "POST_GRID_ENTITY_DOOR_RENDER";
     /**
      * Fire grid entities are largely unused and in most cases you'll want to target the `EntityNPC`
      * fireplaces with `ModCallback.PRE_NPC_RENDER`.
@@ -5174,7 +5174,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_FIRE_RENDER"] = 1448] = "MC_PRE_GRID_ENTITY_FIRE_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_FIRE_RENDER"] = 1448] = "PRE_GRID_ENTITY_FIRE_RENDER";
     /**
      * Fire grid entities are largely unused and in most cases you'll want to target the `EntityNPC`
      * fireplaces with `ModCallback.POST_NPC_RENDER`.
@@ -5187,7 +5187,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityFireRender(fire: GridEntity, offset: Vector): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_FIRE_RENDER"] = 1449] = "MC_POST_GRID_ENTITY_FIRE_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_FIRE_RENDER"] = 1449] = "POST_GRID_ENTITY_FIRE_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5200,7 +5200,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_LOCK_RENDER"] = 1450] = "MC_PRE_GRID_ENTITY_LOCK_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_LOCK_RENDER"] = 1450] = "PRE_GRID_ENTITY_LOCK_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5210,7 +5210,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityLockRender(lock: GridEntity, offset: Vector): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_LOCK_RENDER"] = 1451] = "MC_POST_GRID_ENTITY_LOCK_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_LOCK_RENDER"] = 1451] = "POST_GRID_ENTITY_LOCK_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5223,7 +5223,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_TELEPORTER_RENDER"] = 1452] = "MC_PRE_GRID_ENTITY_TELEPORTER_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_TELEPORTER_RENDER"] = 1452] = "PRE_GRID_ENTITY_TELEPORTER_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5236,7 +5236,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_TELEPORTER_RENDER"] = 1453] = "MC_POST_GRID_ENTITY_TELEPORTER_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_TELEPORTER_RENDER"] = 1453] = "POST_GRID_ENTITY_TELEPORTER_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5249,7 +5249,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_PIT_RENDER"] = 1454] = "MC_PRE_GRID_ENTITY_PIT_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_PIT_RENDER"] = 1454] = "PRE_GRID_ENTITY_PIT_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5259,7 +5259,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityPitRender(pit: GridEntityPit, offset: Vector): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_PIT_RENDER"] = 1455] = "MC_POST_GRID_ENTITY_PIT_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_PIT_RENDER"] = 1455] = "POST_GRID_ENTITY_PIT_RENDER";
     /**
      * This does not include the `EntityNPC` poops used by Tainted Blue Baby. Use
      * `ModCallback.PRE_NPC_RENDER` if you wish to target them.
@@ -5275,7 +5275,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_POOP_RENDER"] = 1456] = "MC_PRE_GRID_ENTITY_POOP_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_POOP_RENDER"] = 1456] = "PRE_GRID_ENTITY_POOP_RENDER";
     /**
      * This does not include the `EntityNPC` poops used by Tainted Blue Baby. Use
      * `ModCallback.POST_NPC_RENDER` if you wish to target them.
@@ -5288,7 +5288,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityPoopRender(poop: GridEntityPoop, offset: Vector): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_POOP_RENDER"] = 1457] = "MC_POST_GRID_ENTITY_POOP_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_POOP_RENDER"] = 1457] = "POST_GRID_ENTITY_POOP_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5301,7 +5301,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_ROCK_RENDER"] = 1458] = "MC_PRE_GRID_ENTITY_ROCK_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_ROCK_RENDER"] = 1458] = "PRE_GRID_ENTITY_ROCK_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5311,7 +5311,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityRockRender(lock: GridEntityRock, offset: Vector): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_ROCK_RENDER"] = 1459] = "MC_POST_GRID_ENTITY_ROCK_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_ROCK_RENDER"] = 1459] = "POST_GRID_ENTITY_ROCK_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5324,7 +5324,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_PRESSUREPLATE_RENDER"] = 1460] = "MC_PRE_GRID_ENTITY_PRESSUREPLATE_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_PRESSUREPLATE_RENDER"] = 1460] = "PRE_GRID_ENTITY_PRESSUREPLATE_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5337,7 +5337,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_PRESSUREPLATE_RENDER"] = 1461] = "MC_POST_GRID_ENTITY_PRESSUREPLATE_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_PRESSUREPLATE_RENDER"] = 1461] = "POST_GRID_ENTITY_PRESSUREPLATE_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5350,7 +5350,7 @@ export var ModCallbackRepentogon;
      * ): Vector | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_GRID_ENTITY_WALL_RENDER"] = 1462] = "MC_PRE_GRID_ENTITY_WALL_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_GRID_ENTITY_WALL_RENDER"] = 1462] = "PRE_GRID_ENTITY_WALL_RENDER";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5360,7 +5360,7 @@ export var ModCallbackRepentogon;
      * function postGridEntityWallRender(wall: GridEntity, offset: Vector): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_GRID_ENTITY_WALL_RENDER"] = 1463] = "MC_POST_GRID_ENTITY_WALL_RENDER";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_GRID_ENTITY_WALL_RENDER"] = 1463] = "POST_GRID_ENTITY_WALL_RENDER";
     /**
      * Behaves like `ModCallback.INPUT_ACTION` except it only works on the main menu.
      *
@@ -5380,7 +5380,7 @@ export var ModCallbackRepentogon;
      * ): boolean | float | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_MENU_INPUT_ACTION"] = 1464] = "MC_MENU_INPUT_ACTION";
+    ModCallbackRepentogon[ModCallbackRepentogon["MENU_INPUT_ACTION"] = 1464] = "MENU_INPUT_ACTION";
     /**
      * Fires before a status effect is applied to an entity.
      *
@@ -5399,7 +5399,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_STATUS_EFFECT_APPLY"] = 1465] = "MC_PRE_STATUS_EFFECT_APPLY";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_STATUS_EFFECT_APPLY"] = 1465] = "PRE_STATUS_EFFECT_APPLY";
     /**
      * Fires after a status effect is applied to an entity.
      *
@@ -5416,7 +5416,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_STATUS_EFFECT_APPLY"] = 1466] = "MC_POST_STATUS_EFFECT_APPLY";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_STATUS_EFFECT_APPLY"] = 1466] = "POST_STATUS_EFFECT_APPLY";
     /**
      * Fires when a save slot is loaded by the game.
      *
@@ -5426,7 +5426,7 @@ export var ModCallbackRepentogon;
      * function postSaveSlotLoad(saveSlot: int, isSlotSelected: boolean, rawSlot: int): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_SAVESLOT_LOAD"] = 1470] = "MC_POST_SAVESLOT_LOAD";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_SAVESLOT_LOAD"] = 1470] = "POST_SAVESLOT_LOAD";
     /**
      * Fires before a challenge is marked as completed.
      *
@@ -5440,7 +5440,7 @@ export var ModCallbackRepentogon;
      * function preChallengeDone(challenge: Challenge, player: EntityPlayer): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_CHALLENGE_DONE"] = 1471] = "MC_PRE_CHALLENGE_DONE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_CHALLENGE_DONE"] = 1471] = "PRE_CHALLENGE_DONE";
     /**
      * Fires after a challenge is marked as completed.
      *
@@ -5452,7 +5452,7 @@ export var ModCallbackRepentogon;
      * function postChallengeDone(challenge: Challenge, player: EntityPlayer): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_CHALLENGE_DONE"] = 1472] = "MC_POST_CHALLENGE_DONE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_CHALLENGE_DONE"] = 1472] = "POST_CHALLENGE_DONE";
     /**
      * Fires before `EntityFamiliar.CanCharm` is called. This is used ot determine whether the Siren
      * can charm a familiar.
@@ -5467,7 +5467,7 @@ export var ModCallbackRepentogon;
      * function preFamiliarCanCharm(familiar: EntityFamiliar): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_FAMILIAR_CAN_CHARM"] = 1473] = "MC_PRE_FAMILIAR_CAN_CHARM";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_FAMILIAR_CAN_CHARM"] = 1473] = "PRE_FAMILIAR_CAN_CHARM";
     /**
      * Fires before the player gives birth to a familiar due to Cambion Conception. Return false to
      * prevent the player from spawning the familiar.
@@ -5483,7 +5483,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_GIVE_BIRTH_CAMBION"] = 1474] = "MC_PRE_PLAYER_GIVE_BIRTH_CAMBION";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_GIVE_BIRTH_CAMBION"] = 1474] = "PRE_PLAYER_GIVE_BIRTH_CAMBION";
     /**
      * Fires before the player gives birth to a familiar due to Immaculate Conception. Return false to
      * prevent the player from spawning the familiar.
@@ -5499,7 +5499,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_GIVE_BIRTH_IMMACULATE"] = 1475] = "MC_PRE_PLAYER_GIVE_BIRTH_IMMACULATE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_GIVE_BIRTH_IMMACULATE"] = 1475] = "PRE_PLAYER_GIVE_BIRTH_IMMACULATE";
     /**
      * Fires after an achievement is unlocked.
      *
@@ -5511,7 +5511,7 @@ export var ModCallbackRepentogon;
      * function postAchievementUnlock(achievement: Achievement): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ACHIEVEMENT_UNLOCK"] = 1476] = "MC_POST_ACHIEVEMENT_UNLOCK";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ACHIEVEMENT_UNLOCK"] = 1476] = "POST_ACHIEVEMENT_UNLOCK";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5521,7 +5521,7 @@ export var ModCallbackRepentogon;
      * function prePlayerRevive(player: EntityPlayer): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_PLAYER_REVIVE"] = 1481] = "MC_PRE_PLAYER_REVIVE";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_PLAYER_REVIVE"] = 1481] = "PRE_PLAYER_REVIVE";
     /**
      * When registering this callback with the `Mod.AddCallbackRepentogon` method:
      * - You can provide an optional third argument that will make the callback only fire if it
@@ -5531,7 +5531,7 @@ export var ModCallbackRepentogon;
      * function postPlayerRevive(player: EntityPlayer): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_PLAYER_REVIVE"] = 1482] = "MC_POST_PLAYER_REVIVE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_PLAYER_REVIVE"] = 1482] = "POST_PLAYER_REVIVE";
     /**
      * Fires before a fortune is displayed on the screen.
      *
@@ -5543,7 +5543,7 @@ export var ModCallbackRepentogon;
      * function preFortuneDisplay(): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_FORTUNE_DISPLAY"] = 1483] = "MC_PRE_FORTUNE_DISPLAY";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_FORTUNE_DISPLAY"] = 1483] = "PRE_FORTUNE_DISPLAY";
     /**
      * Fires before the item display text appears. Return false to prevent it from appearing.
      *
@@ -5558,7 +5558,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_ITEM_TEXT_DISPLAY"] = 1484] = "MC_PRE_ITEM_TEXT_DISPLAY";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_ITEM_TEXT_DISPLAY"] = 1484] = "PRE_ITEM_TEXT_DISPLAY";
     /**
      * Fires before a status effect target of an entity is set.
      *
@@ -5572,7 +5572,7 @@ export var ModCallbackRepentogon;
      * function getStatusEffectTarget(entity: Entity): Entity | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_GET_STATUS_EFFECT_TARGET"] = 1485] = "MC_GET_STATUS_EFFECT_TARGET";
+    ModCallbackRepentogon[ModCallbackRepentogon["GET_STATUS_EFFECT_TARGET"] = 1485] = "GET_STATUS_EFFECT_TARGET";
     /**
      * Fires before the entity's color is set with `Entity.SetColor`. This callback does not fire if
      * the `Entity.Color` field is directly modified.
@@ -5595,7 +5595,7 @@ export var ModCallbackRepentogon;
      * ): Color | boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_ENTITY_SET_COLOR"] = 1486] = "MC_PRE_ENTITY_SET_COLOR";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_ENTITY_SET_COLOR"] = 1486] = "PRE_ENTITY_SET_COLOR";
     /**
      * Fires after the entity's color is set with `Entity.SetColor`. This callback does not fire if
      * the `Entity.Color` field is directly modified.
@@ -5615,7 +5615,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_ENTITY_SET_COLOR"] = 1487] = "MC_POST_ENTITY_SET_COLOR";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_ENTITY_SET_COLOR"] = 1487] = "POST_ENTITY_SET_COLOR";
     /**
      * Fires when a challenge/boss rush room wave starts.
      *
@@ -5625,7 +5625,7 @@ export var ModCallbackRepentogon;
      * function postStartAmbushWave(bossAmbush: boolean): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_START_AMBUSH_WAVE"] = 1488] = "MC_POST_START_AMBUSH_WAVE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_START_AMBUSH_WAVE"] = 1488] = "POST_START_AMBUSH_WAVE";
     /**
      * Fires when a Greed Mode wave starts.
      *
@@ -5635,7 +5635,7 @@ export var ModCallbackRepentogon;
      * function postStartGreedWave(): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_START_GREED_WAVE"] = 1489] = "MC_POST_START_GREED_WAVE";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_START_GREED_WAVE"] = 1489] = "POST_START_GREED_WAVE";
     /**
      * Fires before the player's `TearParams` object is calculated.
      *
@@ -5657,7 +5657,7 @@ export var ModCallbackRepentogon;
      * ): TearParams | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_EVALUATE_TEAR_HIT_PARAMS"] = 1490] = "MC_EVALUATE_TEAR_HIT_PARAMS";
+    ModCallbackRepentogon[ModCallbackRepentogon["EVALUATE_TEAR_HIT_PARAMS"] = 1490] = "EVALUATE_TEAR_HIT_PARAMS";
     /**
      * Fires before a chest is opened.
      *
@@ -5674,7 +5674,7 @@ export var ModCallbackRepentogon;
      * ): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_OPEN_CHEST"] = 1491] = "MC_PRE_OPEN_CHEST";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_OPEN_CHEST"] = 1491] = "PRE_OPEN_CHEST";
     /**
      * Fires after a chest is opened.
      *
@@ -5689,7 +5689,7 @@ export var ModCallbackRepentogon;
      * ): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_OPEN_CHEST"] = 1492] = "MC_POST_OPEN_CHEST";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_OPEN_CHEST"] = 1492] = "POST_OPEN_CHEST";
     /**
      * Fires when a boss is defeated and the game checks for an extra "thematic" reward separate
      * from the usual boss pool item.
@@ -5715,7 +5715,7 @@ export var ModCallbackRepentogon;
      *   | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_GET_BOSS_THEMATIC_ITEM"] = 1493] = "MC_GET_BOSS_THEMATIC_ITEM";
+    ModCallbackRepentogon[ModCallbackRepentogon["GET_BOSS_THEMATIC_ITEM"] = 1493] = "GET_BOSS_THEMATIC_ITEM";
     /**
      * Fires before player costumes are shuffled. Return false to prevent the costume shuffle.
      *
@@ -5727,7 +5727,7 @@ export var ModCallbackRepentogon;
      * function preShuffleCostumes(player: EntityPlayer, seed: Seed): boolean | undefined {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_PRE_SHUFFLE_COSTUMES"] = 1494] = "MC_PRE_SHUFFLE_COSTUMES";
+    ModCallbackRepentogon[ModCallbackRepentogon["PRE_SHUFFLE_COSTUMES"] = 1494] = "PRE_SHUFFLE_COSTUMES";
     /**
      * Fires after player costumes are shuffled.
      *
@@ -5739,5 +5739,5 @@ export var ModCallbackRepentogon;
      * function postShuffleCostumes(player: EntityPlayer, seed: Seed): void {}
      * ```
      */
-    ModCallbackRepentogon[ModCallbackRepentogon["MC_POST_SHUFFLE_COSTUMES"] = 1495] = "MC_POST_SHUFFLE_COSTUMES";
+    ModCallbackRepentogon[ModCallbackRepentogon["POST_SHUFFLE_COSTUMES"] = 1495] = "POST_SHUFFLE_COSTUMES";
 })(ModCallbackRepentogon || (ModCallbackRepentogon = {}));
